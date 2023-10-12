@@ -19,10 +19,10 @@ export default function Home() {
     return (
         <div className="body h-screen">
             {/* header */}
-            <div className="mx-auto max-w-8xl px-6 pt-5 lg:px-8">
-                <img className="h-5 w-auto" src="/images/logo2.svg" alt="" />
-                <div className="justify-center flex mt-10 md:mt-28">
-                    <div className="w-5/5  md:w-[28%] border border-gray-200 bg-white rounded-lg md:px-8 px-4">
+            <div className="mx-auto max-w-8xl h-[100%] px-6 pt-5 lg:px-8">
+                <img className=" w-auto" src="/images/logo2.svg" alt="" />
+                <div className="justify-center flex items-center h-[70%] w-full mt-10 md:mt-28">
+                    <div className="w-full  md:w-[28vw]  border border-gray-200 bg-white rounded-lg md:px-8 px-4">
                         <div className="my-16 md:my-16">
                             <h2 className="text-2xl font-bold">Login to your account</h2>
                             <div className="flex justify-center mt-10">
