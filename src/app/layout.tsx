@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import "remixicon/fonts/remixicon.css";
+import "react-phone-input-2/lib/style.css";
 
 
 const inter = Inter({ subsets: ['latin'] })

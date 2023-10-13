@@ -58,13 +58,14 @@ export default function Home() {
                                     <label htmlFor="remember">Remember Me</label>
                                 </div>
                                 <span className="text-green-700">
-                                    <Link href="/recoverPassword">Forgot Password?</Link>
+                                    <Link href="/auth/otp">Forgot Password?</Link>
                                 </span>
                             </div>
 
                             <div className="flex justify-center mt-4">
                                 <button
                                     onClick={submit}
+                                    id="button"
                                     className="w-full py-2.5 border text-white bg-black border-gray-200 rounded-lg outline-none pl-2"
                                 >
                                     Sign In with Email{" "}
