@@ -103,7 +103,7 @@ function Otp({ users }: { users: any[] }): JSX.Element {
           <img className=" w-auto m-3" src="/images/logo2.svg" alt="" />
           <div className="mx-auto max-w-8xl px-6 pt-3 lg:px-8">
             <img className="h-5 w-auto" src="/images/logo.svg" alt="" />
-            <div className="justify-center flex mt-28 md:mt-20">
+            <div className="justify-center flex  md:mt-20">
               <div className="w-full  md:w-3/5 border border-gray-200 bg-white rounded-lg md:px-8 px-4">
                 <Link href="/auth">
                   <div className="flex justify-end w-full mt-5">
