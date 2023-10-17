@@ -9,6 +9,7 @@ const LoginPage = () => {
 
   const onSuccess = () => {
     const redirect = router.query.redirect as string;
+    // local storage
     router.replace(redirect || '/dashboard');
   };
 
@@ -22,7 +23,7 @@ const LoginPage = () => {
 LoginPage.getLayout = function getLayout(
   page: ReactElement
 ) {
-  return <AuthLayout title="Log In">{page}</AuthLayout>;
+  return <AuthLayout>{page}</AuthLayout>;
 };
 
 export default LoginPage;

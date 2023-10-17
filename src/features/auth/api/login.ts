@@ -5,8 +5,9 @@ import { AuthAPI } from '@/libs/instanvi-service';
 import { queryClient } from '@/libs/react-query';
 
 import { LoginData } from '../types';
+import { AuthDto } from '@instanvi/client/api';
 
-export const login = (data: LoginData): Promise<unknown> => {
+export const login = (data: AuthDto): Promise<unknown> => {
   return AuthAPI.login(data);
 };
 

@@ -9,16 +9,16 @@ export const AuthLayout = ({
 }: AuthLayoutProps) => {
   return (
     <>
-      <div className="body h-screen">
+      <div className="body">
         {/* header */}
         <div className="mx-auto max-w-8xl px-6 pt-5 lg:px-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="h-5 w-auto"
+            className="h-8 w-auto"
             src="/images/logo2.svg"
             alt=""
           />
-          <div className="justify-center flex mt-10 md:mt-28">
+          <div className="justify-center h-[90vh] w-full items-center flex  ">
             {children}
           </div>
         </div>
