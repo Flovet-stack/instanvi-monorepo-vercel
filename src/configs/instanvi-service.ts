@@ -5,7 +5,8 @@ import { Utils } from '@/utils';
 
 const configuration = new Configuration({
   basePath: API_URL,
-  accessToken: Utils.getToken(),
+  accessToken: Utils.getToken()?.accessToken,
+
 });
 
 export default configuration;

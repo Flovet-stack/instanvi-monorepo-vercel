@@ -2,29 +2,42 @@ import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-// eslint-disable-next-line no-restricted-imports
 import { useLogin } from '@/features/auth/api/login';
+import { AuthDto } from '@instanvi/client/api';
 
 export type LoginFormProps = {
   onSuccess: () => void;
 };
 
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(8).max(32).required(),
+});
+
+
 export const LoginForm = ({
   onSuccess,
 }: LoginFormProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const login = useLogin({ onSuccess });
+  // utilise is isLoading pour le chargement => login.isLoading
 
   // Collect data from here 
 
-  const { register, handleSubmit } = useForm<any>();
-  const [data, setData] = useState<string>("");
+  const { register, handleSubmit, formState: { errors } } = useForm<AuthDto>({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmitHandler = (data : AuthDto ) => {
+    login.submit(data);
+  };
 
   return (
     <>
       <div className="w-5/5  md:w-[28%] border border-gray-200 bg-white rounded-lg md:px-8 px-4">
-        <form className="my-16 md:my-16" onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
+        <form className="my-16 md:my-16" onSubmit={handleSubmit(onSubmitHandler)}>
           <h2 className="text-2xl font-bold">
             Logins to your account
           </h2>
@@ -32,17 +45,19 @@ export const LoginForm = ({
             <input
               type="text"
               {...register("email")}
-              className="w-full py-2.5 border border-gray-200  rounded-lg outline-none pl-2"
+              className="w-full py-2.5 border border-gray-200 rounded-lg outline-none pl-2"
               placeholder="Username"
             />
+              <p className="text-sm text-red-800">{errors.email?.message}</p>
           </div>
-          <div className="flex justify-center pt-4">
+          <div className="flex flex-col justify-center pt-4">
             <input
               type="text"
               {...register("password")}
               className="w-full py-2.5 border border-gray-200 rounded-lg outline-none pl-2"
               placeholder="Password"
             />
+            <p className="text-sm text-red-800">{errors.password?.message}</p>
           </div>
           <div className="flex justify-between pt-4">
             <div className="flex">
