@@ -4,8 +4,8 @@ import { AxiosResponse } from 'axios';
 
 import { AuthAPI } from '@/libs/instanvi-service';
 
-export const getAuthUser = (): Promise<unknown> => {
-  return AuthAPI.me();
+export const getAuthUser = (): Promise<AxiosResponse> => {
+  return AuthAPI.me() as any;
 };
 
 export const useUser = (): {
