@@ -102,6 +102,7 @@ export const LoginForm = ({
               </button>
             </div>
             <div className="flex justify-center h-12 ml-0.5  w-[50%]">
+
               <button
                 onClick={() => signIn('facebook')}
                 className="w-full py-2 border   bg-white-600 border-gray-200 rounded-sm outline-none px-10 flex justify-center"
