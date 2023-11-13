@@ -1,6 +1,5 @@
 import { NextRouter, useRouter } from 'next/router';
 import { ReactElement } from 'react';
-
 import { OtpForm } from '@/features/auth';
 import { AuthLayout } from '@/layouts/auth-layout';
 

@@ -1,8 +1,8 @@
 import { NextRouter, useRouter } from 'next/router';
 import { ReactElement } from 'react';
 
-import { EmailForm } from '@/features/auth';
-import { AuthLayout } from '@/layouts/auth-layout';
+import { Schannel } from '@/features/channel';
+import { HeaderLayout } from '@/layouts/header-layout';
 
 const EmailPage = () => {
     const router: NextRouter = useRouter();
@@ -10,12 +10,10 @@ const EmailPage = () => {
         const redirect = router.query.redirect as string;
         // local storage
         router.replace(redirect || '/auth/newPassword');
-
     };
-
     return (
         <>
-            <EmailForm onSuccess={onSuccess} />
+            <Schannel />
         </>
     );
 };
@@ -23,7 +21,7 @@ const EmailPage = () => {
 EmailPage.getLayout = function getLayout(
     page: ReactElement
 ) {
-    return <AuthLayout>{page}</AuthLayout>;
+    return <HeaderLayout>{page}</HeaderLayout>;
 };
 
 export default EmailPage;

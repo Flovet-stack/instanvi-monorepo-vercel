@@ -9,6 +9,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 
 export const login = (data: AuthDto): Promise<AxiosResponse> => {
   return AuthAPI.login(data) as any;
+
 };
 
 type UseLoginOptions = {
@@ -16,8 +17,8 @@ type UseLoginOptions = {
 };
 
 // customize your notification in different file
-const errorResponse = () => toast.error('Here is your toast.');
-const successResponse = () => toast.success('Here is your toast.');
+const errorResponse = () => toast.error('An error has occured !!!');
+const successResponse = () => toast.success('Login Successfully');
 
 
 export const useLogin = ({
@@ -25,16 +26,16 @@ export const useLogin = ({
 }: UseLoginOptions = {}) => {
   const { mutate: submit, isLoading } = useMutation({
     mutationFn: login,
-    onSuccess: (data : AxiosResponse) => {
+    onSuccess: (data: AxiosResponse) => {
       successResponse();
       queryClient.setQueryData(['auth-user'], data.data.data.user);
       queryClient.setQueryData(['auth-access'], data.data.data.access);
       onSuccess?.(data.data.data);
     },
-    onError: (axiosError : AxiosError) => {
+    onError: (axiosError: AxiosError) => {
       errorResponse()
-      // @ts-ignore
-      console.log('------',axiosError.response.data);
+      // @ts-ignore~
+      console.log(axiosError);
     },
   });
 

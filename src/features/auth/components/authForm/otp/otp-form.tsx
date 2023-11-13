@@ -20,7 +20,7 @@ export const OtpForm = ({
 
     const { register, handleSubmit } = useForm<any>();
     const [data, setData] = useState<string>("");
-    const [showOtp, setShowOpt] = useState<boolean>(false)
+    const [showOtp, setShowOpt] = useState<boolean>(true)
 
     return (
         <div className='w-full'>
@@ -28,9 +28,9 @@ export const OtpForm = ({
             {showOtp ? <div className={`${showOtp ? "" : "hidden"}`}>
                 {/* header */}
 
-                <div className="mx-auto max-w-8xl px-6 lg:px-8 pt-3">
+                <div className="mx-auto max-w-8xl px-6 lg:px-8  ">
                     <img className="h-5 w-auto" src="/images/logo.svg" alt="" />
-                    <div className="justify-center flex mt-28 md:mt-48">
+                    <div className="justify-center flex mt-10 md:mt-10">
                         <div className="w-full  md:w-[28%] border border-gray-200 bg-white rounded-lg md:px-8 px-4">
                             <Link href="/">
                                 <div className="flex justify-end w-full mt-5">
@@ -40,15 +40,15 @@ export const OtpForm = ({
                                     </button>
                                 </div>
                             </Link>
-                            <div className="my-16 md:my-16">
+                            <div className="my-10 md:my-10">
                                 <center>
                                     <h2 className="text-2xl font-bold">Enter Phone Number</h2>
                                 </center><br />
-                                <div className="  w-full mt-14">
+                                <div className="  w-full mt-5">
 
                                     <ReactPhoneInput
                                         inputStyle={{ padding: "20px 0px 20px 43px" }}
-                                        country={"us"}
+                                        country={"cm"}
                                         // {...register("Number")}
                                         countryCodeEditable={false}
                                         specialLabel={"Player Mobile Number"}
@@ -92,9 +92,9 @@ export const OtpForm = ({
             </div> : <div className={`${!showOtp ? "" : "hidden"}`}>
                 <div className="w-full">
                     {/* header */}
-                    <div className="mx-auto max-w-8xl px-6 pt-3 lg:px-8">
+                    <div className="mx-auto max-w-8xl px-6   lg:px-8">
                         <img className="h-5 w-auto" src="/images/logo.svg" alt="" />
-                        <div className="justify-center flex mt-28 md:mt-48">
+                        <div className="justify-center flex mt-10 md:mt-10">
                             <div className="w-full  md:w-[28%] border border-gray-200 bg-white rounded-lg md:px-8 px-4 pb-5">
                                 <Link href="/auth/login">
                                     <div className="flex justify-end w-full mt-5">

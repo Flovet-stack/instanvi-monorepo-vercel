@@ -10,14 +10,14 @@ import { Access, SuccessLoginDto, User } from '@instanvi/client';
 const LoginPage = () => {
   const router: NextRouter = useRouter();
 
-  const onSuccess = (data? :SuccessLoginDto) => {
+  const onSuccess = (data?: SuccessLoginDto) => {
     const redirect = router.query.redirect as string;
     const access = queryClient.getQueryData<Access>(['auth-user']);
-    console.log('++++++',access);
+    console.log('++++++', access);
     const user = queryClient.getQueryData<User>(['auth-access']);
-    console.log('xxxxxxx',user);
+    console.log('xxxxxxx', user);
     if (access && user)
-      router.replace(redirect || '/dashboard');
+      router.replace(redirect || '/publisher/channel');
   };
 
   return (
