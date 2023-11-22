@@ -6,6 +6,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { IS_DEVELOPMENT } from '@/configs/constants';
 import { queryClient } from '@/libs/react-query';
 import { Toaster } from 'react-hot-toast';
+import { Provider } from 'react-redux';
+import { store } from '@/app/store';
 
 type AppProviderProps = {
   children: ReactNode;
@@ -25,10 +27,9 @@ export const AppProvider = ({
           fallback={<div>Something went wrong!</div>}
           onError={console.error}
         >
-          {children}
+          <Provider store={store}>{children}</Provider>
         </ErrorBoundary>
       </QueryClientProvider>
     </>
-
   );
 };
