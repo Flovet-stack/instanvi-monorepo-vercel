@@ -9,7 +9,6 @@ import { AxiosError, AxiosResponse } from 'axios';
 
 export const login = (data: AuthDto): Promise<AxiosResponse> => {
   return AuthAPI.login(data) as any;
-
 };
 
 type UseLoginOptions = {
@@ -20,10 +19,7 @@ type UseLoginOptions = {
 const errorResponse = () => toast.error('An error has occured !!!');
 const successResponse = () => toast.success('Login Successfully');
 
-
-export const useLogin = ({
-  onSuccess,
-}: UseLoginOptions = {}) => {
+export const useLogin = ({ onSuccess }: UseLoginOptions = {}) => {
   const { mutate: submit, isLoading } = useMutation({
     mutationFn: login,
     onSuccess: (data: AxiosResponse) => {
@@ -33,7 +29,7 @@ export const useLogin = ({
       onSuccess?.(data.data.data);
     },
     onError: (axiosError: AxiosError) => {
-      errorResponse()
+      errorResponse();
       // @ts-ignore~
       console.log(axiosError);
     },

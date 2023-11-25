@@ -1,21 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@font-face {
-  font-family: "EuclidCircularASemiBold";
-  src: url("/fonts/EuclidCircularASemiBold.ttf") format("truetype");
+:root {
+  --primary: #043a08;
+  --primary-light: #065e0c;
+  --white: #fff;
+  --light-bg: rgba(238, 238, 238, 0.575);
+  --border-radius: 0.5rem;
+  --border-color: #e5e7eb;
+  --text: #000;
 }
 
 @font-face {
-  font-family: "EuclidCircularBRegular";
-  src: url("/fonts/EuclidCircularBRegular.ttf") format("truetype");
+  font-family: 'EuclidCircularASemiBold';
+  src: url('/fonts/EuclidCircularASemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'EuclidCircularBRegular';
+  src: url('/fonts/EuclidCircularBRegular.ttf') format('truetype');
 }
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
 }
 
 a {
@@ -181,22 +201,23 @@ input[disabled]:hover {
   padding: 20px;
   width: 200px;
   background-color: white;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
-  hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  box-shadow:
+    hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
-.HoverCardContent[data-side="top"] {
+.HoverCardContent[data-side='top'] {
   animation-name: slideDownAndFade;
 }
-.HoverCardContent[data-side="right"] {
+.HoverCardContent[data-side='right'] {
   animation-name: slideLeftAndFade;
 }
-.HoverCardContent[data-side="bottom"] {
+.HoverCardContent[data-side='bottom'] {
   animation-name: slideUpAndFade;
 }
-.HoverCardContent[data-side="left"] {
+.HoverCardContent[data-side='left'] {
   animation-name: slideRightAndFade;
 }
 
@@ -290,9 +311,11 @@ select {
   -moz-appearance: none;
 }
 select.arrows {
-  background: url("https://cdn3.iconfinder.com/data/icons/trico-arrows-1/24/ExpandUpDownSmall-512.png")
-  no-repeat right #ddd;
-  background-position: calc(100% - 0.5rem), 100% 0;
+  background: url('https://cdn3.iconfinder.com/data/icons/trico-arrows-1/24/ExpandUpDownSmall-512.png')
+    no-repeat right #ddd;
+  background-position:
+    calc(100% - 0.5rem),
+    100% 0;
   background-size: 1.5em 1.5em;
   background-repeat: no-repeat;
 }

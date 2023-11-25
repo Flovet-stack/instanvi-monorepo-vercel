@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { NextRouter, useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
 // import { AsyncStorage } from 'reactjs-async-localstorage';
 
 interface User {
@@ -25,6 +26,7 @@ const schema = yup.object().shape({
 });
 
 export function Register({ users }: RegisterProps) {
+  const { t } = useTranslation('translation', { useSuspense: false });
   const router: NextRouter = useRouter();
   const redirect: string = router.query.redirect as string;
   const [storage, setStorage] = useState(
@@ -63,6 +65,7 @@ export function Register({ users }: RegisterProps) {
           onSubmit={handleSubmit(onSubmitHandler)}
         >
           <div className="w-full  md:w-[40%]     md:px-0 px-4">
+            {t('test')}
             <div className="flex w-full justify-between">
               <div className="mt-3 w-full">
                 <span className="my-3 mr-1">Firstname</span>
