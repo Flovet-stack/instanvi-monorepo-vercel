@@ -1,6 +1,6 @@
 import { NextRouter, useRouter } from 'next/router';
 import { ReactElement } from 'react';
-import Head from 'next/head'
+import Head from 'next/head';
 
 import { LoginForm } from '@/features/auth';
 import { AuthLayout } from '@/layouts/auth-layout';
@@ -16,8 +16,7 @@ const LoginPage = () => {
     console.log('++++++', access);
     const user = queryClient.getQueryData<User>(['auth-access']);
     console.log('xxxxxxx', user);
-    if (access && user)
-      router.replace(redirect || '/publisher/channel');
+    if (access && user) router.replace(redirect || '/publisher/channel');
   };
 
   return (
@@ -30,9 +29,7 @@ const LoginPage = () => {
   );
 };
 
-LoginPage.getLayout = function getLayout(
-  page: ReactElement
-) {
+LoginPage.getLayout = function getLayout(page: ReactElement) {
   return <AuthLayout>{page}</AuthLayout>;
 };
 
