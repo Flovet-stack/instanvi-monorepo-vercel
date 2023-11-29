@@ -30,7 +30,7 @@ interface AppLoaderProps {
   text?: string;
   size?: number;
   type?: Spinner;
-  color?: NamedColor;
+  color?: string | NamedColor;
 }
 
 const spinnerComponents = {
@@ -58,7 +58,7 @@ const AppLoader: React.FC<AppLoaderProps> = ({
   return (
     <div className="app-loader flex flex-col items-center justify-center">
       <SpinnerComponent color={color} style={style} />
-      {text && <p className="mt-2">{text}</p>}
+      {text && <p className="mt-2 font-medium">{text}</p>}
     </div>
   );
 };

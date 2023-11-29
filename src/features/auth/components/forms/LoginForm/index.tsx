@@ -53,7 +53,9 @@ const LoginForm: React.FC<LoginFormProps> = ({
   };
 
   const onSubmitHandler = (data: ILoginFormData) => {
-    dispatch(loginThunk(data));
+    dispatch(loginThunk(data)).then(() => {
+      window.location.href = '/';
+    });
   };
 
   return (

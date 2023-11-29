@@ -1,7 +1,7 @@
 import { Access } from '@instanvi/client';
 import { AxiosResponse } from 'axios';
 import { useRouter } from 'next/router';
-import { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
 import getAuthUser from '@/api/auth/get-auth-user';
 import { AppLoader } from '@/components';
@@ -11,13 +11,13 @@ import {
 } from '@/configs/constants';
 import CryptoStorageHelper from '@/helpers/cryptoStorageHelper';
 
-type AuthLayoutProps = {
+interface AuthGuardProps {
   children: ReactNode;
-};
+}
 
-export const AuthLayout = ({ children }: AuthLayoutProps) => {
-  const router = useRouter();
+const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   const [showLoader, setShowLoader] = useState<boolean>(true);
+  const router = useRouter();
 
   const access: Access = CryptoStorageHelper.decryptAndRetrieve(
     INSTANVI_STORAGE_ACCESS
@@ -30,11 +30,11 @@ export const AuthLayout = ({ children }: AuthLayoutProps) => {
           INSTANVI_STORAGE_USER,
           res.data.data
         );
-        router.push('/');
-        // setShowLoader(false);
+        setShowLoader(false);
+        // router.push('/');
       })
       .catch(() => {
-        setShowLoader(false);
+        router.push('/auth/login');
       });
   };
 
@@ -42,7 +42,7 @@ export const AuthLayout = ({ children }: AuthLayoutProps) => {
     if (access) {
       authenticate();
     } else {
-      setShowLoader(false);
+      router.push('/auth/login');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -59,19 +59,7 @@ export const AuthLayout = ({ children }: AuthLayoutProps) => {
       </div>
     );
   }
-
-  return (
-    <>
-      <div className="body">
-        {/* header */}
-        <div className="mx-auto max-w-8xl px-6 pt-5 lg:px-8">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="h-8 w-auto" src="/images/logo2.svg" alt="" />
-          <div className="justify-center h-[90vh] w-full items-center flex  ">
-            {children}
-          </div>
-        </div>
-      </div>
-    </>
-  );
+  return <div>{children}</div>;
 };
+
+export default AuthGuard;

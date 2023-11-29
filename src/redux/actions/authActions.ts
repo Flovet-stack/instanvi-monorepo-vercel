@@ -14,6 +14,9 @@ interface LoginThunkResponse {
   access: SuccessLoginDto['access'];
 }
 
+// const errorResponse = () => toast.error('An error has occurred !!!');
+// const successResponse = () => toast.success('Login Successfully');
+
 export const loginThunk = createAsyncThunk<LoginThunkResponse, ILoginFormData>(
   'login',
   async (data: ILoginFormData) => {
@@ -32,3 +35,14 @@ export const loginThunk = createAsyncThunk<LoginThunkResponse, ILoginFormData>(
     }
   }
 );
+
+export const getAuthUserThunk = createAsyncThunk('getAuthUser', async () => {
+  try {
+    const response = await AuthAPI.me();
+    const responseData = response.data.data;
+    console.log('🚀 ~ file: authActions.ts:45 ~ responseData:', responseData);
+    return 'test';
+  } catch (error) {
+    return Promise.reject(error);
+  }
+});
