@@ -1,4 +1,5 @@
-import CustomButton from './CustomButton/CustomButton';
-import InputField from './InputField/InputField';
+import AppLoader from './AppLoader';
+import CustomButton from './CustomButton';
+import InputField from './InputField';
 
-export { CustomButton, InputField };
+export { CustomButton, InputField, AppLoader };
