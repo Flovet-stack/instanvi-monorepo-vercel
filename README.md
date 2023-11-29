@@ -9,10 +9,7 @@ Project description // This will be added this later
 - [Installation](#installation)
 - [Usage](#usage)
 - [Folder Structure](#folder-structure)
-- [Dependencies](#dependencies)
-- [Scripts](#scripts)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 
@@ -20,7 +17,7 @@ Provide a brief overview of your project, its purpose, and any other relevant in
 
 ## Features
 
-Highlight the key features of your project.
+key features of your project.
 
 - Authentication
 - Managing campaigns
@@ -31,7 +28,7 @@ Highlight the key features of your project.
 
 ## Installation
 
-Describe the steps required to install your project locally.
+Follow these the steps to install your project locally.
 
 ```bash
 # Clone the repository
