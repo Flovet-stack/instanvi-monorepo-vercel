@@ -2,7 +2,10 @@ import { SuccessLoginDto } from '@instanvi/client';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { ILoginFormData } from '@/@types';
-import { INSTANVI_STORAGE_ACCESS, INSTANVI_STORAGE_USER } from '@/constants';
+import {
+  INSTANVI_STORAGE_ACCESS,
+  INSTANVI_STORAGE_USER,
+} from '@/configs/constants';
 import CryptoStorageHelper from '@/helpers/cryptoStorageHelper';
 import { AuthAPI } from '@/libs/instanvi-service';
 

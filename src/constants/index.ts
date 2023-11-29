@@ -1,4 +1,0 @@
-const INSTANVI_STORAGE_USER = 'instanvi_user';
-const INSTANVI_STORAGE_ACCESS = 'instanvi_access';
-
-export { INSTANVI_STORAGE_USER, INSTANVI_STORAGE_ACCESS };
