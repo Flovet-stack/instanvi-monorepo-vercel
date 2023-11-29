@@ -1,8 +1,11 @@
-import { StatusType, UserType } from '@/@types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { StatusType, UserType } from '@/@types';
+
+import { loginThunk } from './actions/authActions';
+
 export interface AuthState {
-  user: { user: UserType; token: string } | null;
+  user: UserType | null;
   authStatus: StatusType;
   message: string | null;
 }
@@ -30,7 +33,7 @@ export const authSlice = createSlice({
     },
 
     //set auth user state
-    setAuthUserState: (state: AuthState, action: PayloadAction<any>) => {
+    setAuthUserState: (state: AuthState, action: PayloadAction<UserType>) => {
       state.user = action.payload;
     },
 
@@ -43,6 +46,18 @@ export const authSlice = createSlice({
     setAuthMessage: (state: AuthState, action: PayloadAction<string>) => {
       state.message = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(loginThunk.pending, (state) => {
+      state.authStatus = 'loading';
+    });
+    builder.addCase(loginThunk.fulfilled, (state, action) => {
+      state.authStatus = 'idle';
+      state.user = action.payload;
+    });
+    builder.addCase(loginThunk.rejected, (state) => {
+      state.authStatus = 'failed';
+    });
   },
 });
 
