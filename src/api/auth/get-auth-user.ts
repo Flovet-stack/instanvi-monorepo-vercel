@@ -1,24 +1,20 @@
-import { User } from '@instanvi/client/api';
-import { useQuery } from '@tanstack/react-query';
-import { AxiosResponse } from 'axios';
+import { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import { AuthAPI } from '@/libs/instanvi-service';
 
-const getAuthUser = (): Promise<AxiosResponse> => {
-  return AuthAPI.me() as any;
+const getAuthUser = async (): Promise<AxiosResponse> => {
+  // Get the current date as a timestamp
+  const currentDate = new Date();
+  const timestamp = currentDate.getTime();
+
+  // Define the request options with the timestamp as a query parameter
+  const requestOptions: AxiosRequestConfig = {
+    params: {
+      cacheBuster: timestamp,
+    },
+  };
+
+  return AuthAPI.me(requestOptions);
 };
 
-export const useUser = (): {
-  data: User;
-  isLoading: boolean;
-} => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['auth-user'],
-    queryFn: () =>
-      getAuthUser().then((res: AxiosResponse) => {
-        return res.data.data;
-      }),
-  });
-
-  return { data, isLoading };
-};
+export default getAuthUser;
