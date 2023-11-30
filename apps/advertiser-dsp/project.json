@@ -1,0 +1,54 @@
+{
+  "name": "advertiser-dsp",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/advertiser-dsp",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/advertiser-dsp"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/advertiser-dsp"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "advertiser-dsp:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "advertiser-dsp:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "advertiser-dsp:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "advertiser-dsp:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/advertiser-dsp/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

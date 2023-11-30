@@ -1,5 +1,4 @@
 import styles from './page.module.scss';
-import { CustomButton } from '@instanvi-monorepo/ui-components';
 
 export default async function Index() {
   /*
@@ -14,11 +13,9 @@ export default async function Index() {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome publisher-ssp 👋
+              Welcome advertiser-dsp 👋
             </h1>
           </div>
-
-          <CustomButton theme="primary" text="test button" />
 
           <div id="hero" className="rounded">
             <div className="text-container">
