@@ -1,8 +1,11 @@
-import Image from 'next/image';
+import { HeaderLayout } from '@/layouts/header-layout';
 
 export default function Home() {
   return (
     <main>
+      <HeaderLayout>
+        <h1>home page</h1>
+      </HeaderLayout>
       {/* <div className="w-5/5  md:w-[28%] border border-gray-200 bg-white rounded-lg md:px-8 px-4">
         <div className="my-16 md:my-16">
           <h2 className="text-2xl font-bold">

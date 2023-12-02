@@ -1,16 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --primary: #043a08;
+  --primary-light: #065e0c;
+  --white: #fff;
+  --light-bg: rgba(238, 238, 238, 0.575);
+  --border-radius: 0.5rem;
+  --border-color: #e5e7eb;
+  --text: #000;
+}
+
 @font-face {
   font-family: 'EuclidCircularASemiBold';
-  src: url('/fonts/EuclidCircularASemiBold.ttf')
-    format('truetype');
+  src: url('/fonts/EuclidCircularASemiBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'EuclidCircularBRegular';
-  src: url('/fonts/EuclidCircularBRegular.ttf')
-    format('truetype');
+  src: url('/fonts/EuclidCircularBRegular.ttf') format('truetype');
 }
 html,
 body {
@@ -356,7 +364,9 @@ select.arrows {
   display: none !important;
 }
 
-input[type='checkbox'] {
-  background: #000 !important;
-  color: #043a08 !important;
+.auth-loader {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
