@@ -19,7 +19,7 @@ export function AdChannels(): JSX.Element {
 
     const handleChannel = (e: React.MouseEvent<HTMLDivElement>, channel: string): void => {
         localStorage.setItem("channel", JSON.stringify({ ...storage, category: channel }))
-        router.replace(redirect || '/publisher/channel/socialMedia')
+        router.replace(redirect || `/publisher/channel/${channel}`)
     };
 
 
@@ -119,7 +119,7 @@ export function AdChannels(): JSX.Element {
                                     </div>
                                     <div
                                         onClick={(e) => {
-                                            handleChannel(e, "telemarketingChannel");
+                                            handleChannel(e, "traditionalChannel");
                                         }}
                                         className="flex justify-between py-6 border-b px-4 w-full cursor-pointer"
                                     >
@@ -139,7 +139,7 @@ export function AdChannels(): JSX.Element {
                                     </div>
                                     <div
                                         onClick={(e) => {
-                                            handleChannel(e, "telemarketingChannel");
+                                            handleChannel(e, "traditionalChannel");
                                         }}
                                         className="flex justify-between py-6 border-b px-4 w-full cursor-pointer"
                                     >

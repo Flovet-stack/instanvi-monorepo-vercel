@@ -250,7 +250,7 @@ export default function Example() {
     };
 
     return (
-        <div ref={elementRef} className="body oveflow-y-none">
+        <div ref={elementRef} className="body oveflow-y-none     w-full">
             {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
 
             <div className="mx-auto bg-white max-w-8xl   px-4 sm:px-12 lg:px-12">

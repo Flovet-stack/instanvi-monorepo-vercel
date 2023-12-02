@@ -18,7 +18,7 @@ export const AuthLayout = ({
             src="/images/logo2.svg"
             alt=""
           />
-          <div className="justify-center h-[90vh] w-full items-center flex  ">
+          <div className="justify-center h-[90vh] w-full items-center flex ">
             {children}
           </div>
         </div>

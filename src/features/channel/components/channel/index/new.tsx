@@ -6,7 +6,7 @@ import { NextRouter, useRouter } from 'next/router';
 
 
 export const Example: FC = () => {
-
+    
     const router: NextRouter = useRouter();
     const [saveData, setSaveData] = useState<string[] | undefined>();
     const redirect: string = router.query.redirect as string;
@@ -21,7 +21,6 @@ export const Example: FC = () => {
         e.preventDefault()
         router.replace(redirect || '/publisher/channel/personalDetail');
     }
-
     // click button to create a new Channel
     const handleNew = (e: any) => {
         e.preventDefault()
@@ -30,7 +29,7 @@ export const Example: FC = () => {
     }
 
     return (
-        <div className="body oveflow-y-none">
+        <div className="body oveflow-y-none pt-10">
             <div className="mx-auto max-w-8xl px-4 sm:px-12 lg:px-12">
                 <div className="w-full flex justify-end my-3 flex ">
                     {

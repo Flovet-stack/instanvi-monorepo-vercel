@@ -1,5 +1,7 @@
 import * as React from "react";
 import { DataGrid, GridToolbar, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
+import Link from "next/link";
+// import { AllChannels } from "@/features/channel/api/getChannels";
 
 
 interface Row {
@@ -47,6 +49,7 @@ const columns: GridColDef[] = [
             );
         },
     },
+
     {
         flex: 1,
         field: "Action",
@@ -58,20 +61,21 @@ const columns: GridColDef[] = [
                 const d: Row = JSON.parse(datass);
                 console.log(d.id);
             };
-
             return (
                 <div className="flex">
-                    <button
-                        className="px-4 rounded-md bg-green-500 text-white"
-                        onClick={onClick}
-                    >
-                        Edit
-                    </button>
+                    <Link href={"./channel/loader"}>
+                        <button
+                            className="px-4 rounded-md bg-green-500 text-white"
+                        >
+                            View
+                        </button>
+                    </Link>
                 </div>
             );
         },
     },
 ];
+
 
 const rows: Row[] = [
     {
@@ -148,7 +152,13 @@ const rows: Row[] = [
     },
 ];
 
+
 export default function DataTable() {
+    // const datas = AllChannels()
+    React.useEffect(() => {
+        // console.log(datas.data)
+    }, [])
+
     return (
         <div style={{ height: 500, width: "100%" }}>
             <DataGrid

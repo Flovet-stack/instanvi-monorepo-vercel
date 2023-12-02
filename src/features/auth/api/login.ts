@@ -9,7 +9,6 @@ import { AxiosError, AxiosResponse } from 'axios';
 
 export const login = (data: AuthDto): Promise<AxiosResponse> => {
   return AuthAPI.login(data) as any;
-
 };
 
 type UseLoginOptions = {
@@ -29,6 +28,7 @@ export const useLogin = ({
     onSuccess: (data: AxiosResponse) => {
       successResponse();
       queryClient.setQueryData(['auth-user'], data.data.data.user);
+      // localStorage.setItem("user", JSON.stringify(data.data.data.user))
       queryClient.setQueryData(['auth-access'], data.data.data.access);
       onSuccess?.(data.data.data);
     },

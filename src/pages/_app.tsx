@@ -1,10 +1,12 @@
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
-import { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode, createContext, useState } from 'react';
 import '@/providers/globals.css';
 import "remixicon/fonts/remixicon.css";
 import "react-phone-input-2/lib/style.css";
 import { AppProvider } from '@/providers/app';
+import { userContext } from "@/Components/context/context";
+import { Data } from '@/Components/context/data'
 
 
 type NextPageWithLayout = NextPage & {
@@ -26,7 +28,16 @@ const App = ({
     <Component {...pageProps} />
   );
 
-  return <AppProvider>{pageContent}</AppProvider>;
+  const Datas = Data()
+
+
+  return (
+
+    <userContext.Provider value={Datas.settings}>
+      <AppProvider>{pageContent}</AppProvider>
+    </userContext.Provider>
+
+  );
 };
 
 export default App;
