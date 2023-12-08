@@ -19,7 +19,7 @@
     "@hookform/resolvers": "^3.3.2",
     "@icons/material": "^0.4.1",
     "@inovua/reactdatagrid-community": "^5.10.2",
-    "@instanvi/client": "^1.0.9",
+    "@instanvi/client": "^1.0.11",
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@mui/material": "^5.14.10",
     "@mui/x-data-grid": "^6.17.0",

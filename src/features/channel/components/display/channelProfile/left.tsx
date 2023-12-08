@@ -1,6 +1,14 @@
 import React from "react";
+import { useChannel } from "@/features/channel/api/getChannel";
+import Router, { useRouter } from "next/router";
+
 
 export default function Left() {
+    const { asPath } = useRouter()
+    const urlString = asPath
+    const url = urlString.split("?")
+    const { data, isLoading } = useChannel(url[1])
+
     return (
         <div className="w-1/4 flex">
             <div className=" py-8 px-2 w-full bg-white rounded">
@@ -27,12 +35,12 @@ export default function Left() {
                             </div>
                         </div>
                         <center>
-                            <span className="text-gray-400">@bmstr237</span>
+                            <span className="text-gray-400">@{data?.data.data.last_name}</span>
                         </center>
                         <div className="flex justify-center">
                             <div className="flex mt-2">
                                 <img src="/images/earth.svg" alt="" />
-                                <span className="ml-2">Douala, Littoral, CMR </span>
+                                <span className="ml-2">{data?.data.data.location}</span>
                             </div>
                         </div>
                         <div className="w-full bg-[#f5f5f5] mt-8 cursor-pointer rounded">
@@ -81,33 +89,32 @@ export default function Left() {
                             </div>
                         </div>
                         <div className="flex flex-wrap mt-8">
+                            {
+                                data?.data.data.marital_status.map((item: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, id: React.Key | null | undefined) => {
+                                    return (
+                                        <div key={id} className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
+                                            <span>{item}</span>
+                                        </div>
+                                    )
+                                })
+                            }
+                            {
+                                data?.data.data.languages.map((item: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, id: React.Key | null | undefined) => {
+                                    return (
+                                        <div key={id} className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
+                                            <span>{item}</span>
+                                        </div>
+                                    )
+                                })
+                            }
+
                             <div className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
-                                <span>PressRelease</span>
+                                <span>{data?.data.data.team_size}</span>
                             </div>
                             <div className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
-                                <span>christian</span>
+                                <span>{data?.data.data.industry}</span>
                             </div>
-                            <div className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
-                                <span>married</span>
-                            </div>
-                            <div className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
-                                <span>Douala</span>
-                            </div>
-                            <div className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
-                                <span>Yaounde</span>
-                            </div>
-                            <div className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
-                                <span>18 - 35</span>
-                            </div>
-                            <div className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
-                                <span>Heathcare</span>
-                            </div>
-                            <div className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
-                                <span>christian</span>
-                            </div>
-                            <div className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
-                                <span>Breaking News</span>
-                            </div>
+
                         </div>
                     </div>
                 </div>

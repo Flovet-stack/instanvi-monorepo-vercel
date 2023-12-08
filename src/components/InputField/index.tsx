@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  Control,
+  
   Controller,
   FieldErrors,
   FieldValues,
   Path,
 } from 'react-hook-form';
+
 
 import { capitalizeFirstLetter } from '@/helpers';
 import './input-field.css';
@@ -59,11 +60,10 @@ const InputField = <T extends FieldValues>({
               <>
                 {!radio && !checkbox && (
                   <InputComponent
-                    className={`w-full py-2.5 px-2 border ${
-                      errors && errors[name]
-                        ? 'border-red-500'
-                        : 'border-gray-200'
-                    } rounded-md outline-none`}
+                    className={`w-full py-2.5 px-2 border ${errors && errors[name]
+                      ? 'border-red-500'
+                      : 'border-gray-200'
+                      } rounded-md outline-none`}
                     type={type}
                     placeholder={placeholder}
                     {...field}
@@ -90,9 +90,8 @@ const InputField = <T extends FieldValues>({
             )}
             {select && (
               <InputComponent
-                className={`w-full py-2.5 border ${
-                  errors && errors[name] ? 'border-red-500' : 'border-gray-200'
-                } rounded-md outline-none pl-2`}
+                className={`w-full py-2.5 border ${errors && errors[name] ? 'border-red-500' : 'border-gray-200'
+                  } rounded-md outline-none pl-2`}
                 type={type}
                 placeholder={placeholder}
                 {...field}

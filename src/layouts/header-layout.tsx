@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
 import Menus from './menu';
+import getAuth from '@/api/auth/get-auth-user';
 import AuthGuard from '@/guards/AuthGuard';
 
 function classNames(...classes: string[]): string {
@@ -60,6 +61,7 @@ export const HeaderLayout = ({ children }: HeadLayoutProps) => {
     localStorage.setItem('amoutHide', 'false');
     // router.reload(asPath);
   };
+
 
   return (
     <AuthGuard>

@@ -18,11 +18,11 @@ interface RegisterProps {
 }
 
 const schema = yup.object().shape({
-  Firstname: yup.string().required(),
-  Lastname: yup.string().required(),
-  CompanyName: yup.string().required(),
-  teamSize: yup.string().required(),
-  Industry: yup.string().required(),
+  first_name: yup.string().required(),
+  last_name: yup.string().required(),
+  name: yup.string().required(),
+  team_size: yup.string().required(),
+  industry: yup.string().required(),
 });
 
 export function Register({ users }: RegisterProps) {
@@ -42,11 +42,11 @@ export function Register({ users }: RegisterProps) {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      Firstname: storage?.Firstname,
-      Lastname: storage?.Lastname,
-      CompanyName: storage?.CompanyName,
-      Industry: storage?.Industry,
-      teamSize: storage?.teamSize,
+      first_name: storage?.first_name,
+      last_name: storage?.last_name,
+      name: storage?.name,
+      industry: storage?.industry,
+      team_size: storage?.team_size,
     },
   });
 
@@ -68,10 +68,10 @@ export function Register({ users }: RegisterProps) {
             {t('test')}
             <div className="flex w-full justify-between">
               <div className="mt-3 w-full">
-                <span className="my-3 mr-1">Firstname</span>
+                <span className="my-3 mr-1">First Name</span>
                 <input
                   type="text"
-                  {...register('Firstname')}
+                  {...register('first_name')}
                   className="w-full py-2.5 border mt-2.5 border-gray-200 mr-1  rounded-lg outline-none pl-2"
                   placeholder="kevin"
                 />
@@ -80,15 +80,15 @@ export function Register({ users }: RegisterProps) {
                     className=""
                     style={{ color: 'rgb(206, 8, 8)', fontSize: '12px' }}
                   >
-                    {errors.Firstname?.message}
+                    {errors.first_name?.message}
                   </p>
                 </div>
               </div>
               <div className="mt-3  w-full">
-                <span className="my-3">Lastname</span>
+                <span className="my-3">Last Name</span>
                 <input
                   type="text"
-                  {...register('Lastname')}
+                  {...register('last_name')}
                   className="w-full py-2.5 border mt-2.5 border-gray-200 ml-1 rounded-lg outline-none pl-2"
                   placeholder="Modoungue"
                 />
@@ -97,7 +97,7 @@ export function Register({ users }: RegisterProps) {
                     className=""
                     style={{ color: 'rgb(206, 8, 8)', fontSize: '12px' }}
                   >
-                    {errors.Lastname?.message}
+                    {errors.last_name?.message}
                   </p>
                 </div>
               </div>
@@ -107,7 +107,7 @@ export function Register({ users }: RegisterProps) {
               <span className="my-3">Company/Nick Name/ Stage Name</span>
               <input
                 type="text"
-                {...register('CompanyName')}
+                {...register('name')}
                 className="w-full py-2.5 border mt-2.5 border-gray-200 ml-1 rounded-lg outline-none pl-2"
                 placeholder="My Company Name(Nick Name)doungue"
               />
@@ -116,7 +116,7 @@ export function Register({ users }: RegisterProps) {
                   className=""
                   style={{ color: 'rgb(206, 8, 8)', fontSize: '12px' }}
                 >
-                  {errors.CompanyName?.message}
+                  {errors.name?.message}
                 </p>
               </div>
             </div>
@@ -124,7 +124,7 @@ export function Register({ users }: RegisterProps) {
             <div className="mt-3">
               <span className="my-3">Team Size</span>
               <select
-                {...register('teamSize')}
+                {...register('team_size')}
                 className="w-full py-2.5 border mt-2.5 border-gray-200 ml-1 rounded-lg outline-none pl-2"
                 id=""
               >
@@ -139,14 +139,14 @@ export function Register({ users }: RegisterProps) {
                   className=""
                   style={{ color: 'rgb(206, 8, 8)', fontSize: '12px' }}
                 >
-                  {errors.teamSize?.message}
+                  {errors.team_size?.message}
                 </p>
               </div>
             </div>
             <div className="mt-10">
               <span className="my-2">Industry</span>
               <select
-                {...register('Industry')}
+                {...register('industry')}
                 className="w-full py-2.5 border mt-2.5 border-gray-200 ml-1 rounded-lg outline-none pl-2"
                 id=""
               >
@@ -161,7 +161,7 @@ export function Register({ users }: RegisterProps) {
                   className=""
                   style={{ color: 'rgb(206, 8, 8)', fontSize: '12px' }}
                 >
-                  {errors.Industry?.message}
+                  {errors.industry?.message}
                 </p>
               </div>
             </div>

@@ -17,4 +17,6 @@ const getAuthUser = async (): Promise<AxiosResponse> => {
   return AuthAPI.me(requestOptions);
 };
 
+
+
 export default getAuthUser;

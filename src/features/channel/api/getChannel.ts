@@ -3,14 +3,17 @@ import toast from "react-hot-toast";
 import { AxiosResponse } from "axios";
 import { ChannelAPI } from "@/libs/instanvi-service";
 
-export const useChannels = () => {
+export const useChannel = (uuid: string) => {
+
     // Utilisez une clé de requête dynamique pour suivre les modifications de selectedApp  
-    const queryKey = ["channels"];
+    const queryKey = ["channel"];
 
     const query = useQuery({
         queryKey,
-        queryFn: async (): Promise<AxiosResponse> => await ChannelAPI.getAllChannel() as any,
-        onError: (err) => { toast.error('An error has occured !!!'); console.log(err) }
+        queryFn: async (): Promise<AxiosResponse> => await ChannelAPI.getChannelByUUID(uuid) as any,
+        onError: () => toast.error('An error has occured !!!')
     })
+
     return query;
+
 };

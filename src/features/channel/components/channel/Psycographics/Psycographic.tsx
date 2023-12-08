@@ -1,8 +1,9 @@
-import React, { FC, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Channel } from '@instanvi/client/api';
 import { useChannel } from "@/features/channel/api/channel";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from 'react-hook-form';
+import { useChannels } from "@/features/channel/api/getChannels"
 
 interface Psycographics {
     id: number,
@@ -17,14 +18,14 @@ export type ChannelProps = {
 
 export const Psycographics = ({ onSuccess }: ChannelProps) => {
     const [psyco, setPsyco] = useState<string[]>([])
-    const [storage, setStorage] = useState(
+    const [storage] = useState(
         typeof window !== 'undefined' ?
             JSON.parse(localStorage.getItem('channel') || '{}')
             :
             ""
     )
     const Channels = useChannel({ onSuccess })
-    const [data, setData] = useState<Psycographics[]>([
+    const [datas] = useState<Psycographics[]>([
         {
             id: 1,
             image: "/images/Group 50173.svg",
@@ -66,7 +67,7 @@ export const Psycographics = ({ onSuccess }: ChannelProps) => {
         localStorage.setItem("channel", JSON.stringify({ ...storage, optimized: newArray }))
     };
 
-    const { register, handleSubmit, formState: { errors } } = useForm<Channel>({
+    const { } = useForm<Channel>({
         resolver: yupResolver(storage),
     });
 
@@ -76,7 +77,11 @@ export const Psycographics = ({ onSuccess }: ChannelProps) => {
         Channels.submit(storage)
     }
 
+    const { data } = useChannels()
 
+    useEffect(() => {
+        console.log(data?.data.data)
+    })
 
     return (
         <>
@@ -96,7 +101,7 @@ export const Psycographics = ({ onSuccess }: ChannelProps) => {
                                     <div className="w-full">
 
                                         {
-                                            data.map((items) => {
+                                            datas.map((items) => {
                                                 return (
                                                     <div className="flex justify-between py-5 border-b px-4 w-full cursor-pointer">
                                                         <label htmlFor={items.title} className="cursor-pointer">
