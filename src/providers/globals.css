@@ -4,6 +4,7 @@
 :root {
   --primary: #043a08;
   --primary-light: #065e0c;
+  --primary-very-light: rgba(6, 94, 12, 0.47);
   --white: #fff;
   --light-bg: rgba(238, 238, 238, 0.575);
   --border-radius: 0.5rem;
@@ -62,6 +63,10 @@ h6 {
 
 * {
   box-sizing: border-box;
+}
+
+.color-primary {
+  color: var(--primary-light);
 }
 
 .react-tel-input .form-control {
