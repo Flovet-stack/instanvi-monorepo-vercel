@@ -2,17 +2,23 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { StatusType, UserType } from '@/@types';
 
-import { loginThunk } from './actions/authActions';
+import { forgotPasswordByEmailThunk, loginThunk } from './actions/authActions';
 
 export interface AuthState {
   user: UserType | null;
   authStatus: StatusType;
+  resetRequestStatus: StatusType;
+  resetPasswordStatus: StatusType;
+  otpStatus: StatusType;
   message: string | null;
 }
 
 const initialState: AuthState = {
   user: null,
   authStatus: 'idle',
+  resetRequestStatus: 'idle',
+  resetPasswordStatus: 'idle',
+  otpStatus: 'idle',
   message: null,
 };
 
@@ -30,21 +36,9 @@ export const authSlice = createSlice({
       state.user = action.payload.user;
       state.authStatus = action.payload.authStatus;
       state.message = action.payload.message;
-    },
-
-    //set auth user state
-    setAuthUserState: (state: AuthState, action: PayloadAction<UserType>) => {
-      state.user = action.payload;
-    },
-
-    // set Loading state
-    setAuthStatus: (state: AuthState, action: PayloadAction<StatusType>) => {
-      state.authStatus = action.payload;
-    },
-
-    // set Loading state
-    setAuthMessage: (state: AuthState, action: PayloadAction<string>) => {
-      state.message = action.payload;
+      state.resetRequestStatus = action.payload.resetRequestStatus;
+      state.resetPasswordStatus = action.payload.resetPasswordStatus;
+      state.otpStatus = action.payload.otpStatus;
     },
   },
   extraReducers: (builder) => {
@@ -58,14 +52,20 @@ export const authSlice = createSlice({
     builder.addCase(loginThunk.rejected, (state) => {
       state.authStatus = 'failed';
     });
+
+    // forgot password by email action
+    builder.addCase(forgotPasswordByEmailThunk.pending, (state) => {
+      state.resetRequestStatus = 'loading';
+    });
+    builder.addCase(forgotPasswordByEmailThunk.fulfilled, (state, action) => {
+      state.resetRequestStatus = 'idle';
+      // state.user = action.payload;
+    });
+    builder.addCase(forgotPasswordByEmailThunk.rejected, (state) => {
+      state.resetRequestStatus = 'failed';
+    });
   },
 });
 
-export const {
-  handleLogout,
-  setAuthState,
-  setAuthStatus,
-  setAuthUserState,
-  setAuthMessage,
-} = authSlice.actions;
+export const { handleLogout, setAuthState } = authSlice.actions;
 export default authSlice.reducer;

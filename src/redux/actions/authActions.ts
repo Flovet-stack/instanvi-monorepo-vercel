@@ -1,4 +1,4 @@
-import { SuccessLoginDto } from '@instanvi/client';
+import { ForgotPasswordEmailDto, SuccessLoginDto } from '@instanvi/client';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { ILoginFormData } from '@/@types';
@@ -40,9 +40,22 @@ export const getAuthUserThunk = createAsyncThunk('getAuthUser', async () => {
   try {
     const response = await AuthAPI.me();
     const responseData = response.data.data;
-    console.log('🚀 ~ file: authActions.ts:45 ~ responseData:', responseData);
-    return 'test';
+    return responseData;
   } catch (error) {
     return Promise.reject(error);
   }
 });
+
+export const forgotPasswordByEmailThunk = createAsyncThunk(
+  'forgotPasswordByEmail',
+  async (email: ForgotPasswordEmailDto) => {
+    try {
+      const response = await AuthAPI.forgotPasswordByEmail(email);
+      const responseData = response.data;
+      console.log('🚀 ~ file: authActions.ts:45 ~ responseData:', responseData);
+      return 'test';
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+);
