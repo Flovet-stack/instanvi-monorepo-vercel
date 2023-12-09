@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, FC } from "react";
 import Multiselect from "multiselect-react-dropdown";
-import AuthContext from "@/Components/context";
+import { AuthContext } from "@/components/context/context";
+import { CurrentUserContext } from "@/pages/_app";
 import Countries from "../../../../../countries.json";
 
 interface LanguageProps {
@@ -8,7 +9,7 @@ interface LanguageProps {
 }
 
 const Language: FC<LanguageProps> = () => {
-  const data = useContext(AuthContext);
+  const data = useContext(CurrentUserContext as any) as any
   const [selectedOption, setSelectedOption] = useState<string[]>([]);
   return (
     <>
@@ -22,16 +23,17 @@ const Language: FC<LanguageProps> = () => {
               className="w-full py-2.5 rounded bg-transparent"
               options={Countries}
               displayValue="name"
+              selectedValues={ data?.language?.map((lang: any) => Countries.find((country: any) => country?.name === lang ))}
               onSelect={(selected: string[], item: any) => {
                 setSelectedOption(selected);
-                data.setLanguage([...data.language, item.name]);
+                data?.setLanguage([...data?.language, item.name]);
               }}
-              onRemove={(selected: string[], item: any) => {
-                let dataLanguage = data.language.filter(
+              onRemove={(_selected: string[], item: any) => {
+                let dataLanguage = data?.language.filter(
                   (items: string) => items !== item.name
                 );
-                data.setLanguage([...dataLanguage]);
-                setSelectedOption(selected);
+                data?.setLanguage([...dataLanguage]);
+                // setSelectedOption(selected);
               }}
               // onSelect={handleTypeSelect}
               // onRemove={handleTypeRemove}

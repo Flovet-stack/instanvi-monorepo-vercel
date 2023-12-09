@@ -1,13 +1,11 @@
 import React, { useState, useContext, ChangeEvent } from "react";
-import AuthContext from "@/Components/context";
+import { AuthContext } from "@/components/context/context";
+import { CurrentUserContext } from "@/pages/_app";
 
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
-  const datas = useContext(AuthContext);
-  const [username, setUsername] = useState<string>("");
-
-  const handleUsername = (e: ChangeEvent<HTMLInputElement>) => {};
+  const data = useContext(CurrentUserContext as any) as any
 
   return (
     <div className="w-full flex justify-center">
@@ -18,10 +16,9 @@ const App: React.FC<AppProps> = () => {
           </label>
           <input
             type="text"
-            value={username}
+            value={data?.usern}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              setUsername(e.target.value);
-              datas.setUsern(e.target.value);
+              data?.setUsern(e.target.value);
             }}
             className="w-full rounded py-2.5 border pl-2 mt-3"
           />

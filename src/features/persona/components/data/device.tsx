@@ -3,8 +3,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import Link from "next/link";
 import Router from "next/router";
 import toast, { Toaster } from "react-hot-toast";
-import AuthContext from "@/Components/context";
+import { AuthContext } from "@/components/context/context";
 import { v4 as uuid } from "uuid";
+import { CurrentUserContext } from "@/pages/_app";
 
 interface DeviceContext {
   device: string[];
@@ -26,7 +27,7 @@ function classNames(...classes: string[]): string {
 }
 
 const Index: FC = () => {
-  const ContextData = useContext(AuthContext);
+  const ContextData = useContext(CurrentUserContext as any) as any
   const [phone, setPhone] = useState<boolean>(false);
   const [laptop, setLaptop] = useState<boolean>(false);
   const [desktop, setDesktop] = useState<boolean>(false);
@@ -49,152 +50,152 @@ const Index: FC = () => {
   const handleEs = (): void => {};
 
   const handlePhone = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.device;
-    if (phone == true && item) {
-      let datss: string[] = ContextData.device.filter((item) => item !== "Phone");
-      ContextData.setDevice([...datss]);
+    const item: string[] = ContextData?.device;
+    if (ContextData?.device?.includes('Phone') && item) {
+      let datss: string[] = ContextData?.device.filter((item: any) => item !== "Phone");
+      ContextData?.setDevice([...datss]);
     } else {
-      ContextData.setDevice([...ContextData.device, "Phone"]);
+      ContextData?.setDevice([...ContextData?.device, "Phone"]);
     }
   };
 
-  const handleLaptop = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.device;
-    if (laptop == true && item) {
-      let datss: string[] = ContextData.device.filter((item) => item !== "Laptop");
-      ContextData.setDevice([...datss]);
+  const handleLaptop = async (): Promise<void> => {
+    const item: string[] = ContextData?.device;
+    if (ContextData?.device?.includes('Laptop') && item) {
+      let datss: string[] = ContextData?.device.filter((item: any) => item !== "Laptop");
+      ContextData?.setDevice([...datss]);
     } else {
-      ContextData.setDevice([...ContextData.device, "Laptop"]);
+      ContextData?.setDevice([...ContextData?.device, "Laptop"]);
     }
   };
 
-  const handleDesktop = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.device;
-    if (desktop == true && item) {
-      let datss: string[] = ContextData.device.filter((item) => item !== "Desktop");
-      ContextData.setDevice([...datss]);
+  const handleDesktop = async (): Promise<void> => {
+    const item: string[] = ContextData?.device;
+    if (ContextData?.device?.includes('Desktop') && item) {
+      let datss: string[] = ContextData?.device.filter((item: any) => item !== "Desktop");
+      ContextData?.setDevice([...datss]);
     } else {
-      ContextData.setDevice([...ContextData.device, "Desktop"]);
+      ContextData?.setDevice([...ContextData?.device, "Desktop"]);
     }
   };
 
-  const handleTablet = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.device;
-    if (tablet == true && item) {
-      let datss: string[] = ContextData.device.filter((item) => item !== "Tablet");
-      ContextData.setDevice([...datss]);
+  const handleTablet = async (): Promise<void> => {
+    const item: string[] = ContextData?.device;
+    if (ContextData?.device?.includes('Tablet') && item) {
+      let datss: string[] = ContextData?.device.filter((item: any) => item !== "Tablet");
+      ContextData?.setDevice([...datss]);
     } else {
-      ContextData.setDevice([...ContextData.device, "Tablet"]);
+      ContextData?.setDevice([...ContextData?.device, "Tablet"]);
     }
   };
 
-  const handleFeaturePhone = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.device;
-    if (featurePhone == true && item) {
-      let datss: string[] = ContextData.device.filter((item) => item !== "FeaturePhone");
-      ContextData.setDevice([...datss]);
+  const handleFeaturePhone = async (): Promise<void> => {
+    const item: string[] = ContextData?.device;
+    if (ContextData?.device?.includes('FeaturePhone') && item) {
+      let datss: string[] = ContextData?.device.filter((item: any) => item !== "FeaturePhone");
+      ContextData?.setDevice([...datss]);
     } else {
-      ContextData.setDevice([...ContextData.device, "FeaturePhone"]);
+      ContextData?.setDevice([...ContextData?.device, "FeaturePhone"]);
     }
   };
 
-  const handleIos = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.operatingSystem;
-    if (ios == true && item) {
-      let datss: string[] = ContextData.operatingSystem.filter((item) => item !== "Ios");
-      ContextData.setOperatingSystem([...datss]);
+  const handleIos = async (): Promise<void> => {
+    const item: string[] = ContextData?.operatingSystem;
+    if (ContextData?.operatingSystem?.includes('Ios') && item) {
+      let datss: string[] = ContextData?.operatingSystem.filter((item: any) => item !== "Ios");
+      ContextData?.setOperatingSystem([...datss]);
     } else {
-      ContextData.setOperatingSystem([...ContextData.operatingSystem, "Ios"]);
+      ContextData?.setOperatingSystem([...ContextData?.operatingSystem, "Ios"]);
     }
   };
 
-  const handleWindow = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.operatingSystem;
-    if (window == true && item) {
-      let datss: string[] = ContextData.operatingSystem.filter((item) => item !== "Windows");
-      ContextData.setOperatingSystem([...datss]);
+  const handleWindow = async (): Promise<void> => {
+    const item: string[] = ContextData?.operatingSystem;
+    if (ContextData?.operatingSystem?.includes('Windows') && item) {
+      let datss: string[] = ContextData?.operatingSystem.filter((item: any) => item !== "Windows");
+      ContextData?.setOperatingSystem([...datss]);
     } else {
-      ContextData.setOperatingSystem([...ContextData.operatingSystem, "Windows"]);
+      ContextData?.setOperatingSystem([...ContextData?.operatingSystem, "Windows"]);
     }
   };
 
-  const handleAndroid = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.operatingSystem;
-    if (android == true && item) {
-      let datss: string[] = ContextData.operatingSystem.filter((item) => item !== "Android");
-      ContextData.setOperatingSystem([...datss]);
+  const handleAndroid = async (): Promise<void> => {
+    const item: string[] = ContextData?.operatingSystem;
+    if (ContextData?.operatingSystem?.includes('Android') && item) {
+      let datss: string[] = ContextData?.operatingSystem.filter((item: any) => item !== "Android");
+      ContextData?.setOperatingSystem([...datss]);
     } else {
-      ContextData.setOperatingSystem([...ContextData.operatingSystem, "Android"]);
+      ContextData?.setOperatingSystem([...ContextData?.operatingSystem, "Android"]);
     }
   };
 
-  const handleLinux = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.operatingSystem;
-    if (linux == true && item) {
-      let datss: string[] = ContextData.operatingSystem.filter((item) => item !== "Linux");
-      ContextData.setOperatingSystem([...datss]);
+  const handleLinux = async (): Promise<void> => {
+    const item: string[] = ContextData?.operatingSystem;
+    if (ContextData?.operatingSystem?.includes('Linux') && item) {
+      let datss: string[] = ContextData?.operatingSystem.filter((item: any) => item !== "Linux");
+      ContextData?.setOperatingSystem([...datss]);
     } else {
-      ContextData.setOperatingSystem([...ContextData.operatingSystem, "Linux"]);
+      ContextData?.setOperatingSystem([...ContextData?.operatingSystem, "Linux"]);
     }
   };
 
-  const handleChrome = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.operatingSystem;
-    if (chrome == true && item) {
-      let datss: string[] = ContextData.operatingSystem.filter((item) => item !== "Chrome");
-      ContextData.setOperatingSystem([...datss]);
+  const handleChrome = async (): Promise<void> => {
+    const item: string[] = ContextData?.operatingSystem;
+    if (ContextData?.operatingSystem?.includes('Chrome') && item) {
+      let datss: string[] = ContextData?.operatingSystem.filter((item: any) => item !== "Chrome");
+      ContextData?.setOperatingSystem([...datss]);
     } else {
-      ContextData.setOperatingSystem([...ContextData.operatingSystem, "Chrome"]);
+      ContextData?.setOperatingSystem([...ContextData?.operatingSystem, "Chrome"]);
     }
   };
 
-  const handleOrange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.carrier;
-    if (orange == true && item) {
-      let datss: string[] = ContextData.carrier.filter((item) => item !== "Orange");
-      ContextData.setCarrier([...datss]);
+  const handleOrange = async (): Promise<void> => {
+    const item: string[] = ContextData?.carrier;
+    if (ContextData?.carrier?.includes('Orange') && item) {
+      let datss: string[] = ContextData?.carrier.filter((item: any) => item !== "Orange");
+      ContextData?.setCarrier([...datss]);
     } else {
-      ContextData.setCarrier([...ContextData.carrier, "Orange"]);
+      ContextData?.setCarrier([...ContextData?.carrier, "Orange"]);
     }
   };
 
-  const handleMtn = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.carrier;
-    if (mtn == true && item) {
-      let datss: string[] = ContextData.carrier.filter((item) => item !== "MTN");
-      ContextData.setCarrier([...datss]);
+  const handleMtn = async (): Promise<void> => {
+    const item: string[] = ContextData?.carrier;
+    if (ContextData?.carrier?.includes('MTN') && item) {
+      let datss: string[] = ContextData?.carrier.filter((item: any) => item !== "MTN");
+      ContextData?.setCarrier([...datss]);
     } else {
-      ContextData.setCarrier([...ContextData.carrier, "MTN"]);
+      ContextData?.setCarrier([...ContextData?.carrier, "MTN"]);
     }
   };
 
-  const handleNexttel = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.carrier;
-    if (nexttel == true && item) {
-      let datss: string[] = ContextData.carrier.filter((item) => item !== "Nexttel");
-      ContextData.setCarrier([...datss]);
+  const handleNexttel = async (): Promise<void> => {
+    const item: string[] = ContextData?.carrier;
+    if (ContextData?.carrier?.includes('Nexttel') && item) {
+      let datss: string[] = ContextData?.carrier.filter((item: any) => item !== "Nexttel");
+      ContextData?.setCarrier([...datss]);
     } else {
-      ContextData.setCarrier([...ContextData.carrier, "Nexttel"]);
+      ContextData?.setCarrier([...ContextData?.carrier, "Nexttel"]);
     }
   };
 
-  const handlYoomee = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.carrier;
-    if (yoomee == true && item) {
-      let datss: string[] = ContextData.carrier.filter((item) => item !== "Yoomee");
-      ContextData.setCarrier([...datss]);
+  const handlYoomee = async (): Promise<void> => {
+    const item: string[] = ContextData?.carrier;
+    if (ContextData?.carrier?.includes('Yoomee') && item) {
+      let datss: string[] = ContextData?.carrier.filter((item: any) => item !== "Yoomee");
+      ContextData?.setCarrier([...datss]);
     } else {
-      ContextData.setCarrier([...ContextData.carrier, "Yoomee"]);
+      ContextData?.setCarrier([...ContextData?.carrier, "Yoomee"]);
     }
   };
 
-  const handleBlue = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const item: string[] = ContextData.carrier;
-    if (blue == true && item) {
-      let datss: string[] = ContextData.carrier.filter((item) => item !== "Camtel");
-      ContextData.setCarrier([...datss]);
+  const handleBlue = async (): Promise<void> => {
+    const item: string[] = ContextData?.carrier;
+    if (ContextData?.carrier?.includes('Camtel') && item) {
+      let datss: string[] = ContextData?.carrier.filter((item: any) => item !== "Camtel");
+      ContextData?.setCarrier([...datss]);
     } else {
-      ContextData.setCarrier([...ContextData.carrier, "Camtel"]);
+      ContextData?.setCarrier([...ContextData?.carrier, "Camtel"]);
     }
   };
 
@@ -210,19 +211,19 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      phone ? "border-2 border-green-300" : "border-2"
+                      ContextData?.device?.includes('Phone') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={(e) => {
                       setPhone(!phone);
-                      handlePhone(e);
+                      handlePhone(e as any);
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
                       {" "}
-                      {phone ? (
+                      {ContextData?.device?.includes('Phone') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -236,7 +237,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      laptop ? "border-2 border-green-300" : "border-2"
+                      ContextData?.device?.includes('Laptop') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setLaptop(!laptop);
@@ -244,10 +245,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {laptop ? (
+                      {ContextData?.device?.includes('Laptop') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -261,7 +262,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      desktop ? "border-2 border-green-300" : "border-2"
+                      ContextData?.device?.includes('Desktop') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setDesktop(!desktop);
@@ -269,10 +270,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {desktop ? (
+                      {ContextData?.device?.includes('Desktop') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -290,7 +291,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      tablet ? "border-2 border-green-300" : "border-2"
+                      ContextData?.device?.includes('Tablet') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setTablet(!tablet);
@@ -298,10 +299,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {tablet ? (
+                      {ContextData?.device?.includes('Tablet') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -315,7 +316,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      featurePhone ? "border-2 border-green-300" : "border-2"
+                      ContextData?.device?.includes('FeaturePhone') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setFeaturePhone(!featurePhone);
@@ -323,10 +324,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {featurePhone ? (
+                      {ContextData?.device?.includes('FeaturePhone') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}{" "}
                     </div>
                     <div>{/* operating systeme here */}</div>
@@ -345,7 +346,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      ios ? "border-2 border-green-300" : "border-2"
+                      ContextData?.operatingSystem?.includes('Ios') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setIos(!ios);
@@ -353,10 +354,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {ios ? (
+                      {ContextData?.operatingSystem?.includes('Ios') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -370,7 +371,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      window ? "border-2 border-green-300" : "border-2"
+                      ContextData?.operatingSystem?.includes('Windows') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setWindow(!window);
@@ -378,10 +379,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {window ? (
+                      {ContextData?.operatingSystem?.includes('Windows') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -399,7 +400,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      android ? "border-2 border-green-300" : "border-2"
+                      ContextData?.operatingSystem?.includes('Android') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setAndroid(!android);
@@ -407,10 +408,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {android ? (
+                      {ContextData?.operatingSystem?.includes('Android') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -428,7 +429,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      linux ? "border-2 border-green-300" : "border-2"
+                      ContextData?.operatingSystem?.includes('Linux') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setLinux(!linux);
@@ -436,10 +437,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {linux ? (
+                      {ContextData?.operatingSystem?.includes('Linux') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -453,7 +454,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      chrome ? "border-2 border-green-300" : "border-2"
+                      ContextData?.operatingSystem?.includes('Chrome') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setChrome(!chrome);
@@ -461,10 +462,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {chrome ? (
+                      {ContextData?.operatingSystem?.includes('Chrome') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -486,7 +487,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      orange ? "border-2 border-green-300" : "border-2"
+                      ContextData?.carrier?.includes('Orange') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setOrange(!orange);
@@ -494,10 +495,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {orange ? (
+                      {ContextData?.carrier?.includes('Orange') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -511,7 +512,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      mtn ? "border-2 border-green-300" : "border-2"
+                      ContextData?.carrier?.includes('Mtn') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setMtn(!mtn);
@@ -519,10 +520,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {mtn ? (
+                      {ContextData?.carrier?.includes('Mtn') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -536,7 +537,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      blue ? "border-2 border-green-300" : "border-2"
+                      ContextData?.carrier?.includes('Camtel') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setBlue(!blue);
@@ -544,10 +545,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {blue ? (
+                      {ContextData?.carrier?.includes('Camtel') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -561,7 +562,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      nexttel ? "border-2 border-green-300" : "border-2"
+                      ContextData?.carrier?.includes('Nexttel') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setNexttel(!nexttel);
@@ -569,10 +570,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {nexttel ? (
+                      {ContextData?.carrier?.includes('Nexttel') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>
@@ -590,7 +591,7 @@ const Index: FC = () => {
                 <div className="mt-3">
                   <div
                     className={`flex h-36  w-48 py-8 mx-1 relative justify-center  rounded  cursor-pointer ${
-                      yoomee ? "border-2 border-green-300" : "border-2"
+                      ContextData?.carrier?.includes('Yoomee') ? "border-2 border-green-300" : "border-2"
                     }`}
                     onClick={() => {
                       setYoome(!yoomee);
@@ -598,10 +599,10 @@ const Index: FC = () => {
                     }}
                   >
                     <div className={classNames("  absolute right-0 top-0 m-2")}>
-                      {yoomee ? (
+                      {ContextData?.carrier?.includes('Yoomee') ? (
                         <i className="ri-checkbox-circle-fill text-green-500   mt-2 mr-1 text-lg"></i>
                       ) : (
-                        <i class="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
+                        <i className="ri-checkbox-blank-circle-line text-gray-500   mt-2 mr-1 text-lg"></i>
                       )}
                     </div>
                     <div>

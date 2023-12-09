@@ -1,7 +1,8 @@
 import React, { useState, useContext, FC } from "react";
 import Link from "next/link";
-import AuthContext from "@/Components/context";
+import { AuthContext } from "@/components/context/context";
 import { v4 as uuid } from "uuid";
+import { CurrentUserContext } from "@/pages/_app";
 
 interface Audience {
   id: number;
@@ -22,9 +23,9 @@ function classNames(...classes: string[]): string {
 }
 
 const Step6: FC = () => {
-  const data = useContext(AuthContext);
+  const data = useContext(CurrentUserContext as any) as any
   const [counts, setCounts] = useState<number>(0);
-  const [audiences, setAudiences] = useState<Step6Data[]>([
+  const [audiences, setAudiences] = useState<any[]>([
     {
       step6: [
         {
@@ -102,10 +103,10 @@ const Step6: FC = () => {
   ) => {
     const item: number = 1;
     if (item) {
-      const datas: Step6Data[] = audiences.map((items: Step6Data) => {
+      const datas: any[] = audiences.map((items: Step6Data) => {
         return {
           ...items,
-          step6: items.step6.map((dataItems: Audience) => {
+          step6: items.step6.map((dataItems: any) => {
             if (dataItems.id === id && active === false && counts < 5) {
               setCounts(counts + 1);
               return {
@@ -126,82 +127,82 @@ const Step6: FC = () => {
     }
 
     if (name === "Leisure" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Leisure"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Leisure" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Leisure"]);
+      data?.setIndustry([...data?.industry, "Leisure"]);
     } else if (name === "Entertainment" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Entertainment"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Entertainment" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Entertainment"]);
+      data?.setIndustry([...data?.industry, "Entertainment"]);
     } else if (name === "Healthcare" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Healthcare"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Healthcare" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Healthcare"]);
+      data?.setIndustry([...data?.industry, "Healthcare"]);
     } else if (name === "Aerospace" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Aerospace"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Aerospace" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Aerospace"]);
+      data?.setIndustry([...data?.industry, "Aerospace"]);
     } else if (name === "Law" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Law"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Law" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Law"]);
+      data?.setIndustry([...data?.industry, "Law"]);
     } else if (name === "Agriculture" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Agriculture"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Agriculture" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Agriculture"]);
+      data?.setIndustry([...data?.industry, "Agriculture"]);
     } else if (name === "Energy" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Energy"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Energy" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Energy"]);
+      data?.setIndustry([...data?.industry, "Energy"]);
     } else if (name === "Fashion" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Fashion"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Fashion" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Fashion"]);
+      data?.setIndustry([...data?.industry, "Fashion"]);
     } else if (name === "Finance" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Finance"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Finance" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Finance"]);
+      data?.setIndustry([...data?.industry, "Finance"]);
     } else if (name === "Food/Beverages" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Food/Beverages"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Food/Beverages" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Food/Beverages"]);
+      data?.setIndustry([...data?.industry, "Food/Beverages"]);
     } else if (name === "Media/New" && active === true && counts <= 5) {
-      let datss: string[] = data.industry.filter(
+      let datss: string[] = data?.industry.filter(
         (item: string) => item !== "Media/New"
       );
-      data.setIndustry([...datss]);
+      data?.setIndustry([...datss]);
     } else if (name === "Media/New" && active === false && counts < 5) {
-      data.setIndustry([...data.industry, "Media/New"]);
+      data?.setIndustry([...data?.industry, "Media/New"]);
     }
   };
 
@@ -229,14 +230,14 @@ const Step6: FC = () => {
                 </div>
               </div>
               <div className="flex flex-nowrap mt-5">
-                {data.advanceuserData.map((item) => {
+                {data?.advanceuserdata?.map((item: any) => {
                   if (item.selected == true && item.name == "Physographic") {
                     return (
                       <div className="rounded-full text-white text-sm w-fit bg-gray-600 px-2   ml-2">
                         <span className="-mt-4">{item.location}</span>
                         <i
                           className="ri-close-fill ml-3 cursor-pointer mt-2"
-                          onClick={(e) => removeLeisure(e, item.name, item.id)}
+                          onClick={(e) => console.log(e, item.name, item.id)}
                         ></i>
                       </div>
                     );
@@ -245,7 +246,7 @@ const Step6: FC = () => {
                 {}
               </div>
               <p className="text-2xl font-bold flex justify-center mt-8">
-                {/* {data.advanceuserData.map((item) => {
+                {/* {data?.advanceuserdata?.map((item) => {
                   if (item.selected == true && item.name == "Physographic") {
                     length = length + 1;
                   }
@@ -257,7 +258,7 @@ const Step6: FC = () => {
                 {audiences.map((itemw) => {
                   return (
                     <>
-                      {itemw.step6.map((item) => {
+                      {itemw.step6.map((item: any) => {
                         if (item.active == true) {
                           length = length + 1;
                           return (
@@ -282,7 +283,7 @@ const Step6: FC = () => {
                 return (
                   <>
                     {it.step6
-                      .filter((item) => {
+                      .filter((item: any) => {
                         if (!value) return true;
                         if (
                           item.name.toLowerCase().includes(value) ||
@@ -291,27 +292,27 @@ const Step6: FC = () => {
                           return true;
                         }
                       })
-                      .map((items) => {
+                      .map((item: any) => {
                         return (
                           <div className="mt-3">
                             <button 
                               onClick={(e) => {
                                 handleAudience(
-                                  e,
-                                  items.name,
-                                  items.id,
-                                  items.active
+                                  e as any,
+                                  item.name,
+                                  item.id,
+                                  item.active
                                 );
                               }}
                               className={classNames(
-                                !items.active ? "" : "bg-green-600 text-white",
+                                !data?.industry?.includes(item?.name) ? "" : "bg-green-600 text-white",
                                 "w-full flex justify-between py-3 rounded-md px-4 border border-gray-300"
                               )}
                             >
-                              <span>{items.name}</span>
+                              <span>{item.name}</span>
                               <i
                                 className={classNames(
-                                  !items.active
+                                  !data?.industry?.includes(item?.name)
                                     ? "ri-checkbox-blank-circle-line text-gray-300"
                                     : "ri-checkbox-circle-line",
                                   "  text-xl"

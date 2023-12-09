@@ -3,14 +3,16 @@ import toast from "react-hot-toast";
 import { AxiosResponse } from "axios";
 import { PersonasAPI } from "@/libs/instanvi-service";
 
-export const usePersonas = (projectUUID: string) => {  
+export const usePersona = (personaUUID?: string) => {  
 
-  const queryKey = ["personas"];
+  const queryKey = ["persona"];
 
   const query = useQuery({
     queryKey,    
-    queryFn: async (): Promise<AxiosResponse> => await PersonasAPI.getAllPersonas(projectUUID) as any,
-    onError: () => toast.error('An error has occured !!!')
+    queryFn: async (): Promise<AxiosResponse> => await personaUUID ? PersonasAPI.getPersonasByUUID(personaUUID || 'ss') as any : '',
+    onError: () => {
+        toast.error('An error has occured !!!')
+    }
   })
 
   return query;

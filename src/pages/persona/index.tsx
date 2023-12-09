@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { HeaderLayout } from "@/layouts/header-layout";
@@ -8,7 +8,7 @@ import SkeletonPersona from "@/features/persona/components/SkeletonPersona";
 
 const Persona: FC = () => {
   // const [mut, setPersonas] = useState<any>([])
-  const { data, isLoading } = usePersonas('6c28de38-4ac6-4f9f-9b5e-08ffbd700543')
+  const { data, isLoading, refetch } = usePersonas('6c28de38-4ac6-4f9f-9b5e-08ffbd700543')
   
   return (
     <HeaderLayout>
@@ -65,7 +65,10 @@ const Persona: FC = () => {
           isLoading ?
           <SkeletonPersona />
           :
-          <PersonaList personas = { data?.data?.data } />
+          <PersonaList 
+            refetch={refetch} 
+            personas = { data?.data?.data } 
+          />
         }
       
       </div>
