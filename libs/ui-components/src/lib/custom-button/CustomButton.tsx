@@ -1,8 +1,8 @@
-import styles from './CustomButton.module.scss';
 import React, { ReactNode } from 'react';
 import { SpinnerCircular } from 'spinners-react';
+import './CustomButton.scss';
 
-interface CustomButtonProps
+export interface CustomButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
@@ -11,6 +11,7 @@ interface CustomButtonProps
   loadingText?: string;
   loaderPosition?: 'left' | 'right';
   theme: 'primary' | 'border-light';
+  fullWidth?: true;
 }
 
 const LoadingSpinner: React.FC = () => (
@@ -25,10 +26,14 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   loadingText,
   loaderPosition,
   theme,
+  fullWidth,
   ...props
 }) => {
   return (
-    <button {...props} className={styles['custom-button']}>
+    <button
+      {...props}
+      className={`custom-button ${theme} ${fullWidth ? 'w-full' : ''}`}
+    >
       {loading && loaderPosition !== 'right' && <LoadingSpinner />}
       {icon && iconPosition !== 'right' && <div className="icon">{icon}</div>}
       {text &&

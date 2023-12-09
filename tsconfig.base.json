@@ -15,6 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@advertiser-dsp/types": ["apps/advertiser-dsp/@types/index.ts"],
+      "@instanvi-monorepo/auth": ["libs/auth/src/index.ts"],
+      "@instanvi-monorepo/auth/server": ["libs/auth/src/server.ts"],
+      "@instanvi-monorepo/instanvi-api": ["libs/instanvi-api/src/index.ts"],
+      "@instanvi-monorepo/instanvi-api/server": [
+        "libs/instanvi-api/src/server.ts"
+      ],
       "@instanvi-monorepo/ui-components": ["libs/ui-components/src/index.ts"],
       "@instanvi-monorepo/ui-components/server": [
         "libs/ui-components/src/server.ts"

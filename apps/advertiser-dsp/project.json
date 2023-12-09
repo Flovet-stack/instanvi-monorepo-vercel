@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/next:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/advertiser-dsp"
@@ -16,7 +18,8 @@
           "outputPath": "apps/advertiser-dsp"
         },
         "production": {}
-      }
+      },
+      "postcssConfig": "apps/advertiser-ssp/postcss.config.js"
     },
     "serve": {
       "executor": "@nx/next:server",
@@ -44,9 +47,13 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/advertiser-dsp/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/advertiser-dsp/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     }
   },

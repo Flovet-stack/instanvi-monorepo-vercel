@@ -1,0 +1,52 @@
+@import '../variables';
+
+.custom-button {
+  padding: 0.75rem 1rem;
+  border-radius: $border-radius;
+  font-size: 1em;
+  transition-duration: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: $light-bg;
+  span {
+    text-transform: capitalize;
+  }
+  &:hover {
+    transition-duration: 0.3s;
+  }
+  &:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+  }
+
+  /* ------------------------------ primary theme ----------------------------- */
+  &.primary {
+    background-color: $primary;
+    &:hover:not(:disabled) {
+      background-color: $primary-light;
+    }
+    span,
+    .icon {
+      color: $white;
+    }
+  }
+
+  /* ------------------------------ border-light theme ----------------------------- */
+  &.border-light {
+    background-color: $white;
+    border: 1px solid $border-color;
+    &:hover:not(:disabled) {
+      background-color: $light-bg;
+    }
+    span,
+    .icon {
+      color: $white;
+      color: $text;
+    }
+  }
+}

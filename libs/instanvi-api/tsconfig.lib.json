@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../dist/out-tsc",
+    "types": [
+      "node",
+      "@nx/react/typings/cssmodule.d.ts",
+      "@nx/react/typings/image.d.ts",
+      "next",
+      "@nx/next/typings/image.d.ts"
+    ]
+  },
+  "exclude": [
+    "jest.config.ts",
+    "instanvi-api/src/**/*.spec.ts",
+    "instanvi-api/src/**/*.test.ts",
+    "instanvi-api/src/**/*.spec.tsx",
+    "instanvi-api/src/**/*.test.tsx",
+    "instanvi-api/src/**/*.spec.js",
+    "instanvi-api/src/**/*.test.js",
+    "instanvi-api/src/**/*.spec.jsx",
+    "instanvi-api/src/**/*.test.jsx"
+  ],
+  "include": [
+    "instanvi-api/src/**/*.js",
+    "instanvi-api/src/**/*.jsx",
+    "instanvi-api/src/**/*.ts",
+    "instanvi-api/src/**/*.tsx"
+  ]
+}

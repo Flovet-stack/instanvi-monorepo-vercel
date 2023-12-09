@@ -1,5 +1,5 @@
-import styles from './page.module.scss';
 import { CustomButton } from '@instanvi-monorepo/ui-components';
+import styles from './page.module.scss';
 
 export default async function Index() {
   /*
