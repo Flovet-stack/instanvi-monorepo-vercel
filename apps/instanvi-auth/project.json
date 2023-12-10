@@ -1,0 +1,61 @@
+{
+  "name": "instanvi-auth",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/instanvi-auth",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/instanvi-auth"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/instanvi-auth"
+        },
+        "production": {}
+      },
+      "postcssConfig": "apps/instanvi-auth/postcss.config.js"
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "instanvi-auth:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "instanvi-auth:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "instanvi-auth:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "instanvi-auth:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/instanvi-auth/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
