@@ -1,3 +1,5 @@
+export * from './lib/application-header/application-header';
+export * from './lib/controller-input/controller-input';
 export * from './lib/request-action-timer/request-action-timer';
 export * from './lib/input-field/input-field';
 export * from './lib/loader/Loader';

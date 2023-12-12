@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
   --primary: #043a08;
@@ -13,34 +14,25 @@
   --text: #000;
 }
 
-@font-face {
-  font-family: 'EuclidCircularASemiBold';
-  src: url('/fonts/EuclidCircularASemiBold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'EuclidCircularBRegular';
-  src: url('/fonts/EuclidCircularBRegular.ttf') format('truetype');
-}
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  font-family: EuclidCircularBRegular;
+  font-family: 'Inter', sans-serif;
 }
+
 span,
 p,
 button,
 label,
 div {
-  font-family: EuclidCircularBRegular;
+  font-family: 'Inter', sans-serif;
 }
 
 h1,
@@ -49,7 +41,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: EuclidCircularASemiBold;
+  font-family: 'Inter', sans-serif;
 }
 
 * {
@@ -63,9 +55,6 @@ h6 {
 .react-tel-input .form-control {
   width: 100% !important;
 }
-/* .body{
-  background: #f5f1f1;
-} */
 
 .scrollbars::-webkit-scrollbar {
   width: 6px;
@@ -124,7 +113,7 @@ h6 {
   cursor: pointer !important;
 }
 text {
-  font-family: EuclidCircularBRegular;
+  font-family: 'Inter', sans-serif;
 }
 .right-side {
   position: absolute !important;

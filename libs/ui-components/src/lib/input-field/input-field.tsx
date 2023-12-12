@@ -1,17 +1,17 @@
 'use client';
 
 import styles from './input-field.module.scss';
+import 'tailwindcss/tailwind.css';
 
 import React from 'react';
 import {
-  Control,
-  Controller,
+  ControllerRenderProps,
   FieldErrors,
   FieldValues,
   Path,
 } from 'react-hook-form';
 
-type InputFieldProps<T extends FieldValues> =
+export type InputFieldProps<T extends FieldValues> =
   React.InputHTMLAttributes<HTMLInputElement> &
     React.TextareaHTMLAttributes<HTMLTextAreaElement> &
     React.SelectHTMLAttributes<HTMLSelectElement> & {
@@ -24,8 +24,10 @@ type InputFieldProps<T extends FieldValues> =
       radio?: boolean;
       options?: { label: string; value: string }[];
       type: string;
-      control?: Control<T>;
+      field?: ControllerRenderProps<FieldValues, string>;
       errors?: FieldErrors;
+      width?: number;
+      isInvalid?: boolean;
     };
 
 export const InputField = <T extends FieldValues>({
@@ -39,97 +41,88 @@ export const InputField = <T extends FieldValues>({
   type,
   checkbox,
   radio,
-  control,
   errors,
   id,
   cols,
   rows,
+  field,
+  width,
+  isInvalid,
   ...props
 }: InputFieldProps<T>) => {
   return (
-    <div className={styles['input-field']}>
+    <div style={{ width }} className={styles['input-field']}>
       {label && !checkbox && !radio && <label>{label}</label>}
-      <Controller
-        control={control}
-        name={name}
-        render={({ field }) => (
-          <div>
-            {!select && (
-              <>
-                {!radio &&
-                  !checkbox &&
-                  (textarea ? (
-                    <textarea
-                      className={`w-full py-2.5 px-2 border ${
-                        errors && errors[name]
-                          ? 'border-red-500'
-                          : 'border-gray-200'
-                      } rounded-md outline-none`}
-                      placeholder={placeholder}
-                      {...field}
-                      {...props}
-                    />
-                  ) : (
-                    <input
-                      className={`w-full py-2.5 px-2 border ${
-                        errors && errors[name]
-                          ? 'border-red-500'
-                          : 'border-gray-200'
-                      } rounded-md outline-none`}
-                      type={type}
-                      placeholder={placeholder}
-                      {...field}
-                      {...props}
-                    />
-                  ))}
-                {(checkbox || radio) && label && (
-                  <div className="checkbox-wrapper flex items-center gap-2">
-                    <input
-                      className="form-checkbox h-4 w-4 transition-duration-150 ease-in-out"
-                      type={type}
-                      placeholder={placeholder}
-                      {...field}
-                      {...props}
-                      id={id}
-                    />
-                    <span></span>
-                    <label htmlFor={id}>{label ?? ''}</label>
-                  </div>
-                )}
-              </>
-            )}
-            {select && (
-              <select
-                className={`w-full py-2.5 border ${
-                  errors && errors[name] ? 'border-red-500' : 'border-gray-200'
-                } rounded-md outline-none pl-2`}
+      {!select && (
+        <>
+          {!radio &&
+            !checkbox &&
+            (textarea ? (
+              <textarea
+                className={
+                  (errors && errors[name]?.message) || isInvalid
+                    ? styles['input-error']
+                    : styles['input']
+                }
+                placeholder={placeholder}
+                cols={cols}
+                rows={rows ? 1 : 10}
+                {...field}
+                {...props}
+              />
+            ) : (
+              <input
+                className={
+                  (errors && errors[name]?.message) || isInvalid
+                    ? styles['input-error']
+                    : styles['input']
+                }
+                type={type}
                 placeholder={placeholder}
                 {...field}
                 {...props}
-              >
-                <option value="" selected disabled>
-                  {placeholder}
-                </option>
-                {options &&
-                  options.map(
-                    (
-                      option: { label: string; value: string },
-                      index: number
-                    ) => {
-                      return (
-                        <option key={index} value={option.value}>
-                          {option.label}
-                        </option>
-                      );
-                    }
-                  )}
-              </select>
+              />
+            ))}
+          {(checkbox || radio) && label && (
+            <div className={styles['checkbox-wrapper']}>
+              <input
+                className="form-checkbox"
+                type={type}
+                placeholder={placeholder}
+                {...field}
+                {...props}
+                id={id}
+              />
+              <span></span>
+              <label htmlFor={id}>{label ?? ''}</label>
+            </div>
+          )}
+        </>
+      )}
+      {select && (
+        <select
+          className={`w-full py-2.5 border  rounded-md outline-none pl-2`}
+          placeholder={placeholder}
+          {...field}
+          {...props}
+        >
+          <option value="" selected disabled>
+            {placeholder}
+          </option>
+          {options &&
+            options.map(
+              (option: { label: string; value: string }, index: number) => {
+                return (
+                  <option key={index} value={option.value}>
+                    {option.label}
+                  </option>
+                );
+              }
             )}
-          </div>
-        )}
-      />
+        </select>
+      )}
       {errors && errors[name]?.message && (
-        <p className="field-error text-red-500 text-5">
+        <p className={styles['field-error']}>
           {errors[name]?.message as string}
         </p>
       )}

@@ -7,9 +7,13 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/ui-components/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "libs/ui-components/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "storybook": {
@@ -26,11 +30,14 @@
     },
     "build-storybook": {
       "executor": "@nx/storybook:build",
-      "outputs": ["{options.outputDir}"],
+      "outputs": [
+        "{options.outputDir}"
+      ],
       "options": {
         "outputDir": "dist/storybook/ui-components",
         "configDir": "libs/ui-components/.storybook"
       },
+      "postcssConfig": "libs/ui-components/postcss.config.js",
       "configurations": {
         "ci": {
           "quiet": true

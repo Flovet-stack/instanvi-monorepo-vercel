@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import './global.css';
 import 'tailwindcss/tailwind.css';
 
@@ -13,7 +14,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className="mx-auto max-w-8xl px-6 pt-5 lg:px-8">
+          <Image
+            className="h-8 w-auto"
+            src="/images/logo2.svg"
+            alt=""
+            width={100}
+            height={35}
+          />
+          <div className="justify-center h-[90vh] w-full items-center flex  ">
+            {children}
+          </div>
+        </div>
+      </body>
     </html>
   );
 }

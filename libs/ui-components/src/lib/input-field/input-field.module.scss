@@ -1,7 +1,77 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+@import '../variables';
+
+.input-field {
+  textarea {
+    width: 100%;
+    height: 130px;
+    padding: 1rem;
+  }
+}
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  input {
+    display: none !important;
+    width: auto;
+    height: auto;
+  }
+  span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid $primary;
+    border-radius: 2px;
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      background-color: $primary;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition-duration: 0.3s;
+      border-radius: 0;
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  padding: 0 1rem;
+  border: 1px solid $border-color;
+  border-radius: 0.35rem;
+}
+.input-error {
+  width: 100%;
+  height: 50px;
+  padding: 0 1rem;
+  border: 1px solid $border-color;
+  border-radius: 0.35rem;
+  border: 1px solid $red;
+}
+
+.input-field .checkbox-wrapper input:checked + span::before {
+  opacity: 1;
+  width: 80%;
+  height: 80%;
+  border-radius: 1.6px;
+  transition-duration: 0.3s;
+}
+.input-field .checkbox-wrapper input[type='radio'] + span,
+.input-field .checkbox-wrapper input[type='radio'] + span::before {
+  border-radius: 50%;
+}
+
+.field-error {
+  font-size: 0.9em;
+  color: $red;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
