@@ -1,5 +1,6 @@
-import { StatusType } from '@/@types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { StatusType } from '@/@types';
 
 export interface BroadcastState {
   user: null;
