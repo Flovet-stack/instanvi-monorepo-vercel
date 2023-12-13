@@ -1,19 +1,18 @@
-import { useLogin } from '@/api/auth';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-type NewPasswordFormProps = {
-  onSuccess: () => void;
-};
+interface NewPasswordFormProps {}
 
-const NewPasswordForm = ({ onSuccess }: NewPasswordFormProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const login = useLogin({ onSuccess });
+interface FormValues {
+  newPassword: string;
+  confirmPassword: string;
+}
 
+const NewPasswordForm: React.FC<NewPasswordFormProps> = () => {
   // Collect data from here
 
-  const { register, handleSubmit } = useForm<any>();
+  const { register, handleSubmit } = useForm<FormValues>();
   const [data, setData] = useState<string>('');
 
   return (

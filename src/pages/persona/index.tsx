@@ -1,15 +1,17 @@
-import React, { FC } from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import Link from "next/link";
-import { HeaderLayout } from "@/layouts/header-layout";
-import PersonaList from "@/features/persona/components/PersonaList";
-import { usePersonas } from "@/api/persona/usePersonas";
-import SkeletonPersona from "@/features/persona/components/SkeletonPersona";
+import React, { FC } from 'react';
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import Link from 'next/link';
+import { HeaderLayout } from '@/layouts/header-layout';
+import PersonaList from '@/features/persona/components/PersonaList';
+import { usePersonas } from '@/api/persona/usePersonas';
+import SkeletonPersona from '@/features/persona/components/SkeletonPersona';
 
 const Persona: FC = () => {
   // const [mut, setPersonas] = useState<any>([])
-  const { data, isLoading, refetch } = usePersonas('6c28de38-4ac6-4f9f-9b5e-08ffbd700543')
-  
+  const { data, isLoading, refetch } = usePersonas(
+    '6c28de38-4ac6-4f9f-9b5e-08ffbd700543'
+  );
+
   return (
     <HeaderLayout>
       <div className="w-full  ">
@@ -50,7 +52,7 @@ const Persona: FC = () => {
             </div>
           </div>
           <div className="w-1/2 flex justify-end">
-            <Link href={"./persona/new"}>
+            <Link href={'./persona/new'}>
               <button
                 id="button"
                 className="text-white   text-lg py-1.5 bg-green-500 rounded px-5"
@@ -61,16 +63,11 @@ const Persona: FC = () => {
           </div>
         </div>
 
-        {
-          isLoading ?
+        {isLoading ? (
           <SkeletonPersona />
-          :
-          <PersonaList 
-            refetch={refetch} 
-            personas = { data?.data?.data } 
-          />
-        }
-      
+        ) : (
+          <PersonaList refetch={refetch} personas={data?.data?.data} />
+        )}
       </div>
     </HeaderLayout>
   );

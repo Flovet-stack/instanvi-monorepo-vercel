@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useContext, FC } from "react";
-import { Switch } from "@headlessui/react";
-import Link from "next/link";
-import Router from "next/router";
-import { AuthContext } from "@/components/context/context";
-import { CurrentUserContext } from "@/pages/_app";
+import React, { useState, useEffect, useContext, FC } from 'react';
+import { Switch } from '@headlessui/react';
+import Link from 'next/link';
+import Router from 'next/router';
+import { AuthContext } from '@/components/context/context';
+import { CurrentUserContext } from '@/pages/_app';
 
 interface Step5Props {
   name: string;
 }
 
 function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 const Step5: FC = () => {
-  const data = useContext(CurrentUserContext as any) as any
+  const data = useContext(CurrentUserContext as any) as any;
   const [sexual, setSexual] = useState<boolean>(false);
   const [derogatory, setDerogatory] = useState<boolean>(false);
   const [download, setDownload] = useState<boolean>(false);
@@ -38,42 +38,42 @@ const Step5: FC = () => {
     if (!select) {
       data?.setOffLimit([
         ...data?.offLimit,
-        "Sexual",
-        "Derogatory",
-        "Download and Sharing",
-        "Weapons",
-        "Gambling",
-        "Violence",
-        "Suggestive",
-        "Profanity",
-        "Alcohol",
-        "Drugs",
-        "Tobacco",
-        "Politics",
-        "Religion",
-        "Tragedy",
-        "Transportation Accidents",
-        "Miracle & Spirituality",
+        'Sexual',
+        'Derogatory',
+        'Download and Sharing',
+        'Weapons',
+        'Gambling',
+        'Violence',
+        'Suggestive',
+        'Profanity',
+        'Alcohol',
+        'Drugs',
+        'Tobacco',
+        'Politics',
+        'Religion',
+        'Tragedy',
+        'Transportation Accidents',
+        'Miracle & Spirituality',
       ]);
     } else {
       let datss = data?.offLimit.filter(
         (item: string) =>
-          item !== "Sexual" &&
-          item !== "Derogatory" &&
-          item !== "Download and Sharing" &&
-          item !== "Weapons" &&
-          item !== "Gambling" &&
-          item !== "Violence" &&
-          item !== "Suggestive" &&
-          item !== "Profanity" &&
-          item !== "Alcohol" &&
-          item !== "Drugs" &&
-          item !== "Tobacco" &&
-          item !== "Politics" &&
-          item !== "Religion" &&
-          item !== "Tragedy" &&
-          item !== "Transportation Accidents" &&
-          item !== "Miracle & Spirituality"
+          item !== 'Sexual' &&
+          item !== 'Derogatory' &&
+          item !== 'Download and Sharing' &&
+          item !== 'Weapons' &&
+          item !== 'Gambling' &&
+          item !== 'Violence' &&
+          item !== 'Suggestive' &&
+          item !== 'Profanity' &&
+          item !== 'Alcohol' &&
+          item !== 'Drugs' &&
+          item !== 'Tobacco' &&
+          item !== 'Politics' &&
+          item !== 'Religion' &&
+          item !== 'Tragedy' &&
+          item !== 'Transportation Accidents' &&
+          item !== 'Miracle & Spirituality'
       );
       data?.setOffLimit([...datss]);
     }
@@ -81,144 +81,148 @@ const Step5: FC = () => {
 
   const onchangeSexual = (): void => {
     if (data?.offLimit?.includes('Sexual')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Sexual");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Sexual');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Sexual"]);
+      data?.setOffLimit([...data?.offLimit, 'Sexual']);
     }
   };
   const onchangeDerogatory = (): void => {
     if (data?.offLimit?.includes('Derogatory')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Derogatory");
+      let datss = data?.offLimit.filter(
+        (item: string) => item !== 'Derogatory'
+      );
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Derogatory"]);
+      data?.setOffLimit([...data?.offLimit, 'Derogatory']);
     }
   };
   const onchangeDownload = (): void => {
     if (data?.offLimit?.includes('Download and Sharing')) {
       let datss = data?.offLimit.filter(
-        (item: string) => item !== "Download and Sharing"
+        (item: string) => item !== 'Download and Sharing'
       );
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Download and Sharing"]);
+      data?.setOffLimit([...data?.offLimit, 'Download and Sharing']);
     }
   };
   const onchangeWeapon = (): void => {
     if (data?.offLimit?.includes('Weapons')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Weapons");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Weapons');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Weapons"]);
+      data?.setOffLimit([...data?.offLimit, 'Weapons']);
     }
   };
   const onchangeGambling = (): void => {
     if (data?.offLimit?.includes('Gambling')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Gambling");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Gambling');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Gambling"]);
+      data?.setOffLimit([...data?.offLimit, 'Gambling']);
     }
   };
 
   const onchangeViolence = (): void => {
     if (data?.offLimit?.includes('Violence')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Violence");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Violence');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Violence"]);
+      data?.setOffLimit([...data?.offLimit, 'Violence']);
     }
   };
   const onchangeSuggestive = (): void => {
     if (data?.offLimit?.includes('Suggestive')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Suggestive");
+      let datss = data?.offLimit.filter(
+        (item: string) => item !== 'Suggestive'
+      );
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Suggestive"]);
+      data?.setOffLimit([...data?.offLimit, 'Suggestive']);
     }
   };
   const onchangeProfanity = (): void => {
     if (data?.offLimit?.includes('Profanity')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Profanity");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Profanity');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Profanity"]);
+      data?.setOffLimit([...data?.offLimit, 'Profanity']);
     }
   };
   const onchangeAlcohol = (): void => {
     if (data?.offLimit?.includes('Alcohol')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Alcohol");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Alcohol');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Alcohol"]);
+      data?.setOffLimit([...data?.offLimit, 'Alcohol']);
     }
   };
   const onchangeDrugs = (): void => {
     if (data?.offLimit?.includes('Drugs')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Drugs");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Drugs');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Drugs"]);
+      data?.setOffLimit([...data?.offLimit, 'Drugs']);
     }
   };
   const onchangeTobacco = (): void => {
     if (data?.offLimit?.includes('Tobacco')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Tobacco");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Tobacco');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Tobacco"]);
+      data?.setOffLimit([...data?.offLimit, 'Tobacco']);
     }
   };
   const onchangePolitics = (): void => {
     if (data?.offLimit?.includes('Politics')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Politics");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Politics');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Politics"]);
+      data?.setOffLimit([...data?.offLimit, 'Politics']);
     }
   };
   const onchangeReligion = (): void => {
     if (data?.offLimit?.includes('Religion')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Religion");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Religion');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Religion"]);
+      data?.setOffLimit([...data?.offLimit, 'Religion']);
     }
   };
   const onchangeTragedy = (): void => {
     if (data?.offLimit?.includes('Tragedy')) {
-      let datss = data?.offLimit.filter((item: string) => item !== "Tragedy");
+      let datss = data?.offLimit.filter((item: string) => item !== 'Tragedy');
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Tragedy"]);
+      data?.setOffLimit([...data?.offLimit, 'Tragedy']);
     }
   };
   const onchangeTransport = (): void => {
     if (data?.offLimit?.includes('Transportation Accidents')) {
       let datss = data?.offLimit.filter(
-        (item: string) => item !== "Transportation Accidents"
+        (item: string) => item !== 'Transportation Accidents'
       );
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Transportation Accidents"]);
+      data?.setOffLimit([...data?.offLimit, 'Transportation Accidents']);
     }
   };
   const onchangeMiracle = (): void => {
     if (data?.offLimit?.includes('Miracle & Spirituality')) {
       let datss = data?.offLimit.filter(
-        (item: string) => item !== "Miracle & Spirituality"
+        (item: string) => item !== 'Miracle & Spirituality'
       );
       data?.setOffLimit([...datss]);
     } else {
-      data?.setOffLimit([...data?.offLimit, "Miracle & Spirituality"]);
+      data?.setOffLimit([...data?.offLimit, 'Miracle & Spirituality']);
     }
   };
 
   return (
     <div className="mb-20">
       <div className="pt-3">
-      <div className="w-full justify-center items-center flex">
+        <div className="w-full justify-center items-center flex">
           <div className="   md:w-[80%] md:px-0 px-4 mt-16">
             <div className="mt-7">
               <p className="font-semibold text-xl">
@@ -502,6 +506,6 @@ const Step5: FC = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Step5
+export default Step5;

@@ -57,7 +57,7 @@ export const authSlice = createSlice({
     builder.addCase(forgotPasswordByEmailThunk.pending, (state) => {
       state.resetRequestStatus = 'loading';
     });
-    builder.addCase(forgotPasswordByEmailThunk.fulfilled, (state, action) => {
+    builder.addCase(forgotPasswordByEmailThunk.fulfilled, (state) => {
       state.resetRequestStatus = 'idle';
       // state.user = action.payload;
     });

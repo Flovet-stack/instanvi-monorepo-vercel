@@ -1,3 +1,5 @@
+'use client';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';

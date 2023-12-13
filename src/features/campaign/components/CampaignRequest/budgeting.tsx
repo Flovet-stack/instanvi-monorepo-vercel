@@ -1,5 +1,5 @@
-import React, { FC, useState, useEffect } from "react";
-import Router from "next/router";
+import React, { FC, useState, useEffect } from 'react';
+import Router from 'next/router';
 
 interface CampaignData {
   budget: string;
@@ -11,18 +11,18 @@ interface CampaignData {
 }
 
 function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 const Budgeting: FC = () => {
   const [stepOne, setStepOne] = useState<boolean>(true);
   const [stepTwo, setStepTwo] = useState<boolean>(false);
-  const [budget, setBudget] = useState<string>("");
-  const [currency, setCurrency] = useState<string>("");
-  const [leads, setLeads] = useState<string>("");
-  const [sales, setSales] = useState<string>("");
-  const [visitors, setVisitors] = useState<string>("");
-  const [appDowload, setAppdownload] = useState<string>("");
+  const [budget, setBudget] = useState<string>('');
+  const [currency, setCurrency] = useState<string>('');
+  const [leads, setLeads] = useState<string>('');
+  const [sales, setSales] = useState<string>('');
+  const [visitors, setVisitors] = useState<string>('');
+  const [appDowload, setAppdownload] = useState<string>('');
 
   const handleStepOne = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.preventDefault();
@@ -37,16 +37,18 @@ const Budgeting: FC = () => {
   };
 
   useEffect(() => {
-    const item: CampaignData[] = JSON.parse(localStorage.getItem("campaignData"));
+    const item: CampaignData[] = JSON.parse(
+      localStorage.getItem('campaignData')
+    );
     if (item) {
       item.map((items: CampaignData) => {
         return items.step8.map((dataItems: CampaignData) => {
-          if (dataItems.budget !== "") setBudget(dataItems.budget);
-          if (dataItems.currency !== "") setCurrency(dataItems.currency);
-          if (dataItems.leads !== "") setLeads(dataItems.leads);
-          if (dataItems.sales !== "") setSales(dataItems.sales);
-          if (dataItems.visitors !== "") setVisitors(dataItems.visitors);
-          if (dataItems.appDownloads !== "")
+          if (dataItems.budget !== '') setBudget(dataItems.budget);
+          if (dataItems.currency !== '') setCurrency(dataItems.currency);
+          if (dataItems.leads !== '') setLeads(dataItems.leads);
+          if (dataItems.sales !== '') setSales(dataItems.sales);
+          if (dataItems.visitors !== '') setVisitors(dataItems.visitors);
+          if (dataItems.appDownloads !== '')
             setAppdownload(dataItems.appDownloads);
         });
       });
@@ -55,7 +57,9 @@ const Budgeting: FC = () => {
 
   const handleStep8 = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.preventDefault();
-    const item: CampaignData[] = JSON.parse(localStorage.getItem("campaignData"));
+    const item: CampaignData[] = JSON.parse(
+      localStorage.getItem('campaignData')
+    );
     if (item) {
       const datas: CampaignData[] = item.map((items: CampaignData) => {
         return {
@@ -75,9 +79,9 @@ const Budgeting: FC = () => {
           }),
         };
       });
-      localStorage.setItem("campaignData", JSON.stringify(datas));
+      localStorage.setItem('campaignData', JSON.stringify(datas));
       console.log(datas);
-      Router.push("step");
+      Router.push('step');
     }
   };
 
@@ -89,8 +93,8 @@ const Budgeting: FC = () => {
             <div
               onClick={handleStepOne}
               className={classNames(
-                stepOne ? "border-b-2 border-gray-900 font-bold" : "",
-                "w-full px-5 cursor-pointer text-lg py-5"
+                stepOne ? 'border-b-2 border-gray-900 font-bold' : '',
+                'w-full px-5 cursor-pointer text-lg py-5'
               )}
             >
               <span>Advert</span>
@@ -98,8 +102,8 @@ const Budgeting: FC = () => {
             <div
               onClick={handleStepTwo}
               className={classNames(
-                stepTwo ? "border-b-2 border-gray-900 font-bold" : "",
-                "w-full px-5 cursor-pointer text-lg py-5"
+                stepTwo ? 'border-b-2 border-gray-900 font-bold' : '',
+                'w-full px-5 cursor-pointer text-lg py-5'
               )}
             >
               <span>Recommend Budget</span>
@@ -107,10 +111,7 @@ const Budgeting: FC = () => {
           </div>
           <hr />
           <div
-            className={classNames(
-              stepOne ? "" : "hidden",
-              "my-52 w-full px-5"
-            )}
+            className={classNames(stepOne ? '' : 'hidden', 'my-52 w-full px-5')}
           >
             <span>Enter Bugdet</span>
             <div className="w-full mt-3 flex">
@@ -140,10 +141,7 @@ const Budgeting: FC = () => {
             </div>
           </div>
           <div
-            className={classNames(
-              stepTwo ? "" : "hidden",
-              "my-32 w-full px-5"
-            )}
+            className={classNames(stepTwo ? '' : 'hidden', 'my-32 w-full px-5')}
           >
             <table className="w-full px-4">
               <thead>
@@ -225,6 +223,6 @@ const Budgeting: FC = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Budgeting
+export default Budgeting;

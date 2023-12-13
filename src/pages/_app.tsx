@@ -11,14 +11,12 @@ type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 
-
 export const CurrentUserContext = createContext<any>(null);
 
 const App = ({
   Component,
   pageProps,
 }: AppProps & { Component: NextPageWithLayout }) => {
-  
   const [usern, setUsern] = useState();
   const [ageDistribution, setAgeDistribution] = useState([]);
   const [maritalStatus, setMaritalStatus] = useState([]);
@@ -71,18 +69,16 @@ const App = ({
     offLimit,
     setOffLimit,
     carrier,
-    setCarrier
-  }
+    setCarrier,
+  };
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <CurrentUserContext.Provider value={values}>
-      <AppProvider>
-        {getLayout(<Component {...pageProps} />)}
-      </AppProvider>
+      <AppProvider>{getLayout(<Component {...pageProps} />)}</AppProvider>
     </CurrentUserContext.Provider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

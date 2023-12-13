@@ -1,3 +1,5 @@
+'use client';
+
 // import { Access, User } from '@instanvi/client';
 import Head from 'next/head';
 // import { NextRouter, useRouter } from 'next/router';

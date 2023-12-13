@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useContext, FC } from "react";
-import { Switch } from "@headlessui/react";
-import Link from "next/link";
-import Router from "next/router";
-import { AuthContext } from "@/components/context/context";
-import { CurrentUserContext } from "@/pages/_app";
+import React, { useState, useEffect, useContext, FC } from 'react';
+import { Switch } from '@headlessui/react';
+import Link from 'next/link';
+import Router from 'next/router';
+import { AuthContext } from '@/components/context/context';
+import { CurrentUserContext } from '@/pages/_app';
 
 interface Step5Props {
   // add any props here
 }
 
 function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 const Step5: FC = () => {
-  const data = useContext(CurrentUserContext as any) as any
+  const data = useContext(CurrentUserContext as any) as any;
   const [male, setmale] = useState<boolean>(false);
   const [female, setfemale] = useState<boolean>(false);
   const [ts, setts] = useState<boolean>(false);
@@ -30,101 +30,101 @@ const Step5: FC = () => {
 
   const OnchangeFemale = (): void => {
     if (data?.sex?.includes('Female')) {
-      let datss = data?.sex.filter((item: string) => item !== "Female");
+      let datss = data?.sex.filter((item: string) => item !== 'Female');
       data?.setSex([...datss]);
     } else {
-      data?.setSex([...data?.sex, "Female"]);
+      data?.setSex([...data?.sex, 'Female']);
     }
   };
   const OnchangeMale = (): void => {
     if (data?.sex?.includes('Male')) {
-      let datss = data?.sex.filter((item: string) => item !== "Male");
+      let datss = data?.sex.filter((item: string) => item !== 'Male');
       data?.setSex([...datss]);
     } else {
-      data?.setSex([...data?.sex, "Male"]);
+      data?.setSex([...data?.sex, 'Male']);
     }
   };
   const OnchangeTs = (): void => {
     if (data?.age?.includes('12-17')) {
-      let datss = data?.age.filter((item: string) => item !== "12-17");
+      let datss = data?.age.filter((item: string) => item !== '12-17');
       data?.setAge([...datss]);
     } else {
-      data?.setAge([...data?.age, "12-17"]);
+      data?.setAge([...data?.age, '12-17']);
     }
   };
   const OnchangeEt = (): void => {
     if (data?.age?.includes('18-24')) {
-      let datss = data?.age.filter((item: string) => item !== "18-24");
+      let datss = data?.age.filter((item: string) => item !== '18-24');
       data?.setAge([...datss]);
     } else {
-      data?.setAge([...data?.age, "18-24"]);
+      data?.setAge([...data?.age, '18-24']);
     }
   };
   const OnchangeTt = (): void => {
     if (data?.age?.includes('25-35')) {
-      let datss = data?.age.filter((item: string) => item !== "25-35");
+      let datss = data?.age.filter((item: string) => item !== '25-35');
       data?.setAge([...datss]);
     } else {
-      data?.setAge([...data?.age, "25-35"]);
+      data?.setAge([...data?.age, '25-35']);
     }
   };
   const OnchangeTf = (): void => {
     if (data?.age?.includes('36-50')) {
-      let datss = data?.age.filter((item: string) => item !== "36-50");
+      let datss = data?.age.filter((item: string) => item !== '36-50');
       data?.setAge([...datss]);
     } else {
-      data?.setAge([...data?.age, "36-50"]);
+      data?.setAge([...data?.age, '36-50']);
     }
   };
   const OnchangeFp = (): void => {
     if (data?.age?.includes('50+')) {
-      let datss = data?.age.filter((item: string) => item !== "50+");
+      let datss = data?.age.filter((item: string) => item !== '50+');
       data?.setAge([...datss]);
     } else {
-      data?.setAge([...data?.age, "50+"]);
+      data?.setAge([...data?.age, '50+']);
     }
   };
   const OnchangeSingle = (): void => {
     if (data?.marital?.includes('Single')) {
-      let datss = data?.marital.filter((item: string) => item !== "Single");
+      let datss = data?.marital.filter((item: string) => item !== 'Single');
       data?.setMarital([...datss]);
     } else {
-      data?.setMarital([...data?.marital, "Single"]);
+      data?.setMarital([...data?.marital, 'Single']);
     }
   };
   const OnchangeMarried = (): void => {
     if (data?.marital?.includes('Married')) {
-      let datss = data?.marital.filter((item: string) => item !== "Married");
+      let datss = data?.marital.filter((item: string) => item !== 'Married');
       data?.setMarital([...datss]);
     } else {
-      data?.setMarital([...data?.marital, "Married"]);
+      data?.setMarital([...data?.marital, 'Married']);
     }
   };
 
   const onChangeLow = (): void => {
     if (data?.income?.includes('Low Income')) {
-      let datss = data?.income.filter((item: string) => item !== "Low Income");
+      let datss = data?.income.filter((item: string) => item !== 'Low Income');
       data?.setIncome([...datss]);
     } else {
-      data?.setIncome([...data?.income, "Low Income"]);
+      data?.setIncome([...data?.income, 'Low Income']);
     }
   };
 
   const onChangeHigh = (): void => {
     if (data?.income?.includes('High Income')) {
-      let datss = data?.income.filter((item: string) => item !== "High Income");
+      let datss = data?.income.filter((item: string) => item !== 'High Income');
       data?.setIncome([...datss]);
     } else {
-      data?.setIncome([...data?.income, "High Income"]);
+      data?.setIncome([...data?.income, 'High Income']);
     }
   };
 
   const onChangeMid = (): void => {
     if (data?.income?.includes('Mid Income')) {
-      let datss = data?.income.filter((item: string) => item !== "Mid Income");
+      let datss = data?.income.filter((item: string) => item !== 'Mid Income');
       data?.setIncome([...datss]);
     } else {
-      data?.setIncome([...data?.income, "Mid Income"]);
+      data?.setIncome([...data?.income, 'Mid Income']);
     }
   };
 
@@ -142,16 +142,20 @@ const Step5: FC = () => {
                     checked={data?.sex?.includes('Male')}
                     onChange={OnchangeMale}
                     className={classNames(
-                      data?.sex?.includes('Male') ? "bg-green-600" : "bg-gray-200",
-                      "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out "
+                      data?.sex?.includes('Male')
+                        ? 'bg-green-600'
+                        : 'bg-gray-200',
+                      'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out '
                     )}
                   >
                     <span className="sr-only">Use setting</span>
                     <span
                       aria-hidden="true"
                       className={classNames(
-                        data?.sex?.includes('Male') ? "translate-x-5" : "translate-x-0",
-                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                        data?.sex?.includes('Male')
+                          ? 'translate-x-5'
+                          : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                       )}
                     />
                   </Switch>
@@ -165,16 +169,20 @@ const Step5: FC = () => {
                     checked={data?.sex?.includes('Female')}
                     onChange={OnchangeFemale}
                     className={classNames(
-                      data?.sex?.includes('Female') ? "bg-green-600" : "bg-gray-200",
-                      "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out "
+                      data?.sex?.includes('Female')
+                        ? 'bg-green-600'
+                        : 'bg-gray-200',
+                      'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out '
                     )}
                   >
                     <span className="sr-only">Use setting</span>
                     <span
                       aria-hidden="true"
                       className={classNames(
-                        data?.sex?.includes('Female') ? "translate-x-5" : "translate-x-0",
-                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                        data?.sex?.includes('Female')
+                          ? 'translate-x-5'
+                          : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                       )}
                     />
                   </Switch>
@@ -190,16 +198,20 @@ const Step5: FC = () => {
                     checked={data?.age?.includes('12-17')}
                     onChange={OnchangeTs}
                     className={classNames(
-                      data?.age?.includes('12-17') ? "bg-green-600" : "bg-gray-200",
-                      "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out "
+                      data?.age?.includes('12-17')
+                        ? 'bg-green-600'
+                        : 'bg-gray-200',
+                      'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out '
                     )}
                   >
                     <span className="sr-only">Use setting</span>
                     <span
                       aria-hidden="true"
                       className={classNames(
-                        data?.age?.includes('12-17') ? "translate-x-5" : "translate-x-0",
-                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                        data?.age?.includes('12-17')
+                          ? 'translate-x-5'
+                          : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                       )}
                     />
                   </Switch>
@@ -213,16 +225,20 @@ const Step5: FC = () => {
                     checked={data?.age?.includes('18-24')}
                     onChange={OnchangeEt}
                     className={classNames(
-                      data?.age?.includes('18-24') ? "bg-green-600" : "bg-gray-200",
-                      "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out "
+                      data?.age?.includes('18-24')
+                        ? 'bg-green-600'
+                        : 'bg-gray-200',
+                      'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out '
                     )}
                   >
                     <span className="sr-only">Use setting</span>
                     <span
                       aria-hidden="true"
                       className={classNames(
-                        data?.age?.includes('18-24') ? "translate-x-5" : "translate-x-0",
-                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                        data?.age?.includes('18-24')
+                          ? 'translate-x-5'
+                          : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                       )}
                     />
                   </Switch>
@@ -236,16 +252,20 @@ const Step5: FC = () => {
                     checked={data?.age?.includes('25-35')}
                     onChange={OnchangeTt}
                     className={classNames(
-                      data?.age?.includes('25-35') ? "bg-green-600" : "bg-gray-200",
-                      "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out "
+                      data?.age?.includes('25-35')
+                        ? 'bg-green-600'
+                        : 'bg-gray-200',
+                      'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out '
                     )}
                   >
                     <span className="sr-only">Use setting</span>
                     <span
                       aria-hidden="true"
                       className={classNames(
-                        data?.age?.includes('25-35') ? "translate-x-5" : "translate-x-0",
-                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                        data?.age?.includes('25-35')
+                          ? 'translate-x-5'
+                          : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                       )}
                     />
                   </Switch>
@@ -258,16 +278,20 @@ const Step5: FC = () => {
                     checked={data?.age?.includes('36-50')}
                     onChange={OnchangeTf}
                     className={classNames(
-                      data?.age?.includes('36-50') ? "bg-green-600" : "bg-gray-200",
-                      "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out "
+                      data?.age?.includes('36-50')
+                        ? 'bg-green-600'
+                        : 'bg-gray-200',
+                      'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out '
                     )}
                   >
                     <span className="sr-only">Use setting</span>
                     <span
                       aria-hidden="true"
                       className={classNames(
-                        data?.age?.includes('36-50') ? "translate-x-5" : "translate-x-0",
-                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                        data?.age?.includes('36-50')
+                          ? 'translate-x-5'
+                          : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                       )}
                     />
                   </Switch>
@@ -280,16 +304,20 @@ const Step5: FC = () => {
                     checked={data?.age?.includes('50+')}
                     onChange={OnchangeFp}
                     className={classNames(
-                      data?.age?.includes('50+') ? "bg-green-600" : "bg-gray-200",
-                      "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out "
+                      data?.age?.includes('50+')
+                        ? 'bg-green-600'
+                        : 'bg-gray-200',
+                      'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out '
                     )}
                   >
                     <span className="sr-only">Use setting</span>
                     <span
                       aria-hidden="true"
                       className={classNames(
-                        data?.age?.includes('50+') ? "translate-x-5" : "translate-x-0",
-                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                        data?.age?.includes('50+')
+                          ? 'translate-x-5'
+                          : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                       )}
                     />
                   </Switch>
@@ -305,16 +333,20 @@ const Step5: FC = () => {
                     checked={data?.marital?.includes('Single')}
                     onChange={OnchangeSingle}
                     className={classNames(
-                      data?.marital?.includes('Single') ? "bg-green-600" : "bg-gray-200",
-                      "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out "
+                      data?.marital?.includes('Single')
+                        ? 'bg-green-600'
+                        : 'bg-gray-200',
+                      'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out '
                     )}
                   >
                     <span className="sr-only">Use setting</span>
                     <span
                       aria-hidden="true"
                       className={classNames(
-                        data?.marital?.includes('Single') ? "translate-x-5" : "translate-x-0",
-                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                        data?.marital?.includes('Single')
+                          ? 'translate-x-5'
+                          : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                       )}
                     />
                   </Switch>
@@ -328,16 +360,20 @@ const Step5: FC = () => {
                     checked={data?.marital?.includes('Married')}
                     onChange={OnchangeMarried}
                     className={classNames(
-                      data?.marital?.includes('Married') ? "bg-green-600" : "bg-gray-200",
-                      "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out "
+                      data?.marital?.includes('Married')
+                        ? 'bg-green-600'
+                        : 'bg-gray-200',
+                      'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out '
                     )}
                   >
                     <span className="sr-only">Use setting</span>
                     <span
                       aria-hidden="true"
                       className={classNames(
-                        data?.marital?.includes('Married') ? "translate-x-5" : "translate-x-0",
-                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                        data?.marital?.includes('Married')
+                          ? 'translate-x-5'
+                          : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                       )}
                     />
                   </Switch>
@@ -406,6 +442,6 @@ const Step5: FC = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Step5
+export default Step5;

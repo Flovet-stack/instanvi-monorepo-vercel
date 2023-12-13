@@ -1,12 +1,12 @@
-import { useActiveMenu } from "react-active-menu";
-import React, { FC, useState } from "react";
-import Objectives from "./objectives";
-import Scheduling from "./scheduling";
-import Creative from "./creative";
-import Targeting from "./targeting";
-import Detail from "./detail";
-import Budgeting from "./budgeting";
-import SOS from "./sos";
+import { useActiveMenu } from 'react-active-menu';
+import React, { FC, useState } from 'react';
+import Objectives from './objectives';
+import Scheduling from './scheduling';
+import Creative from './creative';
+import Targeting from './targeting';
+import Detail from './detail';
+import Budgeting from './budgeting';
+import SOS from './sos';
 
 interface NewAdvertSliderProps {}
 
@@ -21,8 +21,8 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
   const [nextStep, setNextStep] = useState<boolean>(false);
 
   const HandleCampaignType = (type: string): void => {
-    setStandardCampain(type === "Standard");
-    setSosCampaign(type === "SOS");
+    setStandardCampain(type === 'Standard');
+    setSosCampaign(type === 'SOS');
     setNextStep(true);
   };
 
@@ -30,10 +30,10 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
     <>
       <div className="flex flex-col h-screen justify-evenly bg-white">
         <div className="flex justify-evenly items-center">
-          <div className={`flex gap-4 ${nextStep ? "hidden" : ""}`}>
+          <div className={`flex gap-4 ${nextStep ? 'hidden' : ''}`}>
             <div
               onClick={() => {
-                HandleCampaignType("Standard");
+                HandleCampaignType('Standard');
               }}
               className="flex flex-col gap-6 w-[260px] pt-5 pb-20 border rounded justify-between items-center cursor-pointer"
             >
@@ -42,7 +42,7 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
             </div>
             <div
               onClick={() => {
-                HandleCampaignType("SOS");
+                HandleCampaignType('SOS');
               }}
               className="flex flex-col gap-6 w-[260px] pt-5 pb-20 border rounded justify-between items-center cursor-pointer"
             >
@@ -53,7 +53,7 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
         </div>
         <div
           className={`flex flex-col h-screen bg-white ${
-            standardCampaign ? "" : "hidden"
+            standardCampaign ? '' : 'hidden'
           }`}
         >
           <div className="flex h-[92vh] border-b">
@@ -62,11 +62,11 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
                 <li className="">
                   <button
                     type="button"
-                    ref={registerTrigger("section-1")}
+                    ref={registerTrigger('section-1')}
                     className={`w-full flex items-center cursor-pointer outline-none ${
-                      activeId == "section-1"
-                        ? "border-r-2 border-green-500 text-green-500"
-                        : ""
+                      activeId == 'section-1'
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
                     }`}
                   >
                     Detail
@@ -75,11 +75,11 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
                 <li>
                   <button
                     type="button"
-                    ref={registerTrigger("section-2")}
+                    ref={registerTrigger('section-2')}
                     className={`w-full flex items-center cursor-pointer outline-none ${
-                      activeId == "section-2"
-                        ? "border-r-2 border-green-500 text-green-500"
-                        : ""
+                      activeId == 'section-2'
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
                     }`}
                   >
                     Objective
@@ -88,11 +88,11 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
                 <li>
                   <button
                     type="button"
-                    ref={registerTrigger("section-3")}
+                    ref={registerTrigger('section-3')}
                     className={`w-full flex items-center cursor-pointer outline-none ${
-                      activeId == "section-3"
-                        ? "border-r-2 border-green-500 text-green-500"
-                        : ""
+                      activeId == 'section-3'
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
                     }`}
                   >
                     Creative
@@ -101,11 +101,11 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
                 <li>
                   <button
                     type="button"
-                    ref={registerTrigger("section-4")}
+                    ref={registerTrigger('section-4')}
                     className={`w-full flex items-center cursor-pointer outline-none ${
-                      activeId == "section-4"
-                        ? "border-r-2 border-green-500 text-green-500"
-                        : ""
+                      activeId == 'section-4'
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
                     }`}
                   >
                     Scheduling
@@ -114,11 +114,11 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
                 <li>
                   <button
                     type="button"
-                    ref={registerTrigger("section-5")}
+                    ref={registerTrigger('section-5')}
                     className={`w-full flex items-center cursor-pointer outline-none ${
-                      activeId == "section-5"
-                        ? "border-r-2 border-green-500 text-green-500"
-                        : ""
+                      activeId == 'section-5'
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
                     }`}
                   >
                     Targeting
@@ -127,11 +127,11 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
                 <li>
                   <button
                     type="button"
-                    ref={registerTrigger("section-6")}
+                    ref={registerTrigger('section-6')}
                     className={`w-full flex items-center cursor-pointer outline-none ${
-                      activeId == "section-6"
-                        ? "border-r-2 border-green-500 text-green-500"
-                        : ""
+                      activeId == 'section-6'
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
                     }`}
                   >
                     Budgeting
@@ -141,7 +141,7 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
             </nav>
             <div className="overflow-auto grow" ref={registerContainer}>
               <section
-                ref={registerSection("section-1")}
+                ref={registerSection('section-1')}
                 className={`h-[100%] pt-10 flex flec-col justify-evenly items-center`}
               >
                 <div className="flex flex-col h-full w-[90%]">
@@ -150,7 +150,7 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
               </section>
 
               <section
-                ref={registerSection("section-2")}
+                ref={registerSection('section-2')}
                 className={`h-[100%] pt-10 flex justify-evenly`}
               >
                 <div className="flex flex-col h-full w-[90%]">
@@ -159,7 +159,7 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
               </section>
 
               <section
-                ref={registerSection("section-3")}
+                ref={registerSection('section-3')}
                 className={`h-[100%] pt-10 flex justify-evenly`}
               >
                 <div className="flex flex-col h-full w-[90%]">
@@ -168,7 +168,7 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
               </section>
 
               <section
-                ref={registerSection("section-4")}
+                ref={registerSection('section-4')}
                 className={`h-[100%] pt-10 flex justify-evenly`}
               >
                 <div className="fflex flex-col h-full w-[90%]">
@@ -177,7 +177,7 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
               </section>
 
               <section
-                ref={registerSection("section-5")}
+                ref={registerSection('section-5')}
                 className={`h-[100%] pt-10 flex justify-evenly`}
               >
                 <div className="flex flex-col h-full w-[90%]">
@@ -186,7 +186,7 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
               </section>
 
               <section
-                ref={registerSection("section-6")}
+                ref={registerSection('section-6')}
                 className={`h-[100%] pt-10 flex justify-evenly`}
               >
                 <div className="flex flex-col h-full w-[90%]">
@@ -205,11 +205,13 @@ const NewAdvertSlider: FC<NewAdvertSliderProps> = () => {
               // onClick={handleNextSection}
               className="cursor-pointer px-10 py-2.5 text-sm flex justify-evenly items-center rounded-lg text-white bg-green-500"
             >
-              {activeId == "section-6" ? "Publish" : "Next"}
+              {activeId == 'section-6' ? 'Publish' : 'Next'}
             </div>
           </div>
         </div>
-        <div className={`flex flex-col h-screen ${sosCampaign ? "" : "hidden"}`}>
+        <div
+          className={`flex flex-col h-screen ${sosCampaign ? '' : 'hidden'}`}
+        >
           <SOS />
         </div>
       </div>

@@ -1,7 +1,7 @@
-import React, { FC, useRef } from "react";
-import { useActiveMenu, ActiveMenuProps } from "react-active-menu";
-import Detail from "./detail";
-import SOSCampaign from "./sosCampaign";
+import React, { FC, useRef } from 'react';
+import { useActiveMenu, ActiveMenuProps } from 'react-active-menu';
+import Detail from './detail';
+import SOSCampaign from './sosCampaign';
 
 interface SOSProps {}
 
@@ -24,11 +24,11 @@ const SOS: FC<SOSProps> = () => {
               <li className="">
                 <button
                   type="button"
-                  ref={registerTrigger("section-1")}
+                  ref={registerTrigger('section-1')}
                   className={`w-full flex items-center cursor-pointer outline-none ${
-                    activeId == "section-1"
-                      ? "border-r-2 border-green-500 text-green-500"
-                      : ""
+                    activeId == 'section-1'
+                      ? 'border-r-2 border-green-500 text-green-500'
+                      : ''
                   }`}
                 >
                   Detail
@@ -37,11 +37,11 @@ const SOS: FC<SOSProps> = () => {
               <li>
                 <button
                   type="button"
-                  ref={registerTrigger("section-2")}
+                  ref={registerTrigger('section-2')}
                   className={`w-full flex items-center cursor-pointer outline-none ${
-                    activeId == "section-2"
-                      ? "border-r-2 border-green-500 text-green-500"
-                      : ""
+                    activeId == 'section-2'
+                      ? 'border-r-2 border-green-500 text-green-500'
+                      : ''
                   }`}
                 >
                   Sos
@@ -51,7 +51,7 @@ const SOS: FC<SOSProps> = () => {
           </nav>
           <div className="overflow-auto grow" ref={registerContainer}>
             <section
-              ref={registerSection("section-1")}
+              ref={registerSection('section-1')}
               className={`h-[100%] flex flec-col justify-evenly items-center`}
             >
               <div className="flex flex-col w-4/5 h-full">
@@ -60,7 +60,7 @@ const SOS: FC<SOSProps> = () => {
             </section>
 
             <section
-              ref={registerSection("section-2")}
+              ref={registerSection('section-2')}
               className={`h-[100%] flex justify-evenly`}
             >
               <div className="flex flex-col h-full w-4/5">
@@ -79,7 +79,7 @@ const SOS: FC<SOSProps> = () => {
             // onClick={handleNextSection}
             className="cursor-pointer px-10 py-2.5 text-sm flex justify-evenly items-center rounded-lg text-white bg-green-500"
           >
-            {activeId == "section-2" ? "Publish" : "Next"}
+            {activeId == 'section-2' ? 'Publish' : 'Next'}
           </div>
         </div>
       </div>
