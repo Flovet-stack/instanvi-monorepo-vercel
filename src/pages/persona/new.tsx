@@ -1,27 +1,31 @@
-import React, { useState, useEffect, useContext } from "react";
-import Link from "next/link";
-import Avatar from "avataaars";
-import Name from "../../features/persona/components/data/demographic";
-import Language from "../../features/persona/components/data/language";
-import Device from "../../features/persona/components/data/device";
-import Interest from "../../features/persona/components/data/interest";
-import { SpinnerCircular } from "spinners-react";
-import Industry from "../../features/persona/components/data/industry";
-import Interests from "../../features/persona/components/data/interests";
-import Names from "../../features/persona/components/data/name";
-import toast from "react-hot-toast";
-import Offlimit from "../../features/persona/components/data/offLimit";
-import { HeaderLayout } from "@/layouts/header-layout";
-import { CurrentUserContext } from "../_app";
-import { useMutation } from "@tanstack/react-query";
-import { PersonasAPI } from "@/libs/instanvi-service";
-import CrossIcon from "@/features/persona/components/icons/cross";
-import { useRouter } from "next/router";
+import React, { useState, useEffect, useContext } from 'react';
+import Link from 'next/link';
+import Avatar from 'avataaars';
+import Name from '../../features/persona/components/data/demographic';
+import Language from '../../features/persona/components/data/language';
+import Device from '../../features/persona/components/data/device';
+import Interest from '../../features/persona/components/data/interest';
+import { SpinnerCircular } from 'spinners-react';
+import Industry from '../../features/persona/components/data/industry';
+import Interests from '../../features/persona/components/data/interests';
+import Names from '../../features/persona/components/data/name';
+import toast from 'react-hot-toast';
+import Offlimit from '../../features/persona/components/data/offLimit';
+import { HeaderLayout } from '@/layouts/header-layout';
+import { CurrentUserContext } from '../_app';
+import { useMutation } from '@tanstack/react-query';
+import { PersonasAPI } from '@/libs/instanvi-service';
+import CrossIcon from '@/features/persona/components/icons/cross';
+import { useRouter } from 'next/router';
 
 export default function Persona() {
-  const router = useRouter()
-  const ContextData = useContext(CurrentUserContext as any) as any
-  const createPersona = useMutation(((data: any) => PersonasAPI.createPersonas('6c28de38-4ac6-4f9f-9b5e-08ffbd700543', data)) as any)
+  const router = useRouter();
+  const ContextData = useContext(CurrentUserContext as any) as any;
+  const createPersona = useMutation(((data: any) =>
+    PersonasAPI.createPersonas(
+      '6c28de38-4ac6-4f9f-9b5e-08ffbd700543',
+      data
+    )) as any);
   const [location, setLocation] = useState(false);
   const [demographic, setDemographic] = useState(false);
   const [interest, setInterest] = useState(false);
@@ -33,15 +37,15 @@ export default function Persona() {
   const [offLimit, setOffLimit] = useState(false);
   const [locationName, setLocationName] = useState([]);
   const [deviceName, setDeviceName] = useState([]);
-  const [headerHeights, setHeaderHeight] = useState("");
-  const [heights, setHeight] = useState<any>("");
+  const [headerHeights, setHeaderHeight] = useState('');
+  const [heights, setHeight] = useState<any>('');
   const [animation, setAnimation] = useState(false);
   useEffect(() => {
-    const headerHeight = localStorage.getItem("headerHeight");
-    setHeaderHeight(localStorage.getItem("headerHeight") ?? '');
+    const headerHeight = localStorage.getItem('headerHeight');
+    setHeaderHeight(localStorage.getItem('headerHeight') ?? '');
     setHeight(window.innerHeight || '');
 
-    const item = ContextData?.personaData
+    const item = ContextData?.personaData;
     if (item) {
       item.map((items: any) => {
         if (items) {
@@ -51,8 +55,8 @@ export default function Persona() {
         }
       });
     }
-    const windows = document.querySelector("#scroll-persona");
-    windows?.addEventListener("scroll", (evt: any) => {
+    const windows = document.querySelector('#scroll-persona');
+    windows?.addEventListener('scroll', (evt: any) => {
       if (
         evt?.target?.scrollTop >
         window.innerHeight * 7 - (headerHeight as any) * 7 + 20
@@ -66,8 +70,10 @@ export default function Persona() {
         setDevice(false);
         setOffLimit(true);
       } else if (
-        evt.target.scrollTop > window.innerHeight * 6 - (headerHeight as any) * 6 &&
-        evt.target.scrollTop < window.innerHeight * 7 - (headerHeight as any) * 7
+        evt.target.scrollTop >
+          window.innerHeight * 6 - (headerHeight as any) * 6 &&
+        evt.target.scrollTop <
+          window.innerHeight * 7 - (headerHeight as any) * 7
       ) {
         setLocation(false);
         setDemographic(false);
@@ -78,8 +84,10 @@ export default function Persona() {
         setDevice(true);
         setOffLimit(false);
       } else if (
-        evt.target.scrollTop > window.innerHeight * 5 - (headerHeight as any) * 5 &&
-        evt.target.scrollTop < window.innerHeight * 6 - (headerHeight as any) * 6
+        evt.target.scrollTop >
+          window.innerHeight * 5 - (headerHeight as any) * 5 &&
+        evt.target.scrollTop <
+          window.innerHeight * 6 - (headerHeight as any) * 6
       ) {
         setLocation(false);
         setDemographic(false);
@@ -90,8 +98,10 @@ export default function Persona() {
         setOffLimit(false);
         setDevice(false);
       } else if (
-        evt.target.scrollTop > window.innerHeight * 4 - (headerHeight as any) * 4 &&
-        evt.target.scrollTop < window.innerHeight * 5 - (headerHeight as any) * 5
+        evt.target.scrollTop >
+          window.innerHeight * 4 - (headerHeight as any) * 4 &&
+        evt.target.scrollTop <
+          window.innerHeight * 5 - (headerHeight as any) * 5
       ) {
         setLocation(false);
         setDemographic(false);
@@ -102,8 +112,10 @@ export default function Persona() {
         setOffLimit(false);
         setDevice(false);
       } else if (
-        evt.target.scrollTop > window.innerHeight * 3 - (headerHeight as any) * 3 &&
-        evt.target.scrollTop < window.innerHeight * 4 - (headerHeight as any) * 4
+        evt.target.scrollTop >
+          window.innerHeight * 3 - (headerHeight as any) * 3 &&
+        evt.target.scrollTop <
+          window.innerHeight * 4 - (headerHeight as any) * 4
       ) {
         setLocation(false);
         setDemographic(false);
@@ -114,8 +126,10 @@ export default function Persona() {
         setOffLimit(false);
         setDevice(false);
       } else if (
-        evt.target.scrollTop > window.innerHeight * 2 - (headerHeight as any) * 2 &&
-        evt.target.scrollTop < window.innerHeight * 3 - (headerHeight as any) * 3
+        evt.target.scrollTop >
+          window.innerHeight * 2 - (headerHeight as any) * 2 &&
+        evt.target.scrollTop <
+          window.innerHeight * 3 - (headerHeight as any) * 3
       ) {
         setLocation(false);
         setDemographic(true);
@@ -153,7 +167,7 @@ export default function Persona() {
   const handleDelete = (e: any, id: string, name: string) => {
     alert(name);
     const item = ContextData?.personaData;
-    if (item && name == "Bafoussam") {
+    if (item && name == 'Bafoussam') {
       const datas = item.map((items: any) => {
         return {
           ...items,
@@ -240,14 +254,14 @@ export default function Persona() {
       },
       {
         image: [
-          "http://example.com/image1.jpg",
-          "http://example.com/image2.jpg",
+          'http://example.com/image1.jpg',
+          'http://example.com/image2.jpg',
         ],
       },
       {
-        sensitive_exclusion: ["Sensitive1", "Sensitive2"],
+        sensitive_exclusion: ['Sensitive1', 'Sensitive2'],
       },
-      { website: ["http://example.com/site1", "http://example.com/site2"] }
+      { website: ['http://example.com/site1', 'http://example.com/site2'] }
     );
 
     var data = Object.assign({}, ...saveArrays);
@@ -255,68 +269,81 @@ export default function Persona() {
     createPersona.mutate(data, {
       onSuccess: () => {
         toast.success(`Persona ${ContextData.usern} created Succesfully`);
-        router.push('persona')
+        router.push('persona');
         setAnimation(false);
-        ContextData.setUsern()
-        ContextData.setAgeDistribution([])
-        ContextData.setMaritalStatus([])
-        ContextData.setIncomeLevel([])
-        ContextData.setLanguage([])
-        ContextData.setAudience([])
-        ContextData.setLocation([])
-        ContextData.setSex([])
-        ContextData.setAge([])
-        ContextData.setIncome([])
-        ContextData.setMarital([])
-        ContextData.setInterest([])
-        ContextData.setIndustry([])
-        ContextData.setDevice([])
-        ContextData.setOperatingSystem([])
-        ContextData.setOffLimit([])
-        ContextData.setCarrier([])
+        ContextData.setUsern();
+        ContextData.setAgeDistribution([]);
+        ContextData.setMaritalStatus([]);
+        ContextData.setIncomeLevel([]);
+        ContextData.setLanguage([]);
+        ContextData.setAudience([]);
+        ContextData.setLocation([]);
+        ContextData.setSex([]);
+        ContextData.setAge([]);
+        ContextData.setIncome([]);
+        ContextData.setMarital([]);
+        ContextData.setInterest([]);
+        ContextData.setIndustry([]);
+        ContextData.setDevice([]);
+        ContextData.setOperatingSystem([]);
+        ContextData.setOffLimit([]);
+        ContextData.setCarrier([]);
       },
       onError: () => {
         setAnimation(false);
-        toast.error("Something went wrong Try again");
-      }
-    })
+        toast.error('Something went wrong Try again');
+      },
+    });
   };
 
-
   const onRemoveSex = (selectedItem: string): void => {
-    let context = ContextData?.sex.filter((item: string) => item !== selectedItem);
+    let context = ContextData?.sex.filter(
+      (item: string) => item !== selectedItem
+    );
     ContextData?.setSex([...context]);
-  }
+  };
 
   const onRemoveAge = (selectedItem: string): void => {
-    let context = ContextData?.age.filter((item: string) => item !== selectedItem);
+    let context = ContextData?.age.filter(
+      (item: string) => item !== selectedItem
+    );
     ContextData?.setAge([...context]);
-  }
+  };
 
   const onRemoveMarital = (selectedItem: string): void => {
-    let context = ContextData?.marital.filter((item: string) => item !== selectedItem);
+    let context = ContextData?.marital.filter(
+      (item: string) => item !== selectedItem
+    );
     ContextData?.setMarital([...context]);
-  }
+  };
 
   const onRemoveIncome = (selectedItem: string): void => {
-    let context = ContextData?.income.filter((item: string) => item !== selectedItem);
+    let context = ContextData?.income.filter(
+      (item: string) => item !== selectedItem
+    );
     ContextData?.setIncome([...context]);
-  }
+  };
 
   const onRemoveInterest = (selectedItem: string): void => {
-    let context = ContextData?.interest.filter((item: string) => item !== selectedItem);
+    let context = ContextData?.interest.filter(
+      (item: string) => item !== selectedItem
+    );
     ContextData?.setInterest([...context]);
-  }
+  };
 
   const onRemoveLanguage = (selectedItem: string): void => {
-    let context = ContextData?.language.filter((item: string) => item !== selectedItem);
+    let context = ContextData?.language.filter(
+      (item: string) => item !== selectedItem
+    );
     ContextData?.setLanguage([...context]);
-  }
+  };
 
   const onRemoveIndustry = (selectedItem: string): void => {
-    let context = ContextData?.industry.filter((item: string) => item !== selectedItem);
+    let context = ContextData?.industry.filter(
+      (item: string) => item !== selectedItem
+    );
     ContextData?.setIndustry([...context]);
-  }
+  };
 
   return (
     <HeaderLayout>
@@ -330,10 +357,10 @@ export default function Persona() {
                 className="w-48 pt-3"
                 style={{
                   height: heights - (headerHeights as any) - 2,
-                  borderRight: "1px solid #E5E4E2",
+                  borderRight: '1px solid #E5E4E2',
                 }}
               >
-                <Link legacyBehavior href={"./"}>
+                <Link legacyBehavior href={'./'}>
                   <a className="flex">
                     <i className="ri-arrow-left-line mr-2"></i> <p>Persona</p>
                   </a>
@@ -349,14 +376,15 @@ export default function Persona() {
                       setOccupation(false);
                       setOffLimit(false);
                       setDevice(false);
-                      const windows = document.querySelector("#scroll-persona");
+                      const windows = document.querySelector('#scroll-persona');
                       windows?.scrollTo({
                         top: 0,
-                        behavior: "smooth",
+                        behavior: 'smooth',
                       });
                     }}
-                    className={`${income ? "border-r-2 border-green-500 text-green-500" : ""
-                      }  mt-3   text-lg cursor-pointer`}
+                    className={`${
+                      income ? 'border-r-2 border-green-500 text-green-500' : ''
+                    }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Name</p>
                   </div>
@@ -370,16 +398,17 @@ export default function Persona() {
                       setOccupation(false);
                       setOffLimit(false);
                       setDevice(false);
-                      const windows = document.querySelector("#scroll-persona");
+                      const windows = document.querySelector('#scroll-persona');
                       windows?.scrollTo({
                         top: window.innerHeight - (headerHeights as any) + 2,
-                        behavior: "smooth",
+                        behavior: 'smooth',
                       });
                     }}
-                    className={`${location
-                      ? "border-r-2 border-green-500 text-green-500"
-                      : ""
-                      }  mt-3   text-lg cursor-pointer`}
+                    className={`${
+                      location
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
+                    }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Location</p>
                   </div>
@@ -393,16 +422,20 @@ export default function Persona() {
                       setOccupation(false);
                       setOffLimit(false);
                       setDevice(false);
-                      const windows = document.querySelector("#scroll-persona");
+                      const windows = document.querySelector('#scroll-persona');
                       windows?.scrollTo({
-                        top: window.innerHeight * 2 - (headerHeights as any) * 2 + 2,
-                        behavior: "smooth",
+                        top:
+                          window.innerHeight * 2 -
+                          (headerHeights as any) * 2 +
+                          2,
+                        behavior: 'smooth',
                       });
                     }}
-                    className={`${demographic
-                      ? "border-r-2 border-green-500 text-green-500"
-                      : ""
-                      }  mt-3   text-lg cursor-pointer`}
+                    className={`${
+                      demographic
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
+                    }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Demographics</p>
                   </div>
@@ -416,16 +449,20 @@ export default function Persona() {
                       setOccupation(false);
                       setOffLimit(false);
                       setDevice(false);
-                      const windows = document.querySelector("#scroll-persona");
+                      const windows = document.querySelector('#scroll-persona');
                       windows?.scrollTo({
-                        top: window.innerHeight * 3 - (headerHeights as any) * 3 + 2,
-                        behavior: "smooth",
+                        top:
+                          window.innerHeight * 3 -
+                          (headerHeights as any) * 3 +
+                          2,
+                        behavior: 'smooth',
                       });
                     }}
-                    className={`${interest
-                      ? "border-r-2 border-green-500 text-green-500"
-                      : ""
-                      }  mt-3   text-lg cursor-pointer`}
+                    className={`${
+                      interest
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
+                    }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Interests</p>
                   </div>
@@ -439,16 +476,20 @@ export default function Persona() {
                       setOccupation(false);
                       setOffLimit(false);
                       setDevice(false);
-                      const windows = document.querySelector("#scroll-persona");
+                      const windows = document.querySelector('#scroll-persona');
                       windows?.scrollTo({
-                        top: window.innerHeight * 4 - (headerHeights as any) * 4 + 2,
-                        behavior: "smooth",
+                        top:
+                          window.innerHeight * 4 -
+                          (headerHeights as any) * 4 +
+                          2,
+                        behavior: 'smooth',
                       });
                     }}
-                    className={`${language
-                      ? "border-r-2 border-green-500 text-green-500"
-                      : ""
-                      }  mt-3   text-lg cursor-pointer`}
+                    className={`${
+                      language
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
+                    }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Languages</p>
                   </div>
@@ -463,16 +504,20 @@ export default function Persona() {
                       setOccupation(true);
                       setOffLimit(false);
                       setDevice(false);
-                      const windows = document.querySelector("#scroll-persona");
+                      const windows = document.querySelector('#scroll-persona');
                       windows?.scrollTo({
-                        top: window.innerHeight * 5 - (headerHeights as any) * 5 + 2,
-                        behavior: "smooth",
+                        top:
+                          window.innerHeight * 5 -
+                          (headerHeights as any) * 5 +
+                          2,
+                        behavior: 'smooth',
                       });
                     }}
-                    className={`${occupation
-                      ? "border-r-2 border-green-500 text-green-500"
-                      : ""
-                      }  mt-3   text-lg cursor-pointer`}
+                    className={`${
+                      occupation
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
+                    }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Occupation</p>
                   </div>
@@ -486,14 +531,18 @@ export default function Persona() {
                       setOffLimit(false);
                       setOccupation(false);
                       setDevice(true);
-                      const windows = document.querySelector("#scroll-persona");
+                      const windows = document.querySelector('#scroll-persona');
                       windows?.scrollTo({
-                        top: window.innerHeight * 6 - (headerHeights as any) * 6 + 2,
-                        behavior: "smooth",
+                        top:
+                          window.innerHeight * 6 -
+                          (headerHeights as any) * 6 +
+                          2,
+                        behavior: 'smooth',
                       });
                     }}
-                    className={`${device ? "border-r-2 border-green-500 text-green-500" : ""
-                      }  mt-3   text-lg cursor-pointer`}
+                    className={`${
+                      device ? 'border-r-2 border-green-500 text-green-500' : ''
+                    }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Device Type</p>
                   </div>
@@ -508,16 +557,20 @@ export default function Persona() {
                       setOccupation(false);
                       setDevice(false);
                       setOffLimit(true);
-                      const windows = document.querySelector("#scroll-persona");
+                      const windows = document.querySelector('#scroll-persona');
                       windows?.scrollTo({
-                        top: window.innerHeight * 8 - (headerHeights as any) * 8 + 2,
-                        behavior: "smooth",
+                        top:
+                          window.innerHeight * 8 -
+                          (headerHeights as any) * 8 +
+                          2,
+                        behavior: 'smooth',
                       });
                     }}
-                    className={`${offLimit
-                      ? "border-r-2 border-green-500 text-green-500"
-                      : ""
-                      }  mt-3   text-lg cursor-pointer`}
+                    className={`${
+                      offLimit
+                        ? 'border-r-2 border-green-500 text-green-500'
+                        : ''
+                    }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Off Limits</p>
                   </div>
@@ -595,8 +648,8 @@ export default function Persona() {
                     <p>Name</p>
                   </td>
                   <td>
-                    {ContextData?.usern == "" ? (
-                      ""
+                    {ContextData?.usern == '' ? (
+                      ''
                     ) : (
                       <div className="rounded-xl text-gray-700 w-fit border text-md  bg-white px-4 py-0.5 ml-2">
                         {ContextData?.usern}
@@ -611,7 +664,7 @@ export default function Persona() {
                   <td>
                     <div>
                       <Avatar
-                        style={{ width: "80px", height: "80px" }}
+                        style={{ width: '80px', height: '80px' }}
                         avatarStyle="Circle"
                         topType="LongHairMiaWallace"
                         accessoriesType="Prescription02"
@@ -633,7 +686,7 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.location?.length !== "" &&
+                      {ContextData?.location?.length !== '' &&
                         ContextData?.location?.map((item: any) => {
                           return (
                             <div className="rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
@@ -654,7 +707,7 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.sex?.length !== "" &&
+                      {ContextData?.sex?.length !== '' &&
                         ContextData?.sex?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
@@ -663,7 +716,7 @@ export default function Persona() {
                             </div>
                           );
                         })}
-                      {ContextData?.age?.length !== "" &&
+                      {ContextData?.age?.length !== '' &&
                         ContextData?.age?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
@@ -672,12 +725,14 @@ export default function Persona() {
                             </div>
                           );
                         })}
-                      {ContextData?.marital?.length !== "" &&
+                      {ContextData?.marital?.length !== '' &&
                         ContextData?.marital?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
-                              <CrossIcon onClick={() => onRemoveMarital(item)} />
+                              <CrossIcon
+                                onClick={() => onRemoveMarital(item)}
+                              />
                             </div>
                           );
                         })}
@@ -690,7 +745,7 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.income?.length !== "" &&
+                      {ContextData?.income?.length !== '' &&
                         ContextData?.income?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
@@ -708,12 +763,14 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.interest?.length !== "" &&
+                      {ContextData?.interest?.length !== '' &&
                         ContextData?.interest?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
-                              <CrossIcon onClick={() => onRemoveInterest(item)} />
+                              <CrossIcon
+                                onClick={() => onRemoveInterest(item)}
+                              />
                             </div>
                           );
                         })}
@@ -726,12 +783,14 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.language?.length !== "" &&
+                      {ContextData?.language?.length !== '' &&
                         ContextData?.language?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
-                              <CrossIcon onClick={() => onRemoveLanguage(item)} />
+                              <CrossIcon
+                                onClick={() => onRemoveLanguage(item)}
+                              />
                             </div>
                           );
                         })}
@@ -744,12 +803,14 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.industry?.length !== "" &&
+                      {ContextData?.industry?.length !== '' &&
                         ContextData?.industry?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
-                              <CrossIcon onClick={() => onRemoveIndustry(item)} />
+                              <CrossIcon
+                                onClick={() => onRemoveIndustry(item)}
+                              />
                             </div>
                           );
                         })}
@@ -762,7 +823,7 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.device?.length !== "" &&
+                      {ContextData?.device?.length !== '' &&
                         ContextData?.device?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
@@ -780,7 +841,7 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.carrier?.length !== "" &&
+                      {ContextData?.carrier?.length !== '' &&
                         ContextData?.carrier?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
@@ -798,7 +859,7 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.operatingSystem?.length !== "" &&
+                      {ContextData?.operatingSystem?.length !== '' &&
                         ContextData?.operatingSystem?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
@@ -816,7 +877,7 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.offLimit?.length !== "" &&
+                      {ContextData?.offLimit?.length !== '' &&
                         ContextData?.offLimit?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
@@ -846,7 +907,7 @@ export default function Persona() {
               <center>
                 <div className="flex justify-center w-full ">
                   <div className="flex">
-                    {" "}
+                    {' '}
                     <SpinnerCircular
                       color="white"
                       className="text-white h-6 w-6 mr-2"

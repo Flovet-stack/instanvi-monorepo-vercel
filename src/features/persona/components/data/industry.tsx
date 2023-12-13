@@ -1,8 +1,8 @@
-import React, { useState, useContext, FC } from "react";
-import Link from "next/link";
-import { AuthContext } from "@/components/context/context";
-import { v4 as uuid } from "uuid";
-import { CurrentUserContext } from "@/pages/_app";
+import React, { useState, useContext, FC } from 'react';
+import Link from 'next/link';
+import { AuthContext } from '@/components/context/context';
+import { v4 as uuid } from 'uuid';
+import { CurrentUserContext } from '@/pages/_app';
 
 interface Audience {
   id: number;
@@ -19,79 +19,79 @@ interface Step6Data {
 }
 
 function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 const Step6: FC = () => {
-  const data = useContext(CurrentUserContext as any) as any
+  const data = useContext(CurrentUserContext as any) as any;
   const [counts, setCounts] = useState<number>(0);
   const [audiences, setAudiences] = useState<any[]>([
     {
       step6: [
         {
           id: 1,
-          name: "Leisure",
+          name: 'Leisure',
           active: false,
         },
         {
           id: 2,
-          name: "Entertainment",
+          name: 'Entertainment',
           active: false,
         },
         {
           id: 3,
-          name: "Healthcare",
+          name: 'Healthcare',
           active: false,
         },
         {
           id: 4,
-          name: "Aerospace",
+          name: 'Aerospace',
           active: false,
         },
         {
           id: 5,
-          name: "Law",
+          name: 'Law',
           active: false,
         },
         {
           id: 6,
-          name: "Agriculture",
+          name: 'Agriculture',
           active: false,
         },
         {
           id: 7,
-          name: "Healthcare",
+          name: 'Healthcare',
           active: false,
         },
         {
           id: 8,
-          name: "Energy",
+          name: 'Energy',
           active: false,
         },
         {
           id: 9,
-          name: "Fashion",
+          name: 'Fashion',
           active: false,
         },
         {
           id: 10,
-          name: "Finance",
+          name: 'Finance',
           active: false,
         },
         {
           id: 11,
-          name: "Food/Beverages",
+          name: 'Food/Beverages',
           active: false,
         },
         {
           id: 12,
-          name: "Media/New",
+          name: 'Media/New',
           active: false,
         },
       ],
     },
   ]);
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>('');
 
   let length: number = 0;
 
@@ -126,83 +126,83 @@ const Step6: FC = () => {
       setAudiences(datas);
     }
 
-    if (name === "Leisure" && active === true && counts <= 5) {
+    if (name === 'Leisure' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Leisure"
+        (item: string) => item !== 'Leisure'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Leisure" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Leisure"]);
-    } else if (name === "Entertainment" && active === true && counts <= 5) {
+    } else if (name === 'Leisure' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Leisure']);
+    } else if (name === 'Entertainment' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Entertainment"
+        (item: string) => item !== 'Entertainment'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Entertainment" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Entertainment"]);
-    } else if (name === "Healthcare" && active === true && counts <= 5) {
+    } else if (name === 'Entertainment' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Entertainment']);
+    } else if (name === 'Healthcare' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Healthcare"
+        (item: string) => item !== 'Healthcare'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Healthcare" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Healthcare"]);
-    } else if (name === "Aerospace" && active === true && counts <= 5) {
+    } else if (name === 'Healthcare' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Healthcare']);
+    } else if (name === 'Aerospace' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Aerospace"
+        (item: string) => item !== 'Aerospace'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Aerospace" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Aerospace"]);
-    } else if (name === "Law" && active === true && counts <= 5) {
+    } else if (name === 'Aerospace' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Aerospace']);
+    } else if (name === 'Law' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Law"
+        (item: string) => item !== 'Law'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Law" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Law"]);
-    } else if (name === "Agriculture" && active === true && counts <= 5) {
+    } else if (name === 'Law' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Law']);
+    } else if (name === 'Agriculture' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Agriculture"
+        (item: string) => item !== 'Agriculture'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Agriculture" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Agriculture"]);
-    } else if (name === "Energy" && active === true && counts <= 5) {
+    } else if (name === 'Agriculture' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Agriculture']);
+    } else if (name === 'Energy' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Energy"
+        (item: string) => item !== 'Energy'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Energy" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Energy"]);
-    } else if (name === "Fashion" && active === true && counts <= 5) {
+    } else if (name === 'Energy' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Energy']);
+    } else if (name === 'Fashion' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Fashion"
+        (item: string) => item !== 'Fashion'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Fashion" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Fashion"]);
-    } else if (name === "Finance" && active === true && counts <= 5) {
+    } else if (name === 'Fashion' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Fashion']);
+    } else if (name === 'Finance' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Finance"
+        (item: string) => item !== 'Finance'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Finance" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Finance"]);
-    } else if (name === "Food/Beverages" && active === true && counts <= 5) {
+    } else if (name === 'Finance' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Finance']);
+    } else if (name === 'Food/Beverages' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Food/Beverages"
+        (item: string) => item !== 'Food/Beverages'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Food/Beverages" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Food/Beverages"]);
-    } else if (name === "Media/New" && active === true && counts <= 5) {
+    } else if (name === 'Food/Beverages' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Food/Beverages']);
+    } else if (name === 'Media/New' && active === true && counts <= 5) {
       let datss: string[] = data?.industry.filter(
-        (item: string) => item !== "Media/New"
+        (item: string) => item !== 'Media/New'
       );
       data?.setIndustry([...datss]);
-    } else if (name === "Media/New" && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, "Media/New"]);
+    } else if (name === 'Media/New' && active === false && counts < 5) {
+      data?.setIndustry([...data?.industry, 'Media/New']);
     }
   };
 
@@ -231,7 +231,7 @@ const Step6: FC = () => {
               </div>
               <div className="flex flex-nowrap mt-5">
                 {data?.advanceuserdata?.map((item: any) => {
-                  if (item.selected == true && item.name == "Physographic") {
+                  if (item.selected == true && item.name == 'Physographic') {
                     return (
                       <div className="rounded-full text-white text-sm w-fit bg-gray-600 px-2   ml-2">
                         <span className="-mt-4">{item.location}</span>
@@ -272,7 +272,7 @@ const Step6: FC = () => {
                       })}
                     </>
                   );
-                })}{" "}
+                })}{' '}
               </div>
               <p className="text-2xl font-bold flex justify-center mt-8">
                 {5 - length} Left
@@ -295,7 +295,7 @@ const Step6: FC = () => {
                       .map((item: any) => {
                         return (
                           <div className="mt-3">
-                            <button 
+                            <button
                               onClick={(e) => {
                                 handleAudience(
                                   e as any,
@@ -305,17 +305,19 @@ const Step6: FC = () => {
                                 );
                               }}
                               className={classNames(
-                                !data?.industry?.includes(item?.name) ? "" : "bg-green-600 text-white",
-                                "w-full flex justify-between py-3 rounded-md px-4 border border-gray-300"
+                                !data?.industry?.includes(item?.name)
+                                  ? ''
+                                  : 'bg-green-600 text-white',
+                                'w-full flex justify-between py-3 rounded-md px-4 border border-gray-300'
                               )}
                             >
                               <span>{item.name}</span>
                               <i
                                 className={classNames(
                                   !data?.industry?.includes(item?.name)
-                                    ? "ri-checkbox-blank-circle-line text-gray-300"
-                                    : "ri-checkbox-circle-line",
-                                  "  text-xl"
+                                    ? 'ri-checkbox-blank-circle-line text-gray-300'
+                                    : 'ri-checkbox-circle-line',
+                                  '  text-xl'
                                 )}
                               ></i>
                             </button>
@@ -331,6 +333,6 @@ const Step6: FC = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Step6
+export default Step6;

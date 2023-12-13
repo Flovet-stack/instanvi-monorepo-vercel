@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from 'react';
 
 interface Step {
   id: number;
@@ -16,62 +16,62 @@ const Index: FC = () => {
       step6: [
         {
           id: 1,
-          name: "Leisure",
+          name: 'Leisure',
           active: false,
         },
         {
           id: 2,
-          name: "Entertainment",
+          name: 'Entertainment',
           active: false,
         },
         {
           id: 3,
-          name: "Healthcare",
+          name: 'Healthcare',
           active: false,
         },
         {
           id: 4,
-          name: "Aerospace",
+          name: 'Aerospace',
           active: false,
         },
         {
           id: 5,
-          name: "Law",
+          name: 'Law',
           active: false,
         },
         {
           id: 6,
-          name: "Agriculture",
+          name: 'Agriculture',
           active: false,
         },
         {
           id: 7,
-          name: "Healthcare",
+          name: 'Healthcare',
           active: false,
         },
         {
           id: 8,
-          name: "Energy",
+          name: 'Energy',
           active: false,
         },
         {
           id: 9,
-          name: "Fashion",
+          name: 'Fashion',
           active: false,
         },
         {
           id: 10,
-          name: "Finance",
+          name: 'Finance',
           active: false,
         },
         {
           id: 11,
-          name: "Food/Beverages",
+          name: 'Food/Beverages',
           active: false,
         },
         {
           id: 12,
-          name: "Media/New",
+          name: 'Media/New',
           active: false,
         },
       ],
@@ -79,15 +79,15 @@ const Index: FC = () => {
   ]);
 
   useEffect(() => {
-    if (!localStorage.getItem("InterestData")) {
+    if (!localStorage.getItem('InterestData')) {
       function checkUserData(): void {
-        localStorage.setItem("InterestData", JSON.stringify(array));
+        localStorage.setItem('InterestData', JSON.stringify(array));
       }
       checkUserData();
     }
   }, []);
 
   return <></>;
-}
+};
 
-export default Index
+export default Index;

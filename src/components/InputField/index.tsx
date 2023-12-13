@@ -1,5 +1,11 @@
 import React from 'react';
-import { FieldErrors, FieldValues, Path } from 'react-hook-form';
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  FieldValues,
+  Path,
+} from 'react-hook-form';
 
 import { capitalizeFirstLetter } from '@/helpers';
 
@@ -23,6 +29,8 @@ export type InputFieldProps<T extends FieldValues> =
       radio?: boolean;
       options?: Option[];
       type: string;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      control: Control<any>;
       errors?: FieldErrors;
       width?: number;
       isInvalid?: boolean;
@@ -37,6 +45,7 @@ const InputField = <T extends FieldValues>({
   select,
   textarea,
   type,
+  control,
   checkbox,
   radio,
   errors,
@@ -46,72 +55,82 @@ const InputField = <T extends FieldValues>({
   ...props
 }: InputFieldProps<T>) => {
   return (
-    <div className="input-field">
-      {label && !checkbox && !radio && <label>{label}</label>}
-      {!select && (
-        <>
-          {!radio &&
-            !checkbox &&
-            (textarea ? (
-              <textarea
-                className={`w-full py-2.5 border ${
-                  errors && errors[name] ? 'border-red-500' : 'border-gray-200'
-                } rounded-md outline-none pl-2`}
-                placeholder={placeholder}
-                cols={cols}
-                rows={rows ? 1 : 10}
-                {...props}
-              />
-            ) : (
-              <input
-                className={`w-full py-2.5 border ${
-                  errors && errors[name] ? 'border-red-500' : 'border-gray-200'
-                } rounded-md outline-none pl-2`}
-                type={type}
-                placeholder={placeholder}
-                {...props}
-              />
-            ))}
-          {(checkbox || radio) && label && (
-            <div className={'checkbox-wrapper'}>
-              <input
-                className="form-checkbox"
-                type={type}
-                placeholder={placeholder}
-                {...props}
-                id={id}
-              />
-              <span></span>
-              <label htmlFor={id}>{label ?? ''}</label>
-            </div>
+    <Controller
+      control={control}
+      name={name}
+      render={() => (
+        <div className="input-field">
+          {label && !checkbox && !radio && <label>{label}</label>}
+          {!select && (
+            <>
+              {!radio &&
+                !checkbox &&
+                (textarea ? (
+                  <textarea
+                    className={`w-full py-2.5 border ${
+                      errors && errors[name]
+                        ? 'border-red-500'
+                        : 'border-gray-200'
+                    } rounded-md outline-none pl-2`}
+                    placeholder={placeholder}
+                    cols={cols}
+                    rows={rows ? 1 : 10}
+                    {...props}
+                  />
+                ) : (
+                  <input
+                    className={`w-full py-2.5 border ${
+                      errors && errors[name]
+                        ? 'border-red-500'
+                        : 'border-gray-200'
+                    } rounded-md outline-none pl-2`}
+                    type={type}
+                    placeholder={placeholder}
+                    {...props}
+                  />
+                ))}
+              {(checkbox || radio) && label && (
+                <div className={'checkbox-wrapper'}>
+                  <input
+                    className="form-checkbox"
+                    type={type}
+                    placeholder={placeholder}
+                    {...props}
+                    id={id}
+                  />
+                  <span></span>
+                  <label htmlFor={id}>{label ?? ''}</label>
+                </div>
+              )}
+            </>
           )}
-        </>
+          {select && (
+            <select
+              className={`w-full py-2.5 border  rounded-md outline-none pl-2`}
+              placeholder={placeholder}
+              {...props}
+            >
+              <option value="" selected disabled>
+                {placeholder}
+              </option>
+              {options &&
+                options.map((option: Option, index: number) => {
+                  return (
+                    <option key={index} value={option.value}>
+                      {option.label}
+                    </option>
+                  );
+                })}
+            </select>
+          )}
+          {errors && errors[name]?.message && (
+            <p className="field-error text-red-500 text-5">
+              {capitalizeFirstLetter(errors[name]?.message as string)}
+            </p>
+          )}
+        </div>
       )}
-      {select && (
-        <select
-          className={`w-full py-2.5 border  rounded-md outline-none pl-2`}
-          placeholder={placeholder}
-          {...props}
-        >
-          <option value="" selected disabled>
-            {placeholder}
-          </option>
-          {options &&
-            options.map((option: Option, index: number) => {
-              return (
-                <option key={index} value={option.value}>
-                  {option.label}
-                </option>
-              );
-            })}
-        </select>
-      )}
-      {errors && errors[name]?.message && (
-        <p className="field-error text-red-500 text-5">
-          {capitalizeFirstLetter(errors[name]?.message as string)}
-        </p>
-      )}
-    </div>
+    />
   );
 };
 

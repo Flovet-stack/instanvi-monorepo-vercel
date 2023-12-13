@@ -10,9 +10,7 @@ import { RootState } from '@/app/store';
 import { CustomButton, InputField, PasswordResetTimer } from '@/components';
 import { forgotPasswordByEmailThunk } from '@/redux/actions/authActions';
 
-type EmailFormProps = {
-  onSuccess: () => void;
-};
+interface EmailFormProps {}
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),

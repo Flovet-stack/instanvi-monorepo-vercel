@@ -1,1 +1,1 @@
-export * from './socialMedia'
+export * from './socialMedia';

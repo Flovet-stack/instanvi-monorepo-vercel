@@ -15,24 +15,24 @@ interface SchedulingProps {
 }
 
 const Scheduling: React.FC<SchedulingProps> = () => {
-  const [startDate, setStartDate] = useState<string>("Immediately");
-  const [stopDate, setStopDate] = useState<string>("Unlimited");
+  const [startDate, setStartDate] = useState<string>('Immediately');
+  const [stopDate, setStopDate] = useState<string>('Unlimited');
 
-  const [dayOfWeek, setDayOfWeek] = useState<string>("Monday");
-  const [startTime, setStartTime] = useState<string>("07:00 AM");
-  const [stopTime, setStopTime] = useState<string>("07:00 AM");
+  const [dayOfWeek, setDayOfWeek] = useState<string>('Monday');
+  const [startTime, setStartTime] = useState<string>('07:00 AM');
+  const [stopTime, setStopTime] = useState<string>('07:00 AM');
 
-  const [reach, setReach] = useState<string>("1000");
-  const [objective, setObjective] = useState<string>("");
-  const [frequence, setFrequence] = useState<string>("");
+  const [reach, setReach] = useState<string>('1000');
+  const [objective, setObjective] = useState<string>('');
+  const [frequence, setFrequence] = useState<string>('');
 
-  const [price, setPrice] = useState<string>("CMP");
-  const [bid, setBid] = useState<string>("5000");
-  const [currency, setCurrency] = useState<string>("");
+  const [price, setPrice] = useState<string>('CMP');
+  const [bid, setBid] = useState<string>('5000');
+  const [currency, setCurrency] = useState<string>('');
 
   return (
-    <div className='flex justify-evenly items-center mt-16'>
-      <div className='w-2/3'>
+    <div className="flex justify-evenly items-center mt-16">
+      <div className="w-2/3">
         <div className="flex flex-col">
           <div className="flex justify-between mb-5 gap-3 text-black">
             <div className="w-1/2">
@@ -41,7 +41,7 @@ const Scheduling: React.FC<SchedulingProps> = () => {
                 <input
                   type="text"
                   className="w-full py-2 pl-4 border border-gray-200 rounded-lg outline-none mt-2"
-                  placeholder=''
+                  placeholder=""
                   value={startDate}
                   onChange={(e) => {
                     setStartDate(e.target.value);
@@ -55,7 +55,7 @@ const Scheduling: React.FC<SchedulingProps> = () => {
                 <input
                   type="text"
                   className="w-full py-2 pl-4 border border-gray-200 rounded-lg outline-none mt-2"
-                  placeholder=''
+                  placeholder=""
                   value={stopDate}
                   onChange={(e) => {
                     setStopDate(e.target.value);
@@ -66,7 +66,7 @@ const Scheduling: React.FC<SchedulingProps> = () => {
           </div>
 
           <div className="flex flex-col mb-5 gap-3 text-black">
-            <h1 className=''>Specify week day and time</h1>
+            <h1 className="">Specify week day and time</h1>
             <div className="flex justify-between mb-5 gap-3 text-black">
               <div className="w-1/3">
                 <div className="">
@@ -74,7 +74,7 @@ const Scheduling: React.FC<SchedulingProps> = () => {
                   <input
                     type="date"
                     className="w-full py-2 px-4 border border-gray-200 rounded-lg outline-none mt-2"
-                    placeholder=''
+                    placeholder=""
                     value={dayOfWeek}
                     onChange={(e) => {
                       setDayOfWeek(e.target.value);
@@ -88,7 +88,7 @@ const Scheduling: React.FC<SchedulingProps> = () => {
                   <input
                     type="date"
                     className="w-full py-2 px-4 border border-gray-200 rounded-lg outline-none mt-2"
-                    placeholder=''
+                    placeholder=""
                     value={startTime}
                     onChange={(e) => {
                       setStartTime(e.target.value);
@@ -102,7 +102,7 @@ const Scheduling: React.FC<SchedulingProps> = () => {
                   <input
                     type="time"
                     className="w-full py-2 px-4 border border-gray-200 rounded-lg outline-none mt-2"
-                    placeholder=''
+                    placeholder=""
                     value={stopTime}
                     onChange={(e) => {
                       setStopTime(e.target.value);
@@ -116,13 +116,12 @@ const Scheduling: React.FC<SchedulingProps> = () => {
           <div className="flex flex-col mb-5 gap-3 text-black">
             <span className=" text-gray-400">Target caps(optional)</span>
             <div className="flex justify-between mb-5 gap-3 text-black">
-
               <div className="w-1/3">
                 <div className="">
                   <input
                     type="text"
                     className="w-full py-2 pl-4 border border-gray-200 rounded-lg outline-none mt-2"
-                    placeholder=''
+                    placeholder=""
                     value={reach}
                     onChange={(e) => {
                       setReach(e.target.value);
@@ -162,8 +161,6 @@ const Scheduling: React.FC<SchedulingProps> = () => {
                   </select>
                 </div>
               </div>
-
-
             </div>
           </div>
 
@@ -174,7 +171,7 @@ const Scheduling: React.FC<SchedulingProps> = () => {
                 <input
                   type="text"
                   className="w-full py-2 pl-4 border border-gray-200 rounded-lg outline-none mt-2"
-                  placeholder=''
+                  placeholder=""
                   value={price}
                   onChange={(e) => {
                     setPrice(e.target.value);
@@ -189,7 +186,7 @@ const Scheduling: React.FC<SchedulingProps> = () => {
                   <input
                     type="text"
                     className="py-2 pl-4 rounded-l-lg outline-none grow"
-                    placeholder=''
+                    placeholder=""
                     value={bid}
                     onChange={(e) => {
                       setBid(e.target.value);
@@ -207,7 +204,6 @@ const Scheduling: React.FC<SchedulingProps> = () => {
                     <option value="">XAF</option>
                   </select>
                 </div>
-
               </div>
             </div>
           </div>
@@ -215,6 +211,6 @@ const Scheduling: React.FC<SchedulingProps> = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Scheduling;

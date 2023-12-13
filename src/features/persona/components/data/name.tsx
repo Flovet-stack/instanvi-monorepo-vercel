@@ -1,11 +1,11 @@
-import React, { useState, useContext, ChangeEvent } from "react";
-import { AuthContext } from "@/components/context/context";
-import { CurrentUserContext } from "@/pages/_app";
+import React, { useState, useContext, ChangeEvent } from 'react';
+import { AuthContext } from '@/components/context/context';
+import { CurrentUserContext } from '@/pages/_app';
 
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
-  const data = useContext(CurrentUserContext as any) as any
+  const data = useContext(CurrentUserContext as any) as any;
 
   return (
     <div className="w-full flex justify-center">

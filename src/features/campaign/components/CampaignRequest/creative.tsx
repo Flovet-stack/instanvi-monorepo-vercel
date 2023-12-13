@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import Dropzone, { FileRejection } from "react-dropzone";
-import Router from "next/router";
+import React, { useState, useEffect } from 'react';
+import Dropzone, { FileRejection } from 'react-dropzone';
+import Router from 'next/router';
 
 interface CreativeProps {}
 
 const Creative: React.FC<CreativeProps> = () => {
-  const [url, setUrl] = useState<string>("");
-  const [media, setMedia] = useState<string>("");
+  const [url, setUrl] = useState<string>('');
+  const [media, setMedia] = useState<string>('');
   const [previewImage, setPreviewImage] = useState<File[]>([]);
 
   const removeFile = (file: File) => () => {
@@ -16,12 +16,12 @@ const Creative: React.FC<CreativeProps> = () => {
   };
 
   useEffect(() => {
-    const item = JSON.parse(localStorage.getItem("campaignData"));
+    const item = JSON.parse(localStorage.getItem('campaignData'));
     if (item) {
       item.map((items: any) => {
         return items.step3.map((dataItems: any) => {
-          if (dataItems.url !== "") setUrl(dataItems.url);
-          if (dataItems.sociMedia !== "") setMedia(dataItems.sociMedia);
+          if (dataItems.url !== '') setUrl(dataItems.url);
+          if (dataItems.sociMedia !== '') setMedia(dataItems.sociMedia);
         });
       });
     }
@@ -29,7 +29,7 @@ const Creative: React.FC<CreativeProps> = () => {
 
   const handleStep2 = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const item = JSON.parse(localStorage.getItem("campaignData"));
+    const item = JSON.parse(localStorage.getItem('campaignData'));
     if (item) {
       const datas = item.map((items: any) => {
         return {
@@ -45,9 +45,9 @@ const Creative: React.FC<CreativeProps> = () => {
           }),
         };
       });
-      localStorage.setItem("campaignData", JSON.stringify(datas));
+      localStorage.setItem('campaignData', JSON.stringify(datas));
       console.log(datas);
-      Router.push("step4");
+      Router.push('step4');
     }
   };
 
@@ -57,10 +57,10 @@ const Creative: React.FC<CreativeProps> = () => {
         <div className="w-full  md:w-[50%]     md:px-0 px-4">
           <div className="flex justify-evenly items-center">
             <h3 className="flex text-2xl">
-              Contact us if you need these{" "}
+              Contact us if you need these{' '}
               <button className="py-1.5 px-4 rounded bg-green-500 text-white ml-5 -mt-4 text-lg">
                 Contact&nbsp;us
-              </button>{" "}
+              </button>{' '}
             </h3>
           </div>
           <div className="mt-14">
@@ -97,7 +97,10 @@ const Creative: React.FC<CreativeProps> = () => {
             </p>
             <div className="w-full border-dashed border-2 border-gray-300 rounded-lg p-10">
               <Dropzone
-                onDrop={(acceptedFiles: File[], fileRejections: FileRejection[]) => {
+                onDrop={(
+                  acceptedFiles: File[],
+                  fileRejections: FileRejection[]
+                ) => {
                   setPreviewImage(
                     acceptedFiles.map((file) =>
                       Object.assign(file, {
@@ -111,7 +114,7 @@ const Creative: React.FC<CreativeProps> = () => {
                   <section className="wfp--dropzone">
                     <div
                       {...getRootProps({
-                        className: "wfp--dropzone__input ",
+                        className: 'wfp--dropzone__input ',
                       })}
                     >
                       <input {...getInputProps()} />
@@ -125,7 +128,7 @@ const Creative: React.FC<CreativeProps> = () => {
                           </span>
                           <br />
                           <span className="font-semibold mt-3">
-                            Or change and drop it here{" "}
+                            Or change and drop it here{' '}
                           </span>
                         </div>
                       </div>
@@ -141,11 +144,11 @@ const Creative: React.FC<CreativeProps> = () => {
                         src={file.preview}
                         className="bg-gray-500 bg-opacity-75 transition-opacity"
                         style={{
-                          objectFit: "cover",
-                          width: "100%",
-                          height: "100%",
-                          filter: "brightness(50%)",
-                          marginLeft: "10px",
+                          objectFit: 'cover',
+                          width: '100%',
+                          height: '100%',
+                          filter: 'brightness(50%)',
+                          marginLeft: '10px',
                         }}
                         alt={file.name}
                       />

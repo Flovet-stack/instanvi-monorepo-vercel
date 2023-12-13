@@ -1,20 +1,13 @@
-import { AuthLayout } from '@/layouts/auth-layout';
-import { NextRouter, useRouter } from 'next/router';
 import React from 'react';
+
+import { AuthLayout } from '@/layouts/auth-layout';
+
 import { NewPasswordForm } from '../components/forms';
 
-const NewPasswordPage = () => {
-  const router: NextRouter = useRouter();
-
-  const onSuccess = () => {
-    const redirect = router.query.redirect as string;
-    // local storage
-    router.replace(redirect || '/dashboard');
-  };
-
+const NewPasswordPage: React.FC = () => {
   return (
     <AuthLayout>
-      <NewPasswordForm onSuccess={onSuccess} />
+      <NewPasswordForm />
     </AuthLayout>
   );
 };

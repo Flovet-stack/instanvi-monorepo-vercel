@@ -1,1 +1,1 @@
-export * from  './advChannel'
+export * from './advChannel';
