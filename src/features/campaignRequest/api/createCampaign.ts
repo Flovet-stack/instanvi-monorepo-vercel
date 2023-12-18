@@ -1,17 +1,17 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { ChannelAPI } from '@/libs/instanvi-service';
+import { CampaignsAPI } from '@/libs/instanvi-service';
 
-import { Channel } from '@instanvi/client/api';
+import { Campaign } from '@instanvi/client/api';
 
 import toast from 'react-hot-toast';
 
 import { AxiosError, AxiosResponse } from 'axios';
 
-export const Channels = (data: Channel): Promise<AxiosResponse> => {
+export const Channels = (data: Campaign): Promise<AxiosResponse> => {
     console.log(data)
 
-    return ChannelAPI.createChannel(data) as any;
+    return CampaignsAPI.createCampaign("6c28de38-4ac6-4f9f-9b5e-08ffbd700543", data) as any;
 };
 
 type useChannel = {
@@ -23,7 +23,7 @@ const errorResponse = () => toast.error('An error has occured !!!');
 const successResponse = () => toast.success('Saved with success');
 
 
-export const useChannel = ({
+export const useCampaign = ({
     onSuccess,
 }: useChannel = {}) => {
     const { mutate: submit, isLoading } = useMutation({
@@ -32,8 +32,8 @@ export const useChannel = ({
             successResponse();
             console.log(data)
             onSuccess?.(data.data.data);
-            window.location = "/publisher/channel"
-            localStorage.removeItem("channel")
+            window.location = "/publisher/campaignRequest"
+
         },
         onError: (axiosError: AxiosError) => {
             errorResponse()

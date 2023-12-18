@@ -1,23 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
+import { userContext } from '@/Components/context/context'
+
 
 
 export default function Scheduling() {
+    const context = useContext(userContext)
 
-    const [startDate, setStartDate] = useState<string>("Immediately")
-    const [stopDate, setStopDate] = useState<string>("Unlimited")
-
-    const [dayOfWeek, setDayOfWeek] = useState<string>("Monday")
-    const [startTime, setStartTime] = useState<string>("07:00 AM")
-    const [stopTime, setStopTime] = useState<string>("07:00 AM")
-
-    const [reach, setReach] = useState<string>("1000")
-    const [objective, setObjective] = useState<string>("")
-    const [frequence, setFrequence] = useState<string>("")
-
-    const [price, setPrice] = useState<string>("CMP")
-    const [bid, setBid] = useState<string>("5000")
-    const [currency, setCurrency] = useState<string>("")
 
 
     return (
@@ -29,12 +18,13 @@ export default function Scheduling() {
                             <div className="">
                                 <span className="mb-3 text-gray-400">start Date</span>
                                 <input
-                                    type="text"
+                                    type="date"
                                     className="w-full py-2 pl-4 border border-gray-200 rounded-lg outline-none mt-2"
                                     placeholder=''
-                                    value={startDate}
+
                                     onChange={(e) => {
-                                        setStartDate(e.target.value);
+
+                                        context.setStartDate(e.target.value)
                                     }}
                                 />
                             </div>
@@ -43,12 +33,13 @@ export default function Scheduling() {
                             <div className="">
                                 <span className="mb-3 text-gray-400">Stop Date</span>
                                 <input
-                                    type="text"
+                                    type="date"
                                     className="w-full py-2 pl-4 border border-gray-200 rounded-lg outline-none mt-2"
                                     placeholder=''
-                                    value={stopDate}
+
                                     onChange={(e) => {
-                                        setStopDate(e.target.value);
+
+                                        context.setStopDate(e.target.value)
                                     }}
                                 />
                             </div>
@@ -65,9 +56,10 @@ export default function Scheduling() {
                                         type="date"
                                         className="w-full py-2 px-4 border border-gray-200 rounded-lg outline-none mt-2"
                                         placeholder=''
-                                        value={dayOfWeek}
+
                                         onChange={(e) => {
-                                            setDayOfWeek(e.target.value);
+
+                                            context.setDayOfWeek(e.target.value)
                                         }}
                                     />
                                 </div>
@@ -79,9 +71,10 @@ export default function Scheduling() {
                                         type="date"
                                         className="w-full py-2 px-4 border border-gray-200 rounded-lg outline-none mt-2"
                                         placeholder=''
-                                        value={startTime}
+
                                         onChange={(e) => {
-                                            setStartTime(e.target.value);
+
+                                            context.setStartTime(e.target.value)
                                         }}
                                     />
                                 </div>
@@ -93,9 +86,10 @@ export default function Scheduling() {
                                         type="time"
                                         className="w-full py-2 px-4 border border-gray-200 rounded-lg outline-none mt-2"
                                         placeholder=''
-                                        value={stopTime}
+
                                         onChange={(e) => {
-                                            setStopTime(e.target.value);
+
+                                            context.setStopTime(e.target.value)
                                         }}
                                     />
                                 </div>
@@ -113,9 +107,10 @@ export default function Scheduling() {
                                         type="text"
                                         className="w-full py-2 pl-4 border border-gray-200 rounded-lg outline-none mt-2"
                                         placeholder=''
-                                        value={reach}
+
                                         onChange={(e) => {
-                                            setReach(e.target.value);
+
+                                            context.setReach(e.target.value)
                                         }}
                                     />
                                 </div>
@@ -127,12 +122,14 @@ export default function Scheduling() {
                                         name=""
                                         className="w-full py-2.5 pl-4 border border-gray-200 rounded-lg outline-none mt-2"
                                         id=""
-                                        value={objective}
+
                                         onChange={(e) => {
-                                            setObjective(e.target.value);
+
+                                            context.setObjective(e.target.value)
                                         }}
                                     >
                                         <option value="Impressions">Impressions</option>
+                                        <option value="Dimpressions">Dimpressions</option>
                                     </select>
                                 </div>
                             </div>
@@ -143,12 +140,16 @@ export default function Scheduling() {
                                         name=""
                                         className="w-full py-2.5 pl-4 border border-gray-200 rounded-lg outline-none mt-2"
                                         id=""
-                                        value={frequence}
+
                                         onChange={(e) => {
-                                            setFrequence(e.target.value);
+
+                                            context.setFrequence(e.target.value)
                                         }}
                                     >
-                                        <option value="Impressions">Daily</option>
+                                        <option value="Daily">Daily</option>
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Weekly">Weekly</option>
+                                        <option value="Yearly">Yearly</option>
                                     </select>
                                 </div>
                             </div>
@@ -165,9 +166,10 @@ export default function Scheduling() {
                                     type="text"
                                     className="w-full py-2 pl-4 border border-gray-200 rounded-lg outline-none mt-2"
                                     placeholder=''
-                                    value={price}
+
                                     onChange={(e) => {
-                                        setPrice(e.target.value);
+
+                                        context.setPrice(e.target.value)
                                     }}
                                 />
                             </div>
@@ -180,22 +182,24 @@ export default function Scheduling() {
                                         type="text"
                                         className="py-2 pl-4 rounded-l-lg outline-none grow"
                                         placeholder=''
-                                        value={bid}
+
                                         onChange={(e) => {
-                                            setBid(e.target.value);
+
+                                            context.setBid(e.target.value)
                                         }}
                                     />
-                                    <select
+                                    {/* <select
                                         name=""
                                         className="py-2.5 pl-4 border-l rounded-r-lg outline-none"
                                         id=""
                                         value={currency}
                                         onChange={(e) => {
                                             setCurrency(e.target.value);
+                                             
                                         }}
                                     >
                                         <option value="">XAF</option>
-                                    </select>
+                                    </select> */}
                                 </div>
 
                             </div>

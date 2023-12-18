@@ -47,7 +47,7 @@ export default function Left() {
                             <div className="flex justify-center w-full py-4">
                                 <div>
                                     <span>Audience Size</span>
-                                    <h1 className="text-3xl mt-2 text-center">250k</h1>
+                                    <h1 className="text-3xl mt-2 text-center">{data?.data.data.audience_number}</h1>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,7 @@ export default function Left() {
                             </div>
                         </div>
                         <div className="flex flex-wrap mt-8">
-                            {
+                            {/* {
                                 data?.data.data.marital_status.map((item: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, id: React.Key | null | undefined) => {
                                     return (
                                         <div key={id} className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
@@ -106,7 +106,7 @@ export default function Left() {
                                         </div>
                                     )
                                 })
-                            }
+                            } */}
 
                             <div className="px-2 bg-[#f5f5f5] rounded-xl mt-1">
                                 <span>{data?.data.data.team_size}</span>

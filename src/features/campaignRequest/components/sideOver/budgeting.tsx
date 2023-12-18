@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Router from "next/router";
+import { userContext } from "@/Components/context/context";
 
 // function to add classes conditions
 function classNames(...classes: string[]): string {
@@ -7,71 +8,26 @@ function classNames(...classes: string[]): string {
 }
 
 export default function Budgeting() {
+    const context = useContext(userContext)
     const [stepOne, setStepOne] = useState<boolean>(true);
     const [stepTwo, setStepTwo] = useState<boolean>(false);
-    const [budget, setBudget] = useState<string>("");
-    const [currency, setCurrency] = useState<string>("");
-    const [leads, setLeads] = useState<string>("");
-    const [sales, setSales] = useState<string>("");
-    const [visitors, setVisitors] = useState<string>("");
-    const [appDownload, setAppDownload] = useState<string>("");
 
-    const handleStepOne = (e: React.FormEvent<HTMLFormElement>) => {
+
+    const handleStepOne = (e: any) => {
         e.preventDefault();
         setStepOne(true);
         setStepTwo(false);
     };
 
-    const handleStepTwo = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleStepTwo = (e: any) => {
         e.preventDefault();
         setStepOne(false);
         setStepTwo(true);
     };
 
-    useEffect(() => {
-        const item = JSON.parse(localStorage.getItem("campaignData") || '{}');
-        if (item) {
-            item.map((items: any) => {
-                return items.step8.map((dataItems: any) => {
-                    if (dataItems.budget !== "") setBudget(dataItems.budget);
-                    if (dataItems.currency !== "") setCurrency(dataItems.currency);
-                    if (dataItems.leads !== "") setLeads(dataItems.leads);
-                    if (dataItems.sales !== "") setSales(dataItems.sales);
-                    if (dataItems.visitors !== "") setVisitors(dataItems.visitors);
-                    if (dataItems.appDownloads !== "")
-                        setAppDownload(dataItems.appDownloads);
-                });
-            });
-        }
-    }, []);
 
-    const handleStep8 = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const item = JSON.parse(localStorage.getItem("campaignData") || '{}');
-        if (item) {
-            const datas = item.map((items: any) => {
-                return {
-                    ...items,
-                    step8: items.step8.map((dataItems: any) => {
-                        if (dataItems) {
-                            return {
-                                ...dataItems,
-                                budget: budget,
-                                currency: currency,
-                                leads: leads,
-                                sales: sales,
-                                visitors: visitors,
-                                appDownloads: appDownload,
-                            };
-                        }
-                    }),
-                };
-            });
-            localStorage.setItem("campaignData", JSON.stringify(datas));
-            console.log(datas);
-            Router.push("step");
-        }
-    };
+
+
 
     return (
         <div className="justify-center flex">
@@ -79,7 +35,7 @@ export default function Budgeting() {
                 <div className="w-full bg-white">
                     <div className="flex justify-between w-full px-3">
                         <div
-                            onClick={() => handleStepOne}
+                            onClick={(e) => handleStepOne(e)}
                             className={classNames(
                                 stepOne ? "border-b-2 border-gray-900 font-bold" : "",
                                 "w-full px-5 cursor-pointer text-lg py-5"
@@ -88,7 +44,7 @@ export default function Budgeting() {
                             <span>Advert</span>
                         </div>
                         <div
-                            onClick={() => handleStepTwo}
+                            onClick={(e) => handleStepTwo(e)}
                             className={classNames(
                                 stepTwo ? "border-b-2 border-gray-900 font-bold" : "",
                                 "w-full px-5 cursor-pointer text-lg py-5"
@@ -109,8 +65,8 @@ export default function Budgeting() {
                             <div className="w-[75%]">
                                 <input
                                     type="number"
-                                    value={budget}
-                                    onChange={(e) => setBudget(e.target.value)}
+
+                                    onChange={(e) => context.setbudgetCurrency(e.target.value)}
                                     className="mr-10 rounded py-2 w-full border px-2 outline-none"
                                     placeholder="200000"
                                 />
@@ -119,11 +75,10 @@ export default function Budgeting() {
                                 <select
                                     name=""
                                     id=""
-                                    value={currency}
-                                    onChange={(e) => setCurrency(e.target.value)}
-                                    className="ml-5 rounded w-full py-2 border outline-none"
+                                    onChange={(e) => context.setcurrency(e.target.value)}
+                                    className="ml-5 rounded pl-2 w-full py-2 border outline-none"
                                 >
-                                    <option value=""></option>
+                                    <option value="">Currency</option>
                                     <option value="USD">USD</option>
                                     <option value="XAF">XAF</option>
                                     <option value="EUR">EUR</option>
@@ -154,8 +109,8 @@ export default function Budgeting() {
                                 <td>
                                     <input
                                         type="text"
-                                        value={leads}
-                                        onChange={(e) => setLeads(e.target.value)}
+
+                                        onChange={(e) => context.setLeads(e.target.value)}
                                         className="w-full border rounded mx outline-none py-2.5 pl-2 my-4"
                                     />
                                 </td>
@@ -170,8 +125,8 @@ export default function Budgeting() {
                                 <td>
                                     <input
                                         type="text"
-                                        value={sales}
-                                        onChange={(e) => setSales(e.target.value)}
+
+                                        onChange={(e) => context.setSales(e.target.value)}
                                         className="w-full border rounded mx outline-none py-2.5 pl-2 my-4"
                                     />
                                 </td>
@@ -186,8 +141,8 @@ export default function Budgeting() {
                                 <td>
                                     <input
                                         type="text"
-                                        value={visitors}
-                                        onChange={(e) => setVisitors(e.target.value)}
+
+                                        onChange={(e) => context.setvisitors(e.target.value)}
                                         className="w-full border rounded mx outline-none py-2.5 pl-2 my-4"
                                     />
                                 </td>
@@ -202,8 +157,8 @@ export default function Budgeting() {
                                 <td>
                                     <input
                                         type="text"
-                                        value={appDownload}
-                                        onChange={(e) => setAppDownload(e.target.value)}
+
+                                        onChange={(e) => context.setAppDowload(e.target.value)}
                                         className="w-full border rounded mx outline-none py-2.5 pl-2 mt-4"
                                     />
                                 </td>

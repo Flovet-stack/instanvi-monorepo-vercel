@@ -126,7 +126,7 @@ export const NewAdvertSlider = () => {
                                             }
                                         >
                                             <i className="ri-add-line text-2xl"></i>
-                                            <p>New Advert</p>
+                                            <p>New Campaign</p>
                                         </button>
                                     </div>
                                 </div>

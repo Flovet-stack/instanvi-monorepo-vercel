@@ -80,17 +80,11 @@ const Audience: FC = () => {
             });
         }
         setUpdatedPeople(newPeople);
-        if (newPeople.length > 0) {
-            newPeople.map((items: { percentage: number }) => {
-                context.setT_Audience((count: number) => count + items.percentage);
-            });
-        }
     };
 
     React.useEffect(() => {
-        // localStorage.setItem("channel", JSON.stringify({ ...storage, audience_description: { ...storage.audience_description, marital_status: updatedPeople } }))
-        // console.log(updatedPeople);
-        context.setMaritalStatus(updatedPeople)
+        localStorage.setItem("channel", JSON.stringify({ ...storage, audience_description: { ...storage.audience_description, marital_status: updatedPeople } }))
+        console.log(updatedPeople);
     }, [updatedPeople]);
 
 

@@ -3,13 +3,18 @@ import Left from "./left";
 import Right from "./right";
 import { useChannel } from "@/features/channel/api/getChannel";
 import { Loading } from '@/features/channel';
+import Router, { useRouter } from "next/router";
+
 
 export const ViewChannel = () => {
-
-    const { data, isLoading } = useChannel('3a071142-c261-4599-a6c3-5acd05c60474')
+    const { asPath } = useRouter();
+    const strings = asPath;
+    const res = strings.split("?");
+    console.log(res)
+    const { data, isLoading } = useChannel(res[1])
 
     React.useEffect(() => {
-        console.log(data);
+        console.log(res);
     }, [])
 
     return (

@@ -8,7 +8,14 @@ interface Languages {
 }
 const Language: FC = () => {
     const context = useContext(userContext)
+    const [storage, setStorage] = useState(
+        typeof window !== 'undefined' ?
+            JSON.parse(localStorage.getItem('channel') || '{}')
+            :
+            ""
+    )
     const [selectedOption, setSelectedOption] = useState<string>();
+    const [selectedLanguage, setSelectedLanguage] = useState<string[]>([])
     const [languages, setLanguage] = useState<Languages[]>([
         { name: "English", id: 1 },
         { name: "French", id: 2 },
@@ -30,13 +37,15 @@ const Language: FC = () => {
                                 options={languages}
                                 displayValue="name"
                                 onSelect={(selected, item) => {
+                                    context.setLanguage(selected)
                                     setSelectedOption(selected);
                                     console.log(selected);
-                                    context.setLanguage(selected)
+                                    // localStorage.setItem("channel", JSON.stringify({ ...storage, audience_description: { ...storage.audience_description, languages: selected } }))
                                 }}
                                 onRemove={(selected, item) => {
-                                    setSelectedOption(selected);
                                     context.setLanguage(selected)
+                                    setSelectedOption(selected);
+                                    // localStorage.setItem("channel", JSON.stringify({ ...storage, audience_description: { ...storage.audience_description, languages: selected } }))
                                 }}
                             // onSelect={handleTypeSelect}
                             // onRemove={handleTypeRemove}

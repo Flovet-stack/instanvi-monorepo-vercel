@@ -1,8 +1,10 @@
-import React, { FC, useState } from 'react';
+import { userContext } from '@/Components/context/context';
+import React, { FC, useContext, useState } from 'react';
 
 interface ObjectivesProps { }
 
 const Objectives: FC<ObjectivesProps> = () => {
+    const context = useContext(userContext)
     const [sales, setSales] = useState<boolean>(false);
     const [leads, setLeads] = useState<boolean>(false);
     const [webTraffic, setWebTraffic] = useState<boolean>(false);
@@ -21,6 +23,7 @@ const Objectives: FC<ObjectivesProps> = () => {
         setLocalStore(objective === 'Local Store');
         setCollectData(objective === 'Collect Data');
         setIndustryAuthority(objective === 'Industry Authority');
+        context.setObjectives(objective)
     };
 
     return (
@@ -30,7 +33,7 @@ const Objectives: FC<ObjectivesProps> = () => {
                     <div className="title flex py-8">
                         <h1 className="text-2xl">Choose your campaign objective</h1>
                     </div>
-                    <div className="objectives grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-4 ">
+                    <div className="objectives grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 gap-4 ">
                         <div onClick={() => HandleObjectivesChange('Sales')} className="border rounded-lg p-4 pb-16 cursor-pointer">
                             <div className="flex justify-between">
                                 <img src="../../images/sales.svg" className="h-10 w-10" alt="" />

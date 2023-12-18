@@ -29,11 +29,20 @@ export function Register({ users }: RegisterProps) {
   const { t } = useTranslation('translation', { useSuspense: false });
   const router: NextRouter = useRouter();
   const redirect: string = router.query.redirect as string;
+
   const [storage, setStorage] = useState(
     typeof window !== 'undefined'
       ? JSON.parse(localStorage.getItem('channel') || '{}')
       : ''
   );
+  React.useEffect(() => {
+    // console.log(localStorage.getItem('channel'))
+    if (localStorage.getItem('channel') == null) {
+      localStorage.setItem('channel', JSON.stringify({}))
+
+    }
+
+  }, [])
 
   const {
     register,
@@ -51,8 +60,33 @@ export function Register({ users }: RegisterProps) {
   });
 
   const onSubmitHandler = (data: any) => {
-    localStorage.setItem('channel', JSON.stringify(data));
-    router.replace(redirect || '/publisher/channel/advertissementChannel');
+    const datas: any = localStorage.getItem('channel')
+    console.log(JSON.stringify(data))
+    if (datas.industry_of_focus) {
+      localStorage.setItem('channel', JSON.stringify(data));
+      router.replace(redirect || '/publisher/channel/advertissementChannel');
+    }
+    else {
+      localStorage.setItem("channel", JSON.stringify(
+        {
+          ...storage,
+          first_name: data.first_name,
+          last_name: data.first_name,
+          name: data.name,
+          industry: data.industry,
+          team_size: data.team_size,
+          // industry_of_focus: [],
+          // audience_description: {
+          //   age_distribution: [],
+          //   marital_status: [],
+          //   language: [],
+          //   income_level: []
+          // }
+        }
+      )
+      )
+      router.replace(redirect || '/publisher/channel/advertissementChannel');
+    }
   };
 
   return (

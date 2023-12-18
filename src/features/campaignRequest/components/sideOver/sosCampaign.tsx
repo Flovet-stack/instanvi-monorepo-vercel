@@ -23,7 +23,7 @@ const SOSCampaign: FC = () => {
 
     useEffect(() => {
         const item: CampaignData[] = JSON.parse(
-            localStorage.getItem("campaignData") || ""
+            localStorage.getItem("campaignData") || "[]"
         );
         if (item) {
             item.map((items) => {

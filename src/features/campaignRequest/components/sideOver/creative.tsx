@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
 import Router from "next/router";
+import { userContext } from '@/Components/context/context'
+
 
 interface CreativeProps { }
 
 const Creative: React.FC<CreativeProps> = () => {
+    const context = useContext(userContext)
     const [url, setUrl] = useState<string>("");
     const [media, setMedia] = useState<string>("");
     const [previewImage, setPreviewImage] = useState<File[]>([]);
@@ -18,12 +21,12 @@ const Creative: React.FC<CreativeProps> = () => {
     useEffect(() => {
         const item = JSON.parse(localStorage.getItem("campaignData") || '{}');
         if (item) {
-            item.map((items: any) => {
-                return items.step3.map((dataItems: any) => {
-                    if (dataItems.url !== "") setUrl(dataItems.url);
-                    if (dataItems.sociMedia !== "") setMedia(dataItems.sociMedia);
-                });
-            });
+            // item.map((items: any) => {
+            //     return items.step3.map((dataItems: any) => {
+            //         if (dataItems.url !== "") setUrl(dataItems.url);
+            //         if (dataItems.sociMedia !== "") setMedia(dataItems.sociMedia);
+            //     });
+            // });
         }
     }, []);
 
@@ -58,7 +61,7 @@ const Creative: React.FC<CreativeProps> = () => {
                     <div className="flex justify-evenly items-center">
                         <h3 className="flex text-2xl">
                             Contact us if you need these{" "}
-                            <button className="py-1.5 px-4 rounded bg-green-500 text-white ml-5 -mt-4 text-lg">
+                            <button className="h-8 w-auto mt-3 px-4 rounded bg-green-500 text-white ml-5 -mt-4 text-lg">
                                 Contact&nbsp;us
                             </button>{" "}
                         </h3>
@@ -68,10 +71,13 @@ const Creative: React.FC<CreativeProps> = () => {
                             <span className="my-1">Website Url (Optional)</span>
                             <input
                                 type="text"
-                                value={url}
-                                onChange={(e) => {
-                                    setUrl(e.target.value);
+
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+
+                                    context.setUrl(e.target.value)
+                                    // ContextData.setPlacementDetails([...ContextData.placementDetails, Business]);
                                 }}
+
                                 className="w-full py-2.5 border mt-1 border-gray-200 mr-1  rounded-lg outline-none pl-2"
                                 placeholder="Enter Campaign"
                             />
@@ -82,9 +88,10 @@ const Creative: React.FC<CreativeProps> = () => {
                         <span className="my-1">Social Media page (optional)</span>
                         <input
                             type="text"
-                            value={media}
-                            onChange={(e) => {
-                                setMedia(e.target.value);
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+
+                                context.setMedia(e.target.value)
+                                // ContextData.setPlacementDetails([...ContextData.placementDetails, Business]);
                             }}
                             className="w-full py-2.5 border mt-1 border-gray-200 ml-1 rounded-lg outline-none pl-2"
                             placeholder="Product ABC"

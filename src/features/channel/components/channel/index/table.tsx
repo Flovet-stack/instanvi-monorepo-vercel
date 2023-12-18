@@ -43,6 +43,7 @@ const columns: GridColDef[] = [
   { flex: 1, field: "location", headerName: "Location", width: 30 },
   { flex: 1, field: "industry", headerName: "Industry", width: 30 },
   { flex: 1, field: "currency", headerName: "Currency", width: 30 },
+  { flex: 1, field: "audience_number", headerName: "Audience Number", width: 30 },
   {
     flex: 1,
     field: "Action",
@@ -53,7 +54,7 @@ const columns: GridColDef[] = [
       const datass = JSON.stringify(params.row, null, 4);
       // const d = JSON.parse(datass);
       const handleRouter = (id: any) => {
-        router.push(`/publisher/channel/view?${id}`)
+        window.open(`/publisher/channel/view?${id}`, '_blank');
       }
       return (
         <div className="flex">
@@ -65,9 +66,6 @@ const columns: GridColDef[] = [
   },
 
 ];
-
-
-
 
 
 export default function DataTable() {
@@ -106,7 +104,6 @@ export default function DataTable() {
         getRowId={(row) => row.uuid}
         slots={{ toolbar: GridToolbar }}
         pageSizeOptions={[5, 10]}
-        checkboxSelection
       />
     </div>
   );

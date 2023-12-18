@@ -9,6 +9,7 @@ import MaritalStatus from './maritalstatus'
 import { NextRouter, useRouter } from 'next/router';
 import { userContext } from "@/Components/context/context";
 import { useActiveMenu } from "react-active-menu"
+import { Context } from "../../context";
 
 
 
@@ -41,10 +42,6 @@ function classNames(...classes: string[]): string {
 
 export const Details = ({ users, publisher }: Props) => {
     const context = useContext(userContext)
-    const { registerContainer, registerSection, registerTrigger, activeId } = useActiveMenu({
-        offset: 60,
-        smooth: true
-    })
     const [storage, setStorage] = useState(
         typeof window !== 'undefined' ?
             JSON.parse(localStorage.getItem('channel') || '{}')
@@ -53,29 +50,33 @@ export const Details = ({ users, publisher }: Props) => {
     )
     const router: NextRouter = useRouter();
     const redirect: string = router.query.redirect as string;
-    const [firstTap, setFirstTap] = useState<boolean>(true);
-    const [secondTap, setSecondTap] = useState<boolean>(false);
-    const [thirdTap, setThirdTap] = useState<boolean>(false);
+    const { registerContainer, registerSection, registerTrigger, activeId } = useActiveMenu({
+        offset: 60,
+        smooth: true
+    })
 
 
     const handleDetails = async (e: any) => {
-
+        e.preventDefault()
         localStorage.setItem("channel", JSON.stringify(
             {
                 ...storage,
-                age_distribution: context.ageDistribution,
-                marital_status: context.maritalStatus,
-                languages: context.language,
-                industry_focus: context.audience,
-                cover_photo: "https://images.icon",
-                logo: "https://images.icon",
-                income_levels: context.incomeLevel,
-                location: context.location,
-                is_network: false,
-                url: "https://instanvi.com",
-                currency: "FCFA",
-                revenue: "12000000",
-                bio: "I'm a good guy"
+                revenue: "1-6",
+                bio: "This is me",
+                currency: "magnam",
+                logo: "https://loremflickr.com/640/480?lock=6793668293820416",
+                cover_photo: "https://loremflickr.com/640/480?lock=4056800133382144",
+                location: "North Jarrellberg",
+                url: "https://understated-provider.name",
+                is_network: true,
+                industry_of_focus: context.audience,
+                audience_number: context.t_audience,
+                audience_description: {
+                    age_distribution: context.ageDistribution,
+                    marital_status: context.maritalStatus,
+                    language: context.language,
+                    income_level: context.incomeLevel
+                },
             }))
         router.replace(redirect || '/publisher/channel/psycographics')
     }

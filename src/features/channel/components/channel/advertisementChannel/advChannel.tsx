@@ -13,13 +13,11 @@ export function AdChannels(): JSX.Element {
             ""
     )
 
-
     // connect
 
-
-    const handleChannel = (e: React.MouseEvent<HTMLDivElement>, channel: string): void => {
+    const handleChannel = (e: React.MouseEvent<HTMLDivElement>, channel: string, links: string): void => {
         localStorage.setItem("channel", JSON.stringify({ ...storage, category: channel }))
-        router.replace(redirect || `/publisher/channel/${channel}`)
+        router.replace(redirect || `/publisher/channel/${links}`)
     };
 
 
@@ -38,7 +36,7 @@ export function AdChannels(): JSX.Element {
                                 <div className="w-full">
                                     <div
                                         onClick={(e) => {
-                                            handleChannel(e, "advertissementChannel");
+                                            handleChannel(e, "advertissementChannel", "advertissementChannel");
                                         }}
                                         className="flex justify-between py-6 border-b px-4 w-full cursor-pointer"
                                     >
@@ -61,7 +59,7 @@ export function AdChannels(): JSX.Element {
                                     </div>
                                     <div
                                         onClick={(e) => {
-                                            handleChannel(e, "advertissementChannel");
+                                            handleChannel(e, "advertissementChannel", "advertissementChannel");
                                         }}
                                         className="flex justify-between py-6 border-b px-4 w-full cursor-pointer"
                                     >
@@ -85,7 +83,7 @@ export function AdChannels(): JSX.Element {
                                     </div>
                                     <div
                                         onClick={(e) => {
-                                            handleChannel(e, "mediaChannel");
+                                            handleChannel(e, "mediaChannel", "advertissementChannel");
                                         }}
                                         className="flex justify-between py-6 border-b px-4 w-full cursor-pointer"
                                     >
@@ -102,7 +100,7 @@ export function AdChannels(): JSX.Element {
                                     </div>
                                     <div
                                         onClick={(e) => {
-                                            handleChannel(e, "displayChannel");
+                                            handleChannel(e, "EVENT", "mediaChannel");
                                         }}
                                         className="flex justify-between py-6 border-b px-4 w-full cursor-pointer"
                                     >
@@ -110,16 +108,16 @@ export function AdChannels(): JSX.Element {
                                             <img src="/images/Icon-Set.svg" className="mr-5" alt="" />
                                             <div className="ml-3">
                                                 <h6 className="font-semibold text-lg">
-                                                    Print & Display
+                                                    OOH and DOOH
                                                 </h6>
-                                                <p className="text-sm">Radio, Television, Podcast</p>
+                                                <p className="text-sm">Billboards, Openspaces</p>
                                             </div>
                                         </div>
                                         <i className="ri-arrow-right-s-line text-4xl mx-4 mt-1"></i>
                                     </div>
                                     <div
                                         onClick={(e) => {
-                                            handleChannel(e, "traditionalChannel");
+                                            handleChannel(e, "traditionalChannel", "traditionalChannel");
                                         }}
                                         className="flex justify-between py-6 border-b px-4 w-full cursor-pointer"
                                     >
@@ -139,7 +137,7 @@ export function AdChannels(): JSX.Element {
                                     </div>
                                     <div
                                         onClick={(e) => {
-                                            handleChannel(e, "traditionalChannel");
+                                            handleChannel(e, "traditionalChannel", "traditionalChannel");
                                         }}
                                         className="flex justify-between py-6 border-b px-4 w-full cursor-pointer"
                                     >
@@ -159,7 +157,7 @@ export function AdChannels(): JSX.Element {
                                     </div>
                                     <div
                                         onClick={(e) => {
-                                            handleChannel(e, "mediaChannel");
+                                            handleChannel(e, "mediaChannel", "mediaChannel");
                                         }}
                                         className="flex justify-between py-6 border-b px-4 w-full cursor-pointer"
                                     >

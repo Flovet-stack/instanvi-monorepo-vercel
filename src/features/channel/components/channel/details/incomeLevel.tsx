@@ -11,7 +11,13 @@ interface Name {
 
 const Income: FC = () => {
     const context = useContext(userContext)
-    const [checked, setChecked] = useState<string[]>([])
+    const [checkeds, setChecked] = useState<string[]>([])
+    const [storage, setStorage] = useState(
+        typeof window !== 'undefined' ?
+            JSON.parse(localStorage.getItem('channel') || '{}')
+            :
+            ""
+    )
 
     const [income, setIncome] = useState<Name[]>([{
         id: 1,
@@ -29,12 +35,16 @@ const Income: FC = () => {
 
 
     const onChangeValue = (e: any) => {
-        let newArrayLevel = [...checked, e.target.id]
-        if (checked.includes(e.target.id)) {
+        let newArrayLevel = [...checkeds, e.target.id]
+        if (checkeds.includes(e.target.id)) {
             newArrayLevel = newArrayLevel.filter(datas => datas !== e.target.id)
         }
         setChecked(newArrayLevel)
+        console.log(newArrayLevel)
+
+        // localStorage.setItem("channel", JSON.stringify({ ...storage, income_levels: newArrayLevel }))
         context.setIncomeLevel(newArrayLevel)
+
     }
 
     return (
@@ -48,11 +58,11 @@ const Income: FC = () => {
                         {
                             income.map((item, i) => {
                                 return (
-                                    <div className="flex">
+                                    <div className="flex" key={i}>
                                         <input
                                             type="checkbox"
                                             id={item.name}
-                                            value="low income"
+
                                             name="gender"
                                             onChange={(e) => onChangeValue(e)}
                                         />{" "}

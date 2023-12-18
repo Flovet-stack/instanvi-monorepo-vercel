@@ -14,6 +14,12 @@ const TopAudience: FC = () => {
     const context = useContext(userContext)
     const [audiences, setAudiences] = useState<string[]>([])
     const [data, setData] = useState<Datas[]>(Data)
+    const [storage, setStorage] = useState(
+        typeof window !== 'undefined' ?
+            JSON.parse(localStorage.getItem('channel') || '{}')
+            :
+            ""
+    )
 
     const handleAudience = (e: any, name: string, active: boolean, id: number) => {
         setData((prev) => prev.map((task) => {
@@ -28,6 +34,7 @@ const TopAudience: FC = () => {
         }
         setAudiences(newArrayAudience)
         context.setAudience(newArrayAudience)
+        // localStorage.setItem("channel", JSON.stringify({ ...storage, industry_of_focus: newArrayAudience }))
     }
 
     return (

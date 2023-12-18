@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
+import { userContext } from '@/Components/context/context'
+
 // import AuthContext from '@/Components/context'
 
 interface DetailProps {
 }
 
 const Detail: React.FC<DetailProps> = () => {
-    //   const ContextData = useContext(AuthContext)
+    const context = useContext(userContext)
     const [campaign, setCampaign] = useState<string>("");
     const [Business, setBusiness] = useState<string>("");
     const [industry, setIndustry] = useState<string>("");
@@ -15,40 +17,24 @@ const Detail: React.FC<DetailProps> = () => {
     const [array, setArray] = useState<string[]>([]);
 
 
-    const onChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onChangeValues = (event: React.ChangeEvent<HTMLInputElement>) => {
         setShipProducts(event.target.value);
         console.log(event.target.value);
+        context.setShipProducts(event.target.value)
         // ContextData.setPlacementDetails([...ContextData.placementDetails, shipProduct]);
     };
-
-    useEffect(() => {
-        const item = JSON.parse(localStorage.getItem("campaignData") || '{}');
-        if (item) {
-            item.map((items: any) => {
-                return items.step1.map((dataItems: any) => {
-                    if (dataItems.campaign !== "") setCampaign(dataItems.campaign);
-                    if (dataItems.productName !== "") setBusiness(dataItems.productName);
-                    if (dataItems.industry !== "") setIndustry(dataItems.industry);
-                    if (dataItems.nfs == true) setCheckbox(true);
-                    if (dataItems.shipping !== "") setShipProducts(dataItems.shipping);
-                    if (dataItems.teamsize !== "") setTeamsize(dataItems.teamsize);
-                });
-            });
-        }
-    }, []);
 
     return (
         <div className="bg-white mt-10">
             <div className="justify-center flex">
-                <div className="w-full  md:w-[38%]     md:px-0 px-4">
+                <div className="w-full  md:w-[38%] md:px-0 px-4">
                     <div className="">
                         <div className="mt-3">
                             <span className="my-1">Campaign</span>
                             <input
                                 type="text"
-                                defaultValue={campaign}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                    setCampaign(e.target.value);
+                                    context.setCampaign(e.target.value)
                                     //   ContextData.setPlacementDetails([...ContextData.placementDetails, campaign]);
                                 }}
                                 className="w-full py-2.5 border mt-1 border-gray-200 mr-1  rounded-lg outline-none pl-2"
@@ -63,9 +49,10 @@ const Detail: React.FC<DetailProps> = () => {
                             type="text"
                             className="w-full py-2.5 border mt-1 border-gray-200 ml-1 rounded-lg outline-none pl-2"
                             placeholder="Product ABC"
-                            value={Business}
+
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                setBusiness(e.target.value);
+
+                                context.setBusiness(e.target.value)
                                 // ContextData.setPlacementDetails([...ContextData.placementDetails, Business]);
                             }}
                         />
@@ -75,9 +62,10 @@ const Detail: React.FC<DetailProps> = () => {
                         <span className="my-1">Industry</span>
                         <select
                             name=""
-                            value={industry}
+
                             onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                                setIndustry(e.target.value);
+
+                                context.setIndustry(e.target.value)
                                 // ContextData.setPlacementDetails([...ContextData.placementDetails, industry]);
                             }}
                             className="w-full py-2.5 border mt-1 border-gray-200 ml-1 rounded-lg outline-none pl-2"
@@ -94,9 +82,10 @@ const Detail: React.FC<DetailProps> = () => {
                         <span className="my-1">Team Size</span>
                         <select
                             name=""
-                            value={Teamsize}
+
                             onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                                setTeamsize(e.target.value);
+
+                                context.setTeamSize(e.target.value)
                                 // ContextData.setPlacementDetails([...ContextData.placementDetails, Teamsize]);
                             }}
                             className="w-full py-2.5 border mt-1 border-gray-200 ml-1 rounded-lg outline-none pl-2"
@@ -114,6 +103,7 @@ const Detail: React.FC<DetailProps> = () => {
                             id="nfs"
                             onClick={() => {
                                 setCheckbox(!checkbox);
+                                context.setCheckbox(!checkbox)
                                 // ContextData.setPlacementDetails([...ContextData.placementDetails, checkbox]);
                             }}
                             checked={checkbox}
@@ -130,7 +120,7 @@ const Detail: React.FC<DetailProps> = () => {
                         <p>Do your ship physical products to customers?</p>
 
 
-                        <div onChange={onChangeValue} className="mt-2 flex justify-between">
+                        <div onChange={onChangeValues} className="mt-2 flex justify-between">
                             <div className="flex items-center mb-4">
                                 <input
                                     id="default-radio-1"
@@ -149,7 +139,6 @@ const Detail: React.FC<DetailProps> = () => {
                             </div>
                             <div className="flex items-center">
                                 <input
-
                                     id="default-radio-2"
                                     type="radio"
                                     value="no"
