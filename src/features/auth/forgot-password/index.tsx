@@ -1,18 +1,13 @@
-import { AuthLayout } from '@/layouts/auth-layout';
-import { NextRouter, useRouter } from 'next/router';
 import React from 'react';
+
+import { AuthLayout } from '@/layouts/auth-layout';
+
 import { EmailForm } from '../components/forms';
 
-const ForgotPasswordPage = () => {
-  const router: NextRouter = useRouter();
-  const onSuccess = () => {
-    const redirect = router.query.redirect as string;
-    // local storage
-    router.replace(redirect || '/auth/newPassword');
-  };
+const ForgotPasswordPage: React.FC = () => {
   return (
     <AuthLayout>
-      <EmailForm onSuccess={onSuccess} />
+      <EmailForm />
     </AuthLayout>
   );
 };

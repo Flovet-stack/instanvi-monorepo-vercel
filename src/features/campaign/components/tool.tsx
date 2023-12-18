@@ -1,6 +1,6 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 import React, { FC } from 'react';
-import Chart from "react-apexcharts";
+import Chart from 'react-apexcharts';
 
 interface Options {
   series: {
@@ -62,8 +62,8 @@ interface Options {
 const options: Options = {
   series: [
     {
-      name: "High - 2013",
-      data: [14, 12, 12, 13, 14, 15, 12]
+      name: 'High - 2013',
+      data: [14, 12, 12, 13, 14, 15, 12],
     },
   ],
   chart: {
@@ -75,11 +75,11 @@ const options: Options = {
       top: 18,
       left: 7,
       blur: 10,
-      opacity: 0.2
+      opacity: 0.2,
     },
     toolbar: {
-      show: true
-    }
+      show: true,
+    },
   },
   colors: ['#77B6EA', '#545454'],
   dataLabels: {
@@ -87,35 +87,35 @@ const options: Options = {
   },
   stroke: {
     curve: 'smooth',
-    width: "1"
+    width: '1',
   },
   grid: {
     borderColor: '#e7e7e7',
     row: {
       colors: ['#f3f3f3', 'transparent'],
-      opacity: 0.5
+      opacity: 0.5,
     },
   },
   xaxis: {
     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
     title: {
-      text: 'Month'
-    }
+      text: 'Month',
+    },
   },
   yaxis: {
     title: {
-      text: 'Temperature'
+      text: 'Temperature',
     },
     min: 10,
-    max: 16
+    max: 16,
   },
   legend: {
     position: 'top',
     horizontalAlign: 'right',
     floating: true,
     offsetY: -20,
-    offsetX: -5
-  }
+    offsetX: -5,
+  },
 };
 
 const Tools2: FC = () => {
@@ -386,6 +386,6 @@ const Tools2: FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Tools2;

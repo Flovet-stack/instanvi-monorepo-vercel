@@ -1,3 +1,5 @@
+'use client';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
@@ -54,7 +56,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
   const onSubmitHandler = (data: ILoginFormData) => {
     dispatch(loginThunk(data)).then(() => {
-      window.location.href = '/';
+      // window.location.href = '/';
     });
   };
 
@@ -153,14 +155,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
             </div>
           </>
         )}
-        <div className="mt-8">
-          <span className="text-sm">
-            Don&lsquo;t have an account ?{' '}
-            <a className="text-green-700" href="">
-              Get started
-            </a>
-          </span>
-        </div>
       </form>
     </div>
   );
