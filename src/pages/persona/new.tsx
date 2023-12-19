@@ -12,7 +12,8 @@ import Names from '../../features/persona/components/data/name';
 import toast from 'react-hot-toast';
 import Offlimit from '../../features/persona/components/data/offLimit';
 import { HeaderLayout } from '@/layouts/header-layout';
-import { CurrentUserContext } from '../_app';
+// import { CurrentUserContext } from '../_app';
+import { userContext } from '@/Components/context/context'
 import { useMutation } from '@tanstack/react-query';
 import { PersonasAPI } from '@/libs/instanvi-service';
 import CrossIcon from '@/features/persona/components/icons/cross';
@@ -20,7 +21,7 @@ import { useRouter } from 'next/router';
 
 export default function Persona() {
   const router = useRouter();
-  const ContextData = useContext(CurrentUserContext as any) as any;
+  const ContextData = useContext(userContext);
   const createPersona = useMutation(((data: any) =>
     PersonasAPI.createPersonas(
       '6c28de38-4ac6-4f9f-9b5e-08ffbd700543',
@@ -71,9 +72,9 @@ export default function Persona() {
         setOffLimit(true);
       } else if (
         evt.target.scrollTop >
-          window.innerHeight * 6 - (headerHeight as any) * 6 &&
+        window.innerHeight * 6 - (headerHeight as any) * 6 &&
         evt.target.scrollTop <
-          window.innerHeight * 7 - (headerHeight as any) * 7
+        window.innerHeight * 7 - (headerHeight as any) * 7
       ) {
         setLocation(false);
         setDemographic(false);
@@ -85,9 +86,9 @@ export default function Persona() {
         setOffLimit(false);
       } else if (
         evt.target.scrollTop >
-          window.innerHeight * 5 - (headerHeight as any) * 5 &&
+        window.innerHeight * 5 - (headerHeight as any) * 5 &&
         evt.target.scrollTop <
-          window.innerHeight * 6 - (headerHeight as any) * 6
+        window.innerHeight * 6 - (headerHeight as any) * 6
       ) {
         setLocation(false);
         setDemographic(false);
@@ -99,9 +100,9 @@ export default function Persona() {
         setDevice(false);
       } else if (
         evt.target.scrollTop >
-          window.innerHeight * 4 - (headerHeight as any) * 4 &&
+        window.innerHeight * 4 - (headerHeight as any) * 4 &&
         evt.target.scrollTop <
-          window.innerHeight * 5 - (headerHeight as any) * 5
+        window.innerHeight * 5 - (headerHeight as any) * 5
       ) {
         setLocation(false);
         setDemographic(false);
@@ -113,9 +114,9 @@ export default function Persona() {
         setDevice(false);
       } else if (
         evt.target.scrollTop >
-          window.innerHeight * 3 - (headerHeight as any) * 3 &&
+        window.innerHeight * 3 - (headerHeight as any) * 3 &&
         evt.target.scrollTop <
-          window.innerHeight * 4 - (headerHeight as any) * 4
+        window.innerHeight * 4 - (headerHeight as any) * 4
       ) {
         setLocation(false);
         setDemographic(false);
@@ -127,9 +128,9 @@ export default function Persona() {
         setDevice(false);
       } else if (
         evt.target.scrollTop >
-          window.innerHeight * 2 - (headerHeight as any) * 2 &&
+        window.innerHeight * 2 - (headerHeight as any) * 2 &&
         evt.target.scrollTop <
-          window.innerHeight * 3 - (headerHeight as any) * 3
+        window.innerHeight * 3 - (headerHeight as any) * 3
       ) {
         setLocation(false);
         setDemographic(true);
@@ -190,7 +191,7 @@ export default function Persona() {
     setAnimation(true);
     saveArrays.push(
       {
-        location: ContextData?.location.map((item: any) => {
+        location: ContextData?.locations.map((item: any) => {
           return item;
         }),
       },
@@ -220,7 +221,7 @@ export default function Persona() {
         }),
       },
       {
-        ethnicity: ContextData?.industry.map((item: any) => {
+        ethnicity: ContextData?.industries.map((item: any) => {
           return item;
         }),
       },
@@ -271,19 +272,19 @@ export default function Persona() {
         toast.success(`Persona ${ContextData.usern} created Succesfully`);
         router.push('persona');
         setAnimation(false);
-        ContextData.setUsern();
+        ContextData.setUsern("");
         ContextData.setAgeDistribution([]);
         ContextData.setMaritalStatus([]);
         ContextData.setIncomeLevel([]);
         ContextData.setLanguage([]);
         ContextData.setAudience([]);
-        ContextData.setLocation([]);
+        ContextData.setLocations([]);
         ContextData.setSex([]);
         ContextData.setAge([]);
         ContextData.setIncome([]);
         ContextData.setMarital([]);
         ContextData.setInterest([]);
-        ContextData.setIndustry([]);
+        ContextData.setIndustries([]);
         ContextData.setDevice([]);
         ContextData.setOperatingSystem([]);
         ContextData.setOffLimit([]);
@@ -339,10 +340,10 @@ export default function Persona() {
   };
 
   const onRemoveIndustry = (selectedItem: string): void => {
-    let context = ContextData?.industry.filter(
+    let context = ContextData?.industries.filter(
       (item: string) => item !== selectedItem
     );
-    ContextData?.setIndustry([...context]);
+    ContextData?.setIndustries([...context]);
   };
 
   return (
@@ -382,9 +383,8 @@ export default function Persona() {
                         behavior: 'smooth',
                       });
                     }}
-                    className={`${
-                      income ? 'border-r-2 border-green-500 text-green-500' : ''
-                    }  mt-3   text-lg cursor-pointer`}
+                    className={`${income ? 'border-r-2 border-green-500 text-green-500' : ''
+                      }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Name</p>
                   </div>
@@ -404,11 +404,10 @@ export default function Persona() {
                         behavior: 'smooth',
                       });
                     }}
-                    className={`${
-                      location
-                        ? 'border-r-2 border-green-500 text-green-500'
-                        : ''
-                    }  mt-3   text-lg cursor-pointer`}
+                    className={`${location
+                      ? 'border-r-2 border-green-500 text-green-500'
+                      : ''
+                      }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Location</p>
                   </div>
@@ -431,11 +430,10 @@ export default function Persona() {
                         behavior: 'smooth',
                       });
                     }}
-                    className={`${
-                      demographic
-                        ? 'border-r-2 border-green-500 text-green-500'
-                        : ''
-                    }  mt-3   text-lg cursor-pointer`}
+                    className={`${demographic
+                      ? 'border-r-2 border-green-500 text-green-500'
+                      : ''
+                      }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Demographics</p>
                   </div>
@@ -458,11 +456,10 @@ export default function Persona() {
                         behavior: 'smooth',
                       });
                     }}
-                    className={`${
-                      interest
-                        ? 'border-r-2 border-green-500 text-green-500'
-                        : ''
-                    }  mt-3   text-lg cursor-pointer`}
+                    className={`${interest
+                      ? 'border-r-2 border-green-500 text-green-500'
+                      : ''
+                      }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Interests</p>
                   </div>
@@ -485,11 +482,10 @@ export default function Persona() {
                         behavior: 'smooth',
                       });
                     }}
-                    className={`${
-                      language
-                        ? 'border-r-2 border-green-500 text-green-500'
-                        : ''
-                    }  mt-3   text-lg cursor-pointer`}
+                    className={`${language
+                      ? 'border-r-2 border-green-500 text-green-500'
+                      : ''
+                      }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Languages</p>
                   </div>
@@ -513,11 +509,10 @@ export default function Persona() {
                         behavior: 'smooth',
                       });
                     }}
-                    className={`${
-                      occupation
-                        ? 'border-r-2 border-green-500 text-green-500'
-                        : ''
-                    }  mt-3   text-lg cursor-pointer`}
+                    className={`${occupation
+                      ? 'border-r-2 border-green-500 text-green-500'
+                      : ''
+                      }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Occupation</p>
                   </div>
@@ -540,9 +535,8 @@ export default function Persona() {
                         behavior: 'smooth',
                       });
                     }}
-                    className={`${
-                      device ? 'border-r-2 border-green-500 text-green-500' : ''
-                    }  mt-3   text-lg cursor-pointer`}
+                    className={`${device ? 'border-r-2 border-green-500 text-green-500' : ''
+                      }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Device Type</p>
                   </div>
@@ -566,11 +560,10 @@ export default function Persona() {
                         behavior: 'smooth',
                       });
                     }}
-                    className={`${
-                      offLimit
-                        ? 'border-r-2 border-green-500 text-green-500'
-                        : ''
-                    }  mt-3   text-lg cursor-pointer`}
+                    className={`${offLimit
+                      ? 'border-r-2 border-green-500 text-green-500'
+                      : ''
+                      }  mt-3   text-lg cursor-pointer`}
                   >
                     <p>Off Limits</p>
                   </div>
@@ -686,8 +679,8 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.location?.length !== '' &&
-                        ContextData?.location?.map((item: any) => {
+                      {ContextData?.locations?.length !== '' &&
+                        ContextData?.locations?.map((item: any) => {
                           return (
                             <div className="rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               {item}
@@ -731,8 +724,7 @@ export default function Persona() {
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
                               <CrossIcon
-                                onClick={() => onRemoveMarital(item)}
-                              />
+                                onClick={() => onRemoveMarital(item)} color={''} />
                             </div>
                           );
                         })}
@@ -750,7 +742,7 @@ export default function Persona() {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
-                              <CrossIcon onClick={() => onRemoveIncome(item)} />
+                              <CrossIcon onClick={() => onRemoveIncome(item)} color={''} />
                             </div>
                           );
                         })}
@@ -769,8 +761,7 @@ export default function Persona() {
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
                               <CrossIcon
-                                onClick={() => onRemoveInterest(item)}
-                              />
+                                onClick={() => onRemoveInterest(item)} color={''} />
                             </div>
                           );
                         })}
@@ -789,8 +780,7 @@ export default function Persona() {
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
                               <CrossIcon
-                                onClick={() => onRemoveLanguage(item)}
-                              />
+                                onClick={() => onRemoveLanguage(item)} color={''} />
                             </div>
                           );
                         })}
@@ -803,13 +793,13 @@ export default function Persona() {
                   </td>
                   <td>
                     <div className="flex flex-wrap">
-                      {ContextData?.industry?.length !== '' &&
-                        ContextData?.industry?.map((item: any) => {
+                      {ContextData?.industries?.length !== '' &&
+                        ContextData?.industries?.map((item: any) => {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
                               <CrossIcon
-                                onClick={() => onRemoveIndustry(item)}
+                                onClick={() => onRemoveIndustry(item)} color={''}
                               />
                             </div>
                           );
@@ -828,7 +818,7 @@ export default function Persona() {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
-                              <CrossIcon onClick={() => onRemoveSex(item)} />
+                              <CrossIcon onClick={() => onRemoveSex(item)} color={''} />
                             </div>
                           );
                         })}
@@ -846,7 +836,7 @@ export default function Persona() {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
-                              <CrossIcon onClick={() => onRemoveSex(item)} />
+                              <CrossIcon onClick={() => onRemoveSex(item)} color={''} />
                             </div>
                           );
                         })}
@@ -864,7 +854,7 @@ export default function Persona() {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
-                              <CrossIcon onClick={() => onRemoveSex(item)} />
+                              <CrossIcon onClick={() => onRemoveSex(item)} color={''} />
                             </div>
                           );
                         })}
@@ -882,7 +872,7 @@ export default function Persona() {
                           return (
                             <div className="flex gap-2 items-center rounded-xl text-gray-700 w-fit border text-md  bg-white px-2 py-0.5 ml-2">
                               <div>{item}</div>
-                              <CrossIcon onClick={() => onRemoveSex(item)} />
+                              <CrossIcon onClick={() => onRemoveSex(item)} color={''} />
                             </div>
                           );
                         })}

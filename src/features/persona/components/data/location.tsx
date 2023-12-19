@@ -1,12 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
-import dynamic from 'next/dynamic';
-import { AuthContext } from '@/components/context/context';
-import { v4 as uuid } from 'uuid';
-import { CurrentUserContext } from '@/pages/_app';
+// import dynamic from 'next/dynamic';
+// import { AuthContext } from '@/components/context/context';
+// import { v4 as uuid } from 'uuid';
+// import { CurrentUserContext } from '@/pages/_app';
+import { userContext } from '@/Components/context/context'
 
-interface Step4Props {}
+
+interface Step4Props { }
 
 // function to add classes conditions
 function classNames(...classes: string[]): string {
@@ -14,7 +16,7 @@ function classNames(...classes: string[]): string {
 }
 
 const Step4: React.FC<Step4Props> = () => {
-  const data = useContext(CurrentUserContext as any) as any;
+  const data = useContext(userContext);
   const [placeName, setPlaceName] = useState<string>('');
   const Map = ReactMapboxGl({
     accessToken:
@@ -22,7 +24,7 @@ const Step4: React.FC<Step4Props> = () => {
   });
   const addData = (): void => {
     alert(placeName);
-    data?.setLocation([...data?.location, placeName]);
+    data?.setLocations([...data?.location, placeName]);
   };
 
   return (

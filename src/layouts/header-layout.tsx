@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useState, useEffect, ReactNode } from 'react';
+import React, { Fragment, useState, useEffect, ReactNode } from 'react';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';

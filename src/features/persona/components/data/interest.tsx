@@ -1,8 +1,10 @@
 import React, { useState, useContext, FC } from 'react';
 import Link from 'next/link';
-import { AuthContext } from '@/components/context/context';
-import { v4 as uuid } from 'uuid';
-import { CurrentUserContext } from '@/pages/_app';
+// import { AuthContext } from '@/components/context/context';
+// import { v4 as uuid } from 'uuid';
+// import { CurrentUserContext } from '@/pages/_app';
+import { userContext } from '@/Components/context/context'
+
 
 interface Audience {
   id: number;
@@ -19,7 +21,7 @@ function classNames(...classes: string[]): string {
 }
 
 const Step6: FC = () => {
-  const data = useContext(CurrentUserContext as any) as any;
+  const data = useContext(userContext);
   const [counts, setCounts] = useState<number>(0);
   const [audiences, setAudiences] = useState<Step6Props[]>([
     {
@@ -239,7 +241,7 @@ const Step6: FC = () => {
                     );
                   }
                 })}
-                {}
+                { }
               </div>
               <p className="text-2xl font-bold flex justify-center mt-8">
                 {/* {data?.advanceuserdata?.map((item) => {

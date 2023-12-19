@@ -1,8 +1,10 @@
 import React, { useState, useContext, FC } from 'react';
 import Link from 'next/link';
-import { AuthContext } from '@/components/context/context';
-import { v4 as uuid } from 'uuid';
-import { CurrentUserContext } from '@/pages/_app';
+// import { AuthContext } from '@/components/context/context';
+// import { v4 as uuid } from 'uuid';
+// import { CurrentUserContext } from '@/pages/_app';
+import { userContext } from '@/Components/context/context'
+
 
 interface Audience {
   id: number;
@@ -23,7 +25,7 @@ function classNames(...classes: string[]): string {
 }
 
 const Step6: FC = () => {
-  const data = useContext(CurrentUserContext as any) as any;
+  const data = useContext(userContext);
   const [counts, setCounts] = useState<number>(0);
   const [audiences, setAudiences] = useState<any[]>([
     {
@@ -127,82 +129,82 @@ const Step6: FC = () => {
     }
 
     if (name === 'Leisure' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Leisure'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Leisure' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Leisure']);
+      data?.setIndustries([...data?.industries, 'Leisure']);
     } else if (name === 'Entertainment' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Entertainment'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Entertainment' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Entertainment']);
+      data?.setIndustries([...data?.industries, 'Entertainment']);
     } else if (name === 'Healthcare' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Healthcare'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Healthcare' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Healthcare']);
+      data?.setIndustries([...data?.industries, 'Healthcare']);
     } else if (name === 'Aerospace' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Aerospace'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Aerospace' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Aerospace']);
+      data?.setIndustries([...data?.industries, 'Aerospace']);
     } else if (name === 'Law' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Law'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Law' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Law']);
+      data?.setIndustries([...data?.industries, 'Law']);
     } else if (name === 'Agriculture' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Agriculture'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Agriculture' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Agriculture']);
+      data?.setIndustries([...data?.industries, 'Agriculture']);
     } else if (name === 'Energy' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Energy'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Energy' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Energy']);
+      data?.setIndustries([...data?.industries, 'Energy']);
     } else if (name === 'Fashion' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Fashion'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Fashion' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Fashion']);
+      data?.setIndustries([...data?.industries, 'Fashion']);
     } else if (name === 'Finance' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Finance'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Finance' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Finance']);
+      data?.setIndustries([...data?.industries, 'Finance']);
     } else if (name === 'Food/Beverages' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Food/Beverages'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Food/Beverages' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Food/Beverages']);
+      data?.setIndustries([...data?.industries, 'Food/Beverages']);
     } else if (name === 'Media/New' && active === true && counts <= 5) {
-      let datss: string[] = data?.industry.filter(
+      let datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Media/New'
       );
-      data?.setIndustry([...datss]);
+      data?.setIndustries([...datss]);
     } else if (name === 'Media/New' && active === false && counts < 5) {
-      data?.setIndustry([...data?.industry, 'Media/New']);
+      data?.setIndustries([...data?.industries, 'Media/New']);
     }
   };
 
@@ -243,7 +245,7 @@ const Step6: FC = () => {
                     );
                   }
                 })}
-                {}
+                { }
               </div>
               <p className="text-2xl font-bold flex justify-center mt-8">
                 {/* {data?.advanceuserdata?.map((item) => {
@@ -305,7 +307,7 @@ const Step6: FC = () => {
                                 );
                               }}
                               className={classNames(
-                                !data?.industry?.includes(item?.name)
+                                !data?.industries?.includes(item?.name)
                                   ? ''
                                   : 'bg-green-600 text-white',
                                 'w-full flex justify-between py-3 rounded-md px-4 border border-gray-300'
@@ -314,7 +316,7 @@ const Step6: FC = () => {
                               <span>{item.name}</span>
                               <i
                                 className={classNames(
-                                  !data?.industry?.includes(item?.name)
+                                  !data?.industries?.includes(item?.name)
                                     ? 'ri-checkbox-blank-circle-line text-gray-300'
                                     : 'ri-checkbox-circle-line',
                                   '  text-xl'

@@ -3,9 +3,11 @@ import { Dialog, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import Router from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
-import { AuthContext } from '@/components/context/context';
-import { v4 as uuid } from 'uuid';
-import { CurrentUserContext } from '@/pages/_app';
+// import { AuthContext } from '@/components/context/context';
+// import { v4 as uuid } from 'uuid';
+// import { CurrentUserContext } from '@/pages/_app';
+import { userContext } from '@/Components/context/context'
+
 
 interface DeviceContext {
   device: string[];
@@ -27,7 +29,7 @@ function classNames(...classes: string[]): string {
 }
 
 const Index: FC = () => {
-  const ContextData = useContext(CurrentUserContext as any) as any;
+  const ContextData = useContext(userContext) ;
   const [phone, setPhone] = useState<boolean>(false);
   const [laptop, setLaptop] = useState<boolean>(false);
   const [desktop, setDesktop] = useState<boolean>(false);

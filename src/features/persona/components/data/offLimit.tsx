@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext, FC } from 'react';
-import { Switch } from '@headlessui/react';
-import Link from 'next/link';
-import Router from 'next/router';
-import { AuthContext } from '@/components/context/context';
-import { CurrentUserContext } from '@/pages/_app';
+// import { Switch } from '@headlessui/react';
+// import Link from 'next/link';
+// import Router from 'next/router';
+// import { AuthContext } from '@/components/context/context';
+// import { CurrentUserContext } from '@/pages/_app';
+import { userContext } from '@/Components/context/context'
+
 
 interface Step5Props {
   name: string;
@@ -14,7 +16,7 @@ function classNames(...classes: string[]): string {
 }
 
 const Step5: FC = () => {
-  const data = useContext(CurrentUserContext as any) as any;
+  const data = useContext(userContext);
   const [sexual, setSexual] = useState<boolean>(false);
   const [derogatory, setDerogatory] = useState<boolean>(false);
   const [download, setDownload] = useState<boolean>(false);

@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  
+
+  Control,
   Controller,
   FieldErrors,
   FieldValues,
@@ -11,7 +12,7 @@ import {
 import { capitalizeFirstLetter } from '@/helpers';
 import './input-field.css';
 
-type InputFieldProps<T> = React.InputHTMLAttributes<HTMLInputElement> & {
+type InputFieldProps<T extends FieldValues> = React.InputHTMLAttributes<HTMLInputElement> & {
   name: Path<T>;
   placeholder?: string;
   label?: string;
@@ -19,7 +20,7 @@ type InputFieldProps<T> = React.InputHTMLAttributes<HTMLInputElement> & {
   select?: boolean;
   checkbox?: boolean;
   radio?: boolean;
-  options?: unknown;
+  options?: string[];
   type: string;
   control?: Control<T>;
   errors?: FieldErrors;

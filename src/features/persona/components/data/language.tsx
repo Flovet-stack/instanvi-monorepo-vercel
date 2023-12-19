@@ -1,15 +1,17 @@
 import React, { useState, useContext, FC } from 'react';
 import Multiselect from 'multiselect-react-dropdown';
-import { AuthContext } from '@/components/context/context';
-import { CurrentUserContext } from '@/pages/_app';
+// import { AuthContext } from '@/components/context/context';
+// import { CurrentUserContext } from '@/pages/_app';
 import Countries from '../../../../../countries.json';
+import { userContext } from '@/Components/context/context'
+
 
 interface LanguageProps {
   name: string;
 }
 
 const Language: FC<LanguageProps> = () => {
-  const data = useContext(CurrentUserContext as any) as any;
+  const data = useContext(userContext);
   const [selectedOption, setSelectedOption] = useState<string[]>([]);
   return (
     <>
@@ -37,8 +39,8 @@ const Language: FC<LanguageProps> = () => {
                 data?.setLanguage([...dataLanguage]);
                 // setSelectedOption(selected);
               }}
-              // onSelect={handleTypeSelect}
-              // onRemove={handleTypeRemove}
+            // onSelect={handleTypeSelect}
+            // onRemove={handleTypeRemove}
             />
           </div>
         </div>

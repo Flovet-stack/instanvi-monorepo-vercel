@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext, FC } from 'react';
 import { Switch } from '@headlessui/react';
 import Link from 'next/link';
 import Router from 'next/router';
-import { AuthContext } from '@/components/context/context';
-import { CurrentUserContext } from '@/pages/_app';
+// import { AuthContext } from '@/components/context/context';
+import { userContext } from '@/Components/context/context'
 
 interface Step5Props {
   // add any props here
@@ -14,7 +14,7 @@ function classNames(...classes: string[]): string {
 }
 
 const Step5: FC = () => {
-  const data = useContext(CurrentUserContext as any) as any;
+  const data = useContext(userContext);
   const [male, setmale] = useState<boolean>(false);
   const [female, setfemale] = useState<boolean>(false);
   const [ts, setts] = useState<boolean>(false);
