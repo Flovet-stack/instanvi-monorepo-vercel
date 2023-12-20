@@ -1,12 +1,11 @@
+import { Campaign } from '@instanvi/client/api';
 import { useMutation } from '@tanstack/react-query';
+import { AxiosError, AxiosResponse } from 'axios';
+import toast from 'react-hot-toast';
 
 import { CampaignsAPI } from '@/libs/instanvi-service';
 
-import { Campaign } from '@instanvi/client/api';
 
-import toast from 'react-hot-toast';
-
-import { AxiosError, AxiosResponse } from 'axios';
 
 export const Channels = (data: Campaign): Promise<AxiosResponse> => {
     console.log(data)

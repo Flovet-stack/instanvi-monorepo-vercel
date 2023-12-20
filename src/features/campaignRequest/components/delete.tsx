@@ -1,7 +1,8 @@
-import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { CampaignId } from '../types'
+import { Fragment, useState } from 'react'
+
 import { deleteCampaign } from '../api/deleteCampaigns'
+import { CampaignId } from '../types'
 
 export default function Example(id: string) {
     const [open, setOpen] = useState(false)

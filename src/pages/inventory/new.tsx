@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { HeaderLayout } from '@/layouts/header-layout';
-import FormMenuList from '@/features/inventory/components/new/FormMenuList';
+
 import FormList from '@/features/inventory/components/new/FormList';
+import FormMenuList from '@/features/inventory/components/new/FormMenuList';
+import { HeaderLayout } from '@/layouts/header-layout';
 
 export default function Persona() {
   const [general, setGeneral] = useState<boolean>(true);

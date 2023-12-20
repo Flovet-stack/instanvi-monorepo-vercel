@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
 import Router from "next/router";
+import React, { useState, useEffect, useContext } from "react";
+
 import { userContext } from "@/Components/context/context";
 
 // function to add classes conditions

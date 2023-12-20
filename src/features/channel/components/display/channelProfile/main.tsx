@@ -1,9 +1,11 @@
+import Router, { useRouter } from "next/router";
 import React from "react";
+
+import { Loading } from '@/features/channel';
+import { useChannel } from "@/features/channel/api/getChannel";
+
 import Left from "./left";
 import Right from "./right";
-import { useChannel } from "@/features/channel/api/getChannel";
-import { Loading } from '@/features/channel';
-import Router, { useRouter } from "next/router";
 
 
 export const ViewChannel = () => {

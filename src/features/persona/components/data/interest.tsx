@@ -1,5 +1,6 @@
-import React, { useState, useContext, FC } from 'react';
 import Link from 'next/link';
+import React, { useState, useContext, FC } from 'react';
+
 // import { AuthContext } from '@/components/context/context';
 // import { v4 as uuid } from 'uuid';
 // import { CurrentUserContext } from '@/pages/_app';
@@ -125,77 +126,77 @@ const Step6: FC = () => {
     }
 
     if (name === 'Leisure' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Leisure'
       );
       data?.setInterest([...datss]);
     } else if (name === 'Leisure' && active === false && counts < 5) {
       data?.setInterest([...data?.interest, 'Leisure']);
     } else if (name === 'Entertainment' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Entertainment'
       );
       data?.setInterest([...datss]);
     } else if (name === 'Entertainment' && active === false && counts < 5) {
       data?.setInterest([...data?.interest, 'Entertainment']);
     } else if (name === 'Healthcare' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Healthcare'
       );
       data?.setInterest([...datss]);
     } else if (name === 'Healthcare' && active === false && counts < 5) {
       data?.setInterest([...data?.interest, 'Healthcare']);
     } else if (name === 'Aerospace' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Aerospace'
       );
       data?.setInterest([...datss]);
     } else if (name === 'Aerospace' && active === false && counts < 5) {
       data?.setInterest([...data?.interest, 'Aerospace']);
     } else if (name === 'Law' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Law'
       );
       data?.setInterest([...datss]);
     } else if (name === 'Law' && active === false && counts < 5) {
       data?.setInterest([...data?.interest, 'Law']);
     } else if (name === 'Agriculture' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Agriculture'
       );
       data?.setInterest([...datss]);
     } else if (name === 'Agriculture' && active === false && counts < 5) {
       data?.setInterest([...data?.interest, 'Agriculture']);
     } else if (name === 'Energy' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Energy'
       );
       data?.setInterest([...datss]);
     } else if (name === 'Energy' && active === false && counts < 5) {
       data?.setInterest([...data?.interest, 'Energy']);
     } else if (name === 'Fashion' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Fashion'
       );
       data?.setInterest([...datss]);
     } else if (name === 'Fashion' && active === false && counts < 5) {
       data?.setInterest([...data?.interest, 'Fashion']);
     } else if (name === 'Finance' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Finance'
       );
       data?.setInterest([...datss]);
     } else if (name === 'Finance' && active === false && counts < 5) {
       data?.setInterest([...data?.interest, 'Finance']);
     } else if (name === 'Food/Beverages' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Food/Beverages'
       );
       data?.setInterest([...datss]);
     } else if (name === 'Food/Beverages' && active === false && counts < 5) {
       data?.setInterest([...data?.interest, 'Food/Beverages']);
     } else if (name === 'Media/New' && active === true && counts <= 5) {
-      let datss: string[] = data?.interest.filter(
+      const datss: string[] = data?.interest.filter(
         (item: string) => item !== 'Media/New'
       );
       data?.setInterest([...datss]);

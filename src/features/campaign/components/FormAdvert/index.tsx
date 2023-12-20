@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react';
 import { Transition, Dialog } from '@headlessui/react';
+import React, { Fragment } from 'react';
+
+import NewAdvertSlider from '@/features/campaign/components/CampaignRequest';
 
 import { FormAdvert } from '../../types';
-import NewAdvertSlider from '@/features/campaign/components/CampaignRequest';
 
 export default function FormAdvert(props: FormAdvert) {
   const { newAdvert, setNewAdvert } = props;

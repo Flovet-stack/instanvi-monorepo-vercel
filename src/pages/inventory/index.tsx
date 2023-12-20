@@ -1,16 +1,17 @@
+import moment from 'moment';
 import React, { useEffect, useState, FC } from 'react';
 import { v4 as uuid } from 'uuid';
-import moment from 'moment';
-import { HeaderLayout } from '@/layouts/header-layout';
+
 import FilterInventory from '@/features/inventory/components/FilterInventory';
-import { CalendarItem, CalendarMonth } from '@/features/inventory/types';
 import InventoryList from '@/features/inventory/components/InventoryList';
+import { CalendarItem, CalendarMonth } from '@/features/inventory/types';
+import { HeaderLayout } from '@/layouts/header-layout';
 
 export const Persona: FC = () => {
   const year: number = new Date().getFullYear();
   const [saved, setSave] = useState<CalendarMonth[]>();
-  let calendar: CalendarMonth[] = [];
-  let dat: CalendarItem[] = [];
+  const calendar: CalendarMonth[] = [];
+  const dat: CalendarItem[] = [];
 
   useEffect(() => {
     for (var i = 1; i < 13; i++) {

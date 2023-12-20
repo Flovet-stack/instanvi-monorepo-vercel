@@ -1,8 +1,10 @@
-import React, { FC, useEffect, useState } from "react";
 import Link from 'next/link'
-import Table from './table'
-import { useWatch } from "react-hook-form";
 import { NextRouter, useRouter } from 'next/router';
+import React, { FC, useEffect, useState } from "react";
+import { useWatch } from "react-hook-form";
+
+import Table from './table'
+
 
 
 export const Example: FC = () => {

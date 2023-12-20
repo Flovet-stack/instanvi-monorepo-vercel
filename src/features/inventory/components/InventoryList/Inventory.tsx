@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { AdSpot } from '../../types';
 
 export default function Inventory<FC>({ data }: { data: AdSpot }) {

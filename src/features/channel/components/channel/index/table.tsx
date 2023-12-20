@@ -1,13 +1,16 @@
-import * as React from 'react';
 import {
   DataGrid,
   GridToolbar,
   GridColDef,
   GridRenderCellParams,
 } from '@mui/x-data-grid';
-import { useChannels } from '@/features/channel/api/getChannels';
-import Delete from './delete'
 import { useRouter } from 'next/router';
+import * as React from 'react';
+
+import { useChannels } from '@/features/channel/api/getChannels';
+
+import Delete from './delete'
+
 
 interface Row {
   id: number;

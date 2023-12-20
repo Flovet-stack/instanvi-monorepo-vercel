@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
 import { Transition, Dialog } from '@headlessui/react';
+import React, { Fragment } from 'react';
+
 import { FormLeads } from '../../types';
 
 export default function FormLeads(props: FormLeads) {

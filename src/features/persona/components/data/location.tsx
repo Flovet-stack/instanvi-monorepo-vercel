@@ -1,6 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
+import React, { useContext, useState, useEffect } from 'react';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+
 // import dynamic from 'next/dynamic';
 // import { AuthContext } from '@/components/context/context';
 // import { v4 as uuid } from 'uuid';

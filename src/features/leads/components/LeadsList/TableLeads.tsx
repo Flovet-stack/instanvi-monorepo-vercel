@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
+import React, { Fragment } from 'react';
+
 import { TableLeads } from '../../types';
 
 function classNames(...classes: string[]): string {

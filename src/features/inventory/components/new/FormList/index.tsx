@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { General } from './general';
 import Media from './media';
-import { Scheduling } from './sheduling';
 import { Pricing } from './pricing';
+import { Scheduling } from './sheduling';
 
 export default function FormList({ heights }: { heights: number | undefined }) {
   const forms = [<General />, <Media />, <Scheduling />, <Pricing />];

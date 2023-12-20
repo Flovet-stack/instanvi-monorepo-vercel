@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Statistics } from '../../types';
 
 export default function Statistics(props: Statistics) {

@@ -1,6 +1,6 @@
+import Router from 'next/router';
 import React, { useState, useEffect } from 'react';
 import Dropzone, { FileRejection } from 'react-dropzone';
-import Router from 'next/router';
 
 interface CreativeProps {}
 

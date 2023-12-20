@@ -1,5 +1,6 @@
-import React, { useState, useContext, FC } from 'react';
 import Link from 'next/link';
+import React, { useState, useContext, FC } from 'react';
+
 // import { AuthContext } from '@/components/context/context';
 // import { v4 as uuid } from 'uuid';
 // import { CurrentUserContext } from '@/pages/_app';
@@ -129,77 +130,77 @@ const Step6: FC = () => {
     }
 
     if (name === 'Leisure' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Leisure'
       );
       data?.setIndustries([...datss]);
     } else if (name === 'Leisure' && active === false && counts < 5) {
       data?.setIndustries([...data?.industries, 'Leisure']);
     } else if (name === 'Entertainment' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Entertainment'
       );
       data?.setIndustries([...datss]);
     } else if (name === 'Entertainment' && active === false && counts < 5) {
       data?.setIndustries([...data?.industries, 'Entertainment']);
     } else if (name === 'Healthcare' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Healthcare'
       );
       data?.setIndustries([...datss]);
     } else if (name === 'Healthcare' && active === false && counts < 5) {
       data?.setIndustries([...data?.industries, 'Healthcare']);
     } else if (name === 'Aerospace' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Aerospace'
       );
       data?.setIndustries([...datss]);
     } else if (name === 'Aerospace' && active === false && counts < 5) {
       data?.setIndustries([...data?.industries, 'Aerospace']);
     } else if (name === 'Law' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Law'
       );
       data?.setIndustries([...datss]);
     } else if (name === 'Law' && active === false && counts < 5) {
       data?.setIndustries([...data?.industries, 'Law']);
     } else if (name === 'Agriculture' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Agriculture'
       );
       data?.setIndustries([...datss]);
     } else if (name === 'Agriculture' && active === false && counts < 5) {
       data?.setIndustries([...data?.industries, 'Agriculture']);
     } else if (name === 'Energy' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Energy'
       );
       data?.setIndustries([...datss]);
     } else if (name === 'Energy' && active === false && counts < 5) {
       data?.setIndustries([...data?.industries, 'Energy']);
     } else if (name === 'Fashion' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Fashion'
       );
       data?.setIndustries([...datss]);
     } else if (name === 'Fashion' && active === false && counts < 5) {
       data?.setIndustries([...data?.industries, 'Fashion']);
     } else if (name === 'Finance' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Finance'
       );
       data?.setIndustries([...datss]);
     } else if (name === 'Finance' && active === false && counts < 5) {
       data?.setIndustries([...data?.industries, 'Finance']);
     } else if (name === 'Food/Beverages' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Food/Beverages'
       );
       data?.setIndustries([...datss]);
     } else if (name === 'Food/Beverages' && active === false && counts < 5) {
       data?.setIndustries([...data?.industries, 'Food/Beverages']);
     } else if (name === 'Media/New' && active === true && counts <= 5) {
-      let datss: string[] = data?.industries.filter(
+      const datss: string[] = data?.industries.filter(
         (item: string) => item !== 'Media/New'
       );
       data?.setIndustries([...datss]);

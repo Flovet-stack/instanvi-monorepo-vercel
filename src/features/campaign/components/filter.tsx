@@ -1,6 +1,6 @@
+import { Popover, Transition } from '@headlessui/react';
 import React, { FC } from 'react';
 import { Fragment } from 'react';
-import { Popover, Transition } from '@headlessui/react';
 
 const Filter: FC = () => {
   return (

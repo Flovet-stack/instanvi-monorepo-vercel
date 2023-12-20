@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
 import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
+import React, { useEffect, useState } from "react";
+
 import { useChannels } from "@/features/channel/api/getChannels"
 
 

@@ -1,14 +1,13 @@
 import React, { FC, useState, useEffect } from 'react';
-import Router from 'next/router';
 
-interface CampaignData {
-  budget: string;
-  currency: string;
-  leads: string;
-  sales: string;
-  visitors: string;
-  appDownloads: string;
-}
+// interface CampaignData {
+//   budget: string;
+//   currency: string;
+//   leads: string;
+//   sales: string;
+//   visitors: string;
+//   appDownloads: string;
+// }
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
@@ -37,53 +36,53 @@ const Budgeting: FC = () => {
   };
 
   useEffect(() => {
-    const item: CampaignData[] = JSON.parse(
-      localStorage.getItem('campaignData')
-    );
-    if (item) {
-      item.map((items: CampaignData) => {
-        return items.step8.map((dataItems: CampaignData) => {
-          if (dataItems.budget !== '') setBudget(dataItems.budget);
-          if (dataItems.currency !== '') setCurrency(dataItems.currency);
-          if (dataItems.leads !== '') setLeads(dataItems.leads);
-          if (dataItems.sales !== '') setSales(dataItems.sales);
-          if (dataItems.visitors !== '') setVisitors(dataItems.visitors);
-          if (dataItems.appDownloads !== '')
-            setAppdownload(dataItems.appDownloads);
-        });
-      });
-    }
+    // const item: CampaignData[] = JSON.parse(
+    //   localStorage.getItem('campaignData') as string
+    // );
+    // if (item) {
+    //   item.map((items: CampaignData) => {
+    //     return items.step8.map((dataItems: CampaignData) => {
+    //       if (dataItems.budget !== '') setBudget(dataItems.budget);
+    //       if (dataItems.currency !== '') setCurrency(dataItems.currency);
+    //       if (dataItems.leads !== '') setLeads(dataItems.leads);
+    //       if (dataItems.sales !== '') setSales(dataItems.sales);
+    //       if (dataItems.visitors !== '') setVisitors(dataItems.visitors);
+    //       if (dataItems.appDownloads !== '')
+    //         setAppdownload(dataItems.appDownloads);
+    //     });
+    //   });
+    // }
   }, []);
 
-  const handleStep8 = (e: React.MouseEvent<HTMLDivElement>): void => {
-    e.preventDefault();
-    const item: CampaignData[] = JSON.parse(
-      localStorage.getItem('campaignData')
-    );
-    if (item) {
-      const datas: CampaignData[] = item.map((items: CampaignData) => {
-        return {
-          ...items,
-          step8: items.step8.map((dataItems: CampaignData) => {
-            if (dataItems) {
-              return {
-                ...dataItems,
-                budget: budget,
-                currency: currency,
-                leads: leads,
-                sales: sales,
-                visitors: visitors,
-                appDownloads: appDowload,
-              };
-            }
-          }),
-        };
-      });
-      localStorage.setItem('campaignData', JSON.stringify(datas));
-      console.log(datas);
-      Router.push('step');
-    }
-  };
+  // const handleStep8 = (e: React.MouseEvent<HTMLDivElement>): void => {
+  //   e.preventDefault();
+  //   const item: CampaignData[] = JSON.parse(
+  //     localStorage.getItem('campaignData')
+  //   );
+  //   if (item) {
+  //     const datas: CampaignData[] = item.map((items: CampaignData) => {
+  //       return {
+  //         ...items,
+  //         step8: items.step8.map((dataItems: CampaignData) => {
+  //           if (dataItems) {
+  //             return {
+  //               ...dataItems,
+  //               budget: budget,
+  //               currency: currency,
+  //               leads: leads,
+  //               sales: sales,
+  //               visitors: visitors,
+  //               appDownloads: appDowload,
+  //             };
+  //           }
+  //         }),
+  //       };
+  //     });
+  //     localStorage.setItem('campaignData', JSON.stringify(datas));
+  //     console.log(datas);
+  //     Router.push('step');
+  //   }
+  // };
 
   return (
     <div className="justify-center flex">

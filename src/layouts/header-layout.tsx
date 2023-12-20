@@ -1,11 +1,14 @@
-import React, { Fragment, useState, useEffect, ReactNode } from 'react';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
-import Menus from './menu';
+import React, { Fragment, useState, useEffect, ReactNode } from 'react';
+
+
 import getAuth from '@/api/auth/get-auth-user';
 import AuthGuard from '@/guards/AuthGuard';
+
+import Menus from './menu';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
@@ -44,8 +47,8 @@ export const HeaderLayout = ({ children }: HeadLayoutProps) => {
   useEffect(() => {
     if (!localStorage.getItem('amoutHide'))
       localStorage.setItem('amoutHide', 'false');
-    var str: any = asPath;
-    var res: any[] = str.split('/');
+    const str: any = asPath;
+    const res: any[] = str.split('/');
     setBgColor(res[2]);
     const store = localStorage.getItem('amoutHide');
     setShow(store);

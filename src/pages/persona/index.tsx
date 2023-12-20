@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
-import { HeaderLayout } from '@/layouts/header-layout';
-import PersonaList from '@/features/persona/components/PersonaList';
+import React, { FC } from 'react';
+
 import { usePersonas } from '@/api/persona/usePersonas';
+import PersonaList from '@/features/persona/components/PersonaList';
 import SkeletonPersona from '@/features/persona/components/SkeletonPersona';
+import { HeaderLayout } from '@/layouts/header-layout';
 
 const Persona: FC = () => {
   // const [mut, setPersonas] = useState<any>([])

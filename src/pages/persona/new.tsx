@@ -1,23 +1,27 @@
-import React, { useState, useEffect, useContext } from 'react';
-import Link from 'next/link';
-import Avatar from 'avataaars';
-import Name from '../../features/persona/components/data/demographic';
-import Language from '../../features/persona/components/data/language';
-import Device from '../../features/persona/components/data/device';
-import Interest from '../../features/persona/components/data/interest';
-import { SpinnerCircular } from 'spinners-react';
-import Industry from '../../features/persona/components/data/industry';
-import Interests from '../../features/persona/components/data/interests';
-import Names from '../../features/persona/components/data/name';
-import toast from 'react-hot-toast';
-import Offlimit from '../../features/persona/components/data/offLimit';
-import { HeaderLayout } from '@/layouts/header-layout';
-// import { CurrentUserContext } from '../_app';
-import { userContext } from '@/Components/context/context'
 import { useMutation } from '@tanstack/react-query';
-import { PersonasAPI } from '@/libs/instanvi-service';
-import CrossIcon from '@/features/persona/components/icons/cross';
+import Avatar from 'avataaars';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React, { useState, useEffect, useContext } from 'react';
+import toast from 'react-hot-toast';
+import { SpinnerCircular } from 'spinners-react';
+
+import { userContext } from '@/Components/context/context'
+import CrossIcon from '@/features/persona/components/icons/cross';
+import { HeaderLayout } from '@/layouts/header-layout';
+import { PersonasAPI } from '@/libs/instanvi-service';
+
+import Name from '../../features/persona/components/data/demographic';
+import Device from '../../features/persona/components/data/device';
+import Industry from '../../features/persona/components/data/industry';
+import Interest from '../../features/persona/components/data/interest';
+import Interests from '../../features/persona/components/data/interests';
+import Language from '../../features/persona/components/data/language';
+import Names from '../../features/persona/components/data/name';
+import Offlimit from '../../features/persona/components/data/offLimit';
+
+// import { CurrentUserContext } from '../_app';
+
 
 export default function Persona() {
   const router = useRouter();
@@ -180,7 +184,7 @@ export default function Persona() {
     }
   };
   const handleDeleteDemographics = (e: any, name: string) => {
-    let demo = ContextData?.demographics.filter((items: any) => items !== name);
+    const demo = ContextData?.demographics.filter((items: any) => items !== name);
     ContextData?.setDemographics([...demo]);
   };
 
@@ -265,7 +269,7 @@ export default function Persona() {
       { website: ['http://example.com/site1', 'http://example.com/site2'] }
     );
 
-    var data = Object.assign({}, ...saveArrays);
+    const data = Object.assign({}, ...saveArrays);
 
     createPersona.mutate(data, {
       onSuccess: () => {
@@ -298,49 +302,49 @@ export default function Persona() {
   };
 
   const onRemoveSex = (selectedItem: string): void => {
-    let context = ContextData?.sex.filter(
+    const context = ContextData?.sex.filter(
       (item: string) => item !== selectedItem
     );
     ContextData?.setSex([...context]);
   };
 
   const onRemoveAge = (selectedItem: string): void => {
-    let context = ContextData?.age.filter(
+    const context = ContextData?.age.filter(
       (item: string) => item !== selectedItem
     );
     ContextData?.setAge([...context]);
   };
 
   const onRemoveMarital = (selectedItem: string): void => {
-    let context = ContextData?.marital.filter(
+    const context = ContextData?.marital.filter(
       (item: string) => item !== selectedItem
     );
     ContextData?.setMarital([...context]);
   };
 
   const onRemoveIncome = (selectedItem: string): void => {
-    let context = ContextData?.income.filter(
+    const context = ContextData?.income.filter(
       (item: string) => item !== selectedItem
     );
     ContextData?.setIncome([...context]);
   };
 
   const onRemoveInterest = (selectedItem: string): void => {
-    let context = ContextData?.interest.filter(
+    const context = ContextData?.interest.filter(
       (item: string) => item !== selectedItem
     );
     ContextData?.setInterest([...context]);
   };
 
   const onRemoveLanguage = (selectedItem: string): void => {
-    let context = ContextData?.language.filter(
+    const context = ContextData?.language.filter(
       (item: string) => item !== selectedItem
     );
     ContextData?.setLanguage([...context]);
   };
 
   const onRemoveIndustry = (selectedItem: string): void => {
-    let context = ContextData?.industries.filter(
+    const context = ContextData?.industries.filter(
       (item: string) => item !== selectedItem
     );
     ContextData?.setIndustries([...context]);

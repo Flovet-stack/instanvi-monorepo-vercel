@@ -1,9 +1,12 @@
-import React, { useState, useContext, FC } from 'react';
 import Multiselect from 'multiselect-react-dropdown';
+import React, { useState, useContext, FC } from 'react';
+
 // import { AuthContext } from '@/components/context/context';
 // import { CurrentUserContext } from '@/pages/_app';
-import Countries from '../../../../../countries.json';
 import { userContext } from '@/Components/context/context'
+
+import Countries from '../../../../../countries.json';
+
 
 
 interface LanguageProps {
@@ -33,7 +36,7 @@ const Language: FC<LanguageProps> = () => {
                 data?.setLanguage([...data?.language, item.name]);
               }}
               onRemove={(_selected: string[], item: any) => {
-                let dataLanguage = data?.language.filter(
+                const dataLanguage = data?.language.filter(
                   (items: string) => items !== item.name
                 );
                 data?.setLanguage([...dataLanguage]);

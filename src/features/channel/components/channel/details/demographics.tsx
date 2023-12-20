@@ -1,15 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
-import IncomeLevel from './incomeLevel'
-import Location from './location'
-import Audience from "./audience";
-import TopAudience from "./topAudience";
-import Media from "./media";
-import Language from "./language";
-import MaritalStatus from './maritalstatus'
 import { NextRouter, useRouter } from 'next/router';
-import { userContext } from "@/Components/context/context";
+import React, { useState, useEffect, useContext } from "react";
 import { useActiveMenu } from "react-active-menu"
+
+import { userContext } from "@/Components/context/context";
+
 import { Context } from "../../context";
+
+import Audience from "./audience";
+import IncomeLevel from './incomeLevel'
+import Language from "./language";
+import Location from './location'
+import MaritalStatus from './maritalstatus'
+import Media from "./media";
+import TopAudience from "./topAudience";
+
+
+
 
 
 

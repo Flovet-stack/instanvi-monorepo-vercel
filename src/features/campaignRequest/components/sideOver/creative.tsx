@@ -1,6 +1,7 @@
+import Router from "next/router";
 import React, { useState, useEffect, useContext } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
-import Router from "next/router";
+
 import { userContext } from '@/Components/context/context'
 
 

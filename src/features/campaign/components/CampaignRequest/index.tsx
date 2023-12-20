@@ -1,12 +1,13 @@
-import { useActiveMenu } from 'react-active-menu';
 import React, { FC, useState } from 'react';
+import { useActiveMenu } from 'react-active-menu';
+
+import Budgeting from './budgeting';
+import Creative from './creative';
+import Detail from './detail';
 import Objectives from './objectives';
 import Scheduling from './scheduling';
-import Creative from './creative';
-import Targeting from './targeting';
-import Detail from './detail';
-import Budgeting from './budgeting';
 import SOS from './sos';
+import Targeting from './targeting';
 
 interface NewAdvertSliderProps {}
 

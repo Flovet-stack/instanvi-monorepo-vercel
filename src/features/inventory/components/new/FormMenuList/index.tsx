@@ -1,5 +1,6 @@
-import { MenuList } from '@/features/inventory/types';
 import React from 'react';
+
+import { MenuList } from '@/features/inventory/types';
 
 export default function FormMenuList(props: MenuList) {
   const { setGeneral, setMedia, setScheduling, setPricing, scrollToForm } =

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import Link from 'next/link';
+import React, { useState } from 'react';
 import ReactPhoneInput from 'react-phone-input-2';
 
 type OtpFormProps = {};

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, FC } from 'react';
+
 // import { Switch } from '@headlessui/react';
 // import Link from 'next/link';
 // import Router from 'next/router';
@@ -58,7 +59,7 @@ const Step5: FC = () => {
         'Miracle & Spirituality',
       ]);
     } else {
-      let datss = data?.offLimit.filter(
+      const datss = data?.offLimit.filter(
         (item: string) =>
           item !== 'Sexual' &&
           item !== 'Derogatory' &&
@@ -83,7 +84,7 @@ const Step5: FC = () => {
 
   const onchangeSexual = (): void => {
     if (data?.offLimit?.includes('Sexual')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Sexual');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Sexual');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Sexual']);
@@ -91,7 +92,7 @@ const Step5: FC = () => {
   };
   const onchangeDerogatory = (): void => {
     if (data?.offLimit?.includes('Derogatory')) {
-      let datss = data?.offLimit.filter(
+      const datss = data?.offLimit.filter(
         (item: string) => item !== 'Derogatory'
       );
       data?.setOffLimit([...datss]);
@@ -101,7 +102,7 @@ const Step5: FC = () => {
   };
   const onchangeDownload = (): void => {
     if (data?.offLimit?.includes('Download and Sharing')) {
-      let datss = data?.offLimit.filter(
+      const datss = data?.offLimit.filter(
         (item: string) => item !== 'Download and Sharing'
       );
       data?.setOffLimit([...datss]);
@@ -111,7 +112,7 @@ const Step5: FC = () => {
   };
   const onchangeWeapon = (): void => {
     if (data?.offLimit?.includes('Weapons')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Weapons');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Weapons');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Weapons']);
@@ -119,7 +120,7 @@ const Step5: FC = () => {
   };
   const onchangeGambling = (): void => {
     if (data?.offLimit?.includes('Gambling')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Gambling');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Gambling');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Gambling']);
@@ -128,7 +129,7 @@ const Step5: FC = () => {
 
   const onchangeViolence = (): void => {
     if (data?.offLimit?.includes('Violence')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Violence');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Violence');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Violence']);
@@ -136,7 +137,7 @@ const Step5: FC = () => {
   };
   const onchangeSuggestive = (): void => {
     if (data?.offLimit?.includes('Suggestive')) {
-      let datss = data?.offLimit.filter(
+      const datss = data?.offLimit.filter(
         (item: string) => item !== 'Suggestive'
       );
       data?.setOffLimit([...datss]);
@@ -146,7 +147,7 @@ const Step5: FC = () => {
   };
   const onchangeProfanity = (): void => {
     if (data?.offLimit?.includes('Profanity')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Profanity');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Profanity');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Profanity']);
@@ -154,7 +155,7 @@ const Step5: FC = () => {
   };
   const onchangeAlcohol = (): void => {
     if (data?.offLimit?.includes('Alcohol')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Alcohol');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Alcohol');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Alcohol']);
@@ -162,7 +163,7 @@ const Step5: FC = () => {
   };
   const onchangeDrugs = (): void => {
     if (data?.offLimit?.includes('Drugs')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Drugs');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Drugs');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Drugs']);
@@ -170,7 +171,7 @@ const Step5: FC = () => {
   };
   const onchangeTobacco = (): void => {
     if (data?.offLimit?.includes('Tobacco')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Tobacco');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Tobacco');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Tobacco']);
@@ -178,7 +179,7 @@ const Step5: FC = () => {
   };
   const onchangePolitics = (): void => {
     if (data?.offLimit?.includes('Politics')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Politics');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Politics');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Politics']);
@@ -186,7 +187,7 @@ const Step5: FC = () => {
   };
   const onchangeReligion = (): void => {
     if (data?.offLimit?.includes('Religion')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Religion');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Religion');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Religion']);
@@ -194,7 +195,7 @@ const Step5: FC = () => {
   };
   const onchangeTragedy = (): void => {
     if (data?.offLimit?.includes('Tragedy')) {
-      let datss = data?.offLimit.filter((item: string) => item !== 'Tragedy');
+      const datss = data?.offLimit.filter((item: string) => item !== 'Tragedy');
       data?.setOffLimit([...datss]);
     } else {
       data?.setOffLimit([...data?.offLimit, 'Tragedy']);
@@ -202,7 +203,7 @@ const Step5: FC = () => {
   };
   const onchangeTransport = (): void => {
     if (data?.offLimit?.includes('Transportation Accidents')) {
-      let datss = data?.offLimit.filter(
+      const datss = data?.offLimit.filter(
         (item: string) => item !== 'Transportation Accidents'
       );
       data?.setOffLimit([...datss]);
@@ -212,7 +213,7 @@ const Step5: FC = () => {
   };
   const onchangeMiracle = (): void => {
     if (data?.offLimit?.includes('Miracle & Spirituality')) {
-      let datss = data?.offLimit.filter(
+      const datss = data?.offLimit.filter(
         (item: string) => item !== 'Miracle & Spirituality'
       );
       data?.setOffLimit([...datss]);

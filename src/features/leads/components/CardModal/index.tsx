@@ -1,5 +1,5 @@
-import React, { FC, useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import React, { FC, useState, Fragment } from 'react';
 import { DateRangePicker } from 'react-date-range';
 
 interface DetailModalProps {}

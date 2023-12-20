@@ -1,11 +1,11 @@
 import { useMutation } from '@tanstack/react-query';
-
-import { ChannelAPI } from '@/libs/instanvi-service';
+import { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/router';
-
 import toast from 'react-hot-toast';
 
-import { AxiosError, AxiosResponse } from 'axios';
+import { ChannelAPI } from '@/libs/instanvi-service';
+
+
 import { ChannelId } from '../components/channel/type';
 
 export const Channels = (id: ChannelId): Promise<AxiosResponse> => {

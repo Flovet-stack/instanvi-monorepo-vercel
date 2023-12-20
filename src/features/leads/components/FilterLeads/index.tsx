@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { FilterLeads } from '../../types';
 
 export default function FilterLeads(props: FilterLeads) {

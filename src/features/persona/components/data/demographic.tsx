@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext, FC } from 'react';
 import { Switch } from '@headlessui/react';
 import Link from 'next/link';
 import Router from 'next/router';
+import React, { useState, useEffect, useContext, FC } from 'react';
+
 // import { AuthContext } from '@/components/context/context';
 import { userContext } from '@/Components/context/context'
 
@@ -30,7 +31,7 @@ const Step5: FC = () => {
 
   const OnchangeFemale = (): void => {
     if (data?.sex?.includes('Female')) {
-      let datss = data?.sex.filter((item: string) => item !== 'Female');
+      const datss = data?.sex.filter((item: string) => item !== 'Female');
       data?.setSex([...datss]);
     } else {
       data?.setSex([...data?.sex, 'Female']);
@@ -38,7 +39,7 @@ const Step5: FC = () => {
   };
   const OnchangeMale = (): void => {
     if (data?.sex?.includes('Male')) {
-      let datss = data?.sex.filter((item: string) => item !== 'Male');
+      const datss = data?.sex.filter((item: string) => item !== 'Male');
       data?.setSex([...datss]);
     } else {
       data?.setSex([...data?.sex, 'Male']);
@@ -46,7 +47,7 @@ const Step5: FC = () => {
   };
   const OnchangeTs = (): void => {
     if (data?.age?.includes('12-17')) {
-      let datss = data?.age.filter((item: string) => item !== '12-17');
+      const datss = data?.age.filter((item: string) => item !== '12-17');
       data?.setAge([...datss]);
     } else {
       data?.setAge([...data?.age, '12-17']);
@@ -54,7 +55,7 @@ const Step5: FC = () => {
   };
   const OnchangeEt = (): void => {
     if (data?.age?.includes('18-24')) {
-      let datss = data?.age.filter((item: string) => item !== '18-24');
+      const datss = data?.age.filter((item: string) => item !== '18-24');
       data?.setAge([...datss]);
     } else {
       data?.setAge([...data?.age, '18-24']);
@@ -62,7 +63,7 @@ const Step5: FC = () => {
   };
   const OnchangeTt = (): void => {
     if (data?.age?.includes('25-35')) {
-      let datss = data?.age.filter((item: string) => item !== '25-35');
+      const datss = data?.age.filter((item: string) => item !== '25-35');
       data?.setAge([...datss]);
     } else {
       data?.setAge([...data?.age, '25-35']);
@@ -70,7 +71,7 @@ const Step5: FC = () => {
   };
   const OnchangeTf = (): void => {
     if (data?.age?.includes('36-50')) {
-      let datss = data?.age.filter((item: string) => item !== '36-50');
+      const datss = data?.age.filter((item: string) => item !== '36-50');
       data?.setAge([...datss]);
     } else {
       data?.setAge([...data?.age, '36-50']);
@@ -78,7 +79,7 @@ const Step5: FC = () => {
   };
   const OnchangeFp = (): void => {
     if (data?.age?.includes('50+')) {
-      let datss = data?.age.filter((item: string) => item !== '50+');
+      const datss = data?.age.filter((item: string) => item !== '50+');
       data?.setAge([...datss]);
     } else {
       data?.setAge([...data?.age, '50+']);
@@ -86,7 +87,7 @@ const Step5: FC = () => {
   };
   const OnchangeSingle = (): void => {
     if (data?.marital?.includes('Single')) {
-      let datss = data?.marital.filter((item: string) => item !== 'Single');
+      const datss = data?.marital.filter((item: string) => item !== 'Single');
       data?.setMarital([...datss]);
     } else {
       data?.setMarital([...data?.marital, 'Single']);
@@ -94,7 +95,7 @@ const Step5: FC = () => {
   };
   const OnchangeMarried = (): void => {
     if (data?.marital?.includes('Married')) {
-      let datss = data?.marital.filter((item: string) => item !== 'Married');
+      const datss = data?.marital.filter((item: string) => item !== 'Married');
       data?.setMarital([...datss]);
     } else {
       data?.setMarital([...data?.marital, 'Married']);
@@ -103,7 +104,7 @@ const Step5: FC = () => {
 
   const onChangeLow = (): void => {
     if (data?.income?.includes('Low Income')) {
-      let datss = data?.income.filter((item: string) => item !== 'Low Income');
+      const datss = data?.income.filter((item: string) => item !== 'Low Income');
       data?.setIncome([...datss]);
     } else {
       data?.setIncome([...data?.income, 'Low Income']);
@@ -112,7 +113,7 @@ const Step5: FC = () => {
 
   const onChangeHigh = (): void => {
     if (data?.income?.includes('High Income')) {
-      let datss = data?.income.filter((item: string) => item !== 'High Income');
+      const datss = data?.income.filter((item: string) => item !== 'High Income');
       data?.setIncome([...datss]);
     } else {
       data?.setIncome([...data?.income, 'High Income']);
@@ -121,7 +122,7 @@ const Step5: FC = () => {
 
   const onChangeMid = (): void => {
     if (data?.income?.includes('Mid Income')) {
-      let datss = data?.income.filter((item: string) => item !== 'Mid Income');
+      const datss = data?.income.filter((item: string) => item !== 'Mid Income');
       data?.setIncome([...datss]);
     } else {
       data?.setIncome([...data?.income, 'Mid Income']);

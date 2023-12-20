@@ -1,6 +1,8 @@
 import React from 'react';
-import { Persona } from '../../types';
+
 import PersonaItem from '@/features/persona/components/Persona';
+
+import { Persona } from '../../types';
 
 export default function PersonaList({
   personas,

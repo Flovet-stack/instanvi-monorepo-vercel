@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect, useState, useRef, ReactNode } from "react";
-import Link from "next/link";
-import { CaretDownIcon } from "@radix-ui/react-icons";
-import { styled, keyframes } from "@stitches/react";
-import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { violet, mauve, indigo, purple, blackA } from "@radix-ui/colors";
+import { CaretDownIcon } from "@radix-ui/react-icons";
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import { styled, keyframes } from "@stitches/react";
+import Link from "next/link";
 import Router, { useRouter } from "next/router";
+import React, { Fragment, useEffect, useState, useRef, ReactNode } from "react";
 
 interface MenuLayoutProps {
     children: ReactNode;
@@ -225,8 +225,8 @@ export default function Example() {
     useEffect(() => {
         if (!localStorage.getItem("amoutHide"))
             localStorage.setItem("amoutHide", "false");
-        var str = asPath;
-        var res = str.split("/");
+        const str = asPath;
+        const res = str.split("/");
         setBgColor(res[2]);
 
         setShow(localStorage.getItem("amoutHide") || "");

@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
-import Schedule from '../Schedule';
+
 import { It } from '../../types';
+import Schedule from '../Schedule';
+
 import Inventory from './Inventory';
 
 export default function InventoryList({ it }: { it: It }) {
