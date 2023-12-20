@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react';
 import dynamic from 'next/dynamic';
+import React, { FC, useState } from 'react';
 import { ApexOptions } from 'react-apexcharts';
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });

@@ -1,11 +1,14 @@
 import React, { FC, useState } from 'react';
-import { HeaderLayout } from '@/layouts/header-layout';
+
 import FilterLeads from '@/features/leads/components/FilterLeads';
-import TableLeads from '@/features/leads/components/LeadsList/TableLeads';
-import GridLeads from '../../features/leads/components/LeadsList/GridLeads';
-import { Lead } from '@/features/leads/types';
-import LeadsDetails from '@/features/leads/components/LeadsDetails';
 import FormLeads from '@/features/leads/components/FormLead';
+import LeadsDetails from '@/features/leads/components/LeadsDetails';
+import TableLeads from '@/features/leads/components/LeadsList/TableLeads';
+import { Lead } from '@/features/leads/types';
+import { HeaderLayout } from '@/layouts/header-layout';
+
+import GridLeads from '../../features/leads/components/LeadsList/GridLeads';
+
 
 const Leads: FC = () => {
   const [format, setFormat] = useState<string>('grid');

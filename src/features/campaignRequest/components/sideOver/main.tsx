@@ -1,16 +1,21 @@
-import { useActiveMenu } from "react-active-menu";
+import { Campaign } from '@instanvi/client/api';
 import React, { useContext } from "react";
 import { useState, FC } from "react";
+import { useActiveMenu } from "react-active-menu";
+
 import { userContext } from '@/Components/context/context'
+
+import { useCampaign } from "../../api/createCampaign";
+
+import Budgeting from "./budgeting";
+import Creative from "./creative";
+import Detail from "./detail";
 import Objectives from "./objectives";
 import Scheduling from "./scheduling";
-import Creative from "./creative";
-import Targeting from "./targeting";
-import Detail from "./detail";
-import Budgeting from "./budgeting";
 import SOS from "./sos";
-import { Campaign } from '@instanvi/client/api';
-import { useCampaign } from "../../api/createCampaign";
+import Targeting from "./targeting";
+
+
 
 
 interface ActiveMenuProps {

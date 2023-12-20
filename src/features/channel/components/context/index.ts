@@ -1,6 +1,7 @@
-import { userContext } from '@/Components/context/context';
 import { NextRouter, useRouter } from 'next/router';
 import { useContext,useState } from 'react';
+
+import { userContext } from '@/Components/context/context';
 
 
 export const Context = () => {

@@ -1,7 +1,10 @@
-import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { ChannelId } from '../../type'
+import { Fragment, useState } from 'react'
+
 import { deleteChannel } from '@/features/channel/api/deleteChannel'
+
+import { ChannelId } from '../../type'
+
 
 export default function Example(id: string) {
     const [open, setOpen] = useState(false)

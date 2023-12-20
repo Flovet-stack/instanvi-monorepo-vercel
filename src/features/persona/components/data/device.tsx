@@ -1,8 +1,9 @@
-import React, { useState, useEffect, Fragment, useContext, FC } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import Router from 'next/router';
+import React, { useState, useEffect, Fragment, useContext, FC } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+
 // import { AuthContext } from '@/components/context/context';
 // import { v4 as uuid } from 'uuid';
 // import { CurrentUserContext } from '@/pages/_app';
@@ -56,7 +57,7 @@ const Index: FC = () => {
   ): Promise<void> => {
     const item: string[] = ContextData?.device;
     if (ContextData?.device?.includes('Phone') && item) {
-      let datss: string[] = ContextData?.device.filter(
+      const datss: string[] = ContextData?.device.filter(
         (item: any) => item !== 'Phone'
       );
       ContextData?.setDevice([...datss]);
@@ -68,7 +69,7 @@ const Index: FC = () => {
   const handleLaptop = async (): Promise<void> => {
     const item: string[] = ContextData?.device;
     if (ContextData?.device?.includes('Laptop') && item) {
-      let datss: string[] = ContextData?.device.filter(
+      const datss: string[] = ContextData?.device.filter(
         (item: any) => item !== 'Laptop'
       );
       ContextData?.setDevice([...datss]);
@@ -80,7 +81,7 @@ const Index: FC = () => {
   const handleDesktop = async (): Promise<void> => {
     const item: string[] = ContextData?.device;
     if (ContextData?.device?.includes('Desktop') && item) {
-      let datss: string[] = ContextData?.device.filter(
+      const datss: string[] = ContextData?.device.filter(
         (item: any) => item !== 'Desktop'
       );
       ContextData?.setDevice([...datss]);
@@ -92,7 +93,7 @@ const Index: FC = () => {
   const handleTablet = async (): Promise<void> => {
     const item: string[] = ContextData?.device;
     if (ContextData?.device?.includes('Tablet') && item) {
-      let datss: string[] = ContextData?.device.filter(
+      const datss: string[] = ContextData?.device.filter(
         (item: any) => item !== 'Tablet'
       );
       ContextData?.setDevice([...datss]);
@@ -104,7 +105,7 @@ const Index: FC = () => {
   const handleFeaturePhone = async (): Promise<void> => {
     const item: string[] = ContextData?.device;
     if (ContextData?.device?.includes('FeaturePhone') && item) {
-      let datss: string[] = ContextData?.device.filter(
+      const datss: string[] = ContextData?.device.filter(
         (item: any) => item !== 'FeaturePhone'
       );
       ContextData?.setDevice([...datss]);
@@ -116,7 +117,7 @@ const Index: FC = () => {
   const handleIos = async (): Promise<void> => {
     const item: string[] = ContextData?.operatingSystem;
     if (ContextData?.operatingSystem?.includes('Ios') && item) {
-      let datss: string[] = ContextData?.operatingSystem.filter(
+      const datss: string[] = ContextData?.operatingSystem.filter(
         (item: any) => item !== 'Ios'
       );
       ContextData?.setOperatingSystem([...datss]);
@@ -128,7 +129,7 @@ const Index: FC = () => {
   const handleWindow = async (): Promise<void> => {
     const item: string[] = ContextData?.operatingSystem;
     if (ContextData?.operatingSystem?.includes('Windows') && item) {
-      let datss: string[] = ContextData?.operatingSystem.filter(
+      const datss: string[] = ContextData?.operatingSystem.filter(
         (item: any) => item !== 'Windows'
       );
       ContextData?.setOperatingSystem([...datss]);
@@ -143,7 +144,7 @@ const Index: FC = () => {
   const handleAndroid = async (): Promise<void> => {
     const item: string[] = ContextData?.operatingSystem;
     if (ContextData?.operatingSystem?.includes('Android') && item) {
-      let datss: string[] = ContextData?.operatingSystem.filter(
+      const datss: string[] = ContextData?.operatingSystem.filter(
         (item: any) => item !== 'Android'
       );
       ContextData?.setOperatingSystem([...datss]);
@@ -158,7 +159,7 @@ const Index: FC = () => {
   const handleLinux = async (): Promise<void> => {
     const item: string[] = ContextData?.operatingSystem;
     if (ContextData?.operatingSystem?.includes('Linux') && item) {
-      let datss: string[] = ContextData?.operatingSystem.filter(
+      const datss: string[] = ContextData?.operatingSystem.filter(
         (item: any) => item !== 'Linux'
       );
       ContextData?.setOperatingSystem([...datss]);
@@ -173,7 +174,7 @@ const Index: FC = () => {
   const handleChrome = async (): Promise<void> => {
     const item: string[] = ContextData?.operatingSystem;
     if (ContextData?.operatingSystem?.includes('Chrome') && item) {
-      let datss: string[] = ContextData?.operatingSystem.filter(
+      const datss: string[] = ContextData?.operatingSystem.filter(
         (item: any) => item !== 'Chrome'
       );
       ContextData?.setOperatingSystem([...datss]);
@@ -188,7 +189,7 @@ const Index: FC = () => {
   const handleOrange = async (): Promise<void> => {
     const item: string[] = ContextData?.carrier;
     if (ContextData?.carrier?.includes('Orange') && item) {
-      let datss: string[] = ContextData?.carrier.filter(
+      const datss: string[] = ContextData?.carrier.filter(
         (item: any) => item !== 'Orange'
       );
       ContextData?.setCarrier([...datss]);
@@ -200,7 +201,7 @@ const Index: FC = () => {
   const handleMtn = async (): Promise<void> => {
     const item: string[] = ContextData?.carrier;
     if (ContextData?.carrier?.includes('MTN') && item) {
-      let datss: string[] = ContextData?.carrier.filter(
+      const datss: string[] = ContextData?.carrier.filter(
         (item: any) => item !== 'MTN'
       );
       ContextData?.setCarrier([...datss]);
@@ -212,7 +213,7 @@ const Index: FC = () => {
   const handleNexttel = async (): Promise<void> => {
     const item: string[] = ContextData?.carrier;
     if (ContextData?.carrier?.includes('Nexttel') && item) {
-      let datss: string[] = ContextData?.carrier.filter(
+      const datss: string[] = ContextData?.carrier.filter(
         (item: any) => item !== 'Nexttel'
       );
       ContextData?.setCarrier([...datss]);
@@ -224,7 +225,7 @@ const Index: FC = () => {
   const handlYoomee = async (): Promise<void> => {
     const item: string[] = ContextData?.carrier;
     if (ContextData?.carrier?.includes('Yoomee') && item) {
-      let datss: string[] = ContextData?.carrier.filter(
+      const datss: string[] = ContextData?.carrier.filter(
         (item: any) => item !== 'Yoomee'
       );
       ContextData?.setCarrier([...datss]);
@@ -236,7 +237,7 @@ const Index: FC = () => {
   const handleBlue = async (): Promise<void> => {
     const item: string[] = ContextData?.carrier;
     if (ContextData?.carrier?.includes('Camtel') && item) {
-      let datss: string[] = ContextData?.carrier.filter(
+      const datss: string[] = ContextData?.carrier.filter(
         (item: any) => item !== 'Camtel'
       );
       ContextData?.setCarrier([...datss]);

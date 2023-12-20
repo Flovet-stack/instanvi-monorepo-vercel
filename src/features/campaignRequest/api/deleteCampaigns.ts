@@ -1,11 +1,11 @@
 import { useMutation } from '@tanstack/react-query';
-
-import { CampaignsAPI } from '@/libs/instanvi-service';
+import { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/router';
-
 import toast from 'react-hot-toast';
 
-import { AxiosError, AxiosResponse } from 'axios';
+import { CampaignsAPI } from '@/libs/instanvi-service';
+
+
 import { CampaignId } from '../types';
 
 export const Campaigns = (id: CampaignId): Promise<AxiosResponse> => {

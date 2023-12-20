@@ -1,5 +1,5 @@
-import React, { useState, useContext, FC } from "react";
 import { NextRouter, useRouter } from 'next/router';
+import React, { useState, useContext, FC } from "react";
 
 interface TChannelsProps {
     users: any;

@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState, useContext } from 'react'
-import { usePersonas } from "./../../api/getPersona";
+
 import { userContext } from '@/Components/context/context';
+
+import { usePersonas } from "./../../api/getPersona";
 
 
 

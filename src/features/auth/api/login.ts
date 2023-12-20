@@ -1,11 +1,11 @@
+import { AuthDto, SuccessLoginDto } from '@instanvi/client/api';
 import { useMutation } from '@tanstack/react-query';
+import { AxiosError, AxiosResponse } from 'axios';
+import toast from 'react-hot-toast';
 
 import { AuthAPI } from '@/libs/instanvi-service';
 import { queryClient } from '@/libs/react-query';
 
-import { AuthDto, SuccessLoginDto } from '@instanvi/client/api';
-import toast from 'react-hot-toast';
-import { AxiosError, AxiosResponse } from 'axios';
 
 export const login = (data: AuthDto): Promise<AxiosResponse> => {
   return AuthAPI.login(data) as any;

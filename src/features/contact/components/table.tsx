@@ -1,10 +1,9 @@
-import React, { useState, useRef, FC } from "react";
-import Header from "next/head";
-import Link from "next/link";
-
-import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Header from "next/head";
+import Link from "next/link";
+import React, { useState, useRef, FC } from "react";
+import { Fragment } from "react";
 
 interface FAQ {
     id: number;

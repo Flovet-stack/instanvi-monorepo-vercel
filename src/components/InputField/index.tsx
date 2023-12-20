@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-
   Control,
   Controller,
   FieldErrors,
@@ -8,29 +7,34 @@ import {
   Path,
 } from 'react-hook-form';
 
-
 import { capitalizeFirstLetter } from '@/helpers';
 import './input-field.css';
 
-type InputFieldProps<T extends FieldValues> = React.InputHTMLAttributes<HTMLInputElement> & {
-  name: Path<T>;
-  placeholder?: string;
-  label?: string;
-  textarea?: boolean;
-  select?: boolean;
-  checkbox?: boolean;
-  radio?: boolean;
-  options?: string[];
-  type: string;
-  control?: Control<T>;
-  errors?: FieldErrors;
-};
+interface Option {
+  value: string;
+  label: string;
+}
+
+type InputFieldProps<T extends FieldValues> =
+  React.InputHTMLAttributes<HTMLInputElement> & {
+    name: Path<T>;
+    placeholder?: string;
+    label?: string;
+    textarea?: boolean;
+    select?: boolean;
+    checkbox?: boolean;
+    radio?: boolean;
+    options?: Option[];
+    type: string;
+    control?: Control<T>;
+    errors?: FieldErrors;
+  };
 
 const InputField = <T extends FieldValues>({
   name,
   placeholder,
   label,
-  size: _,
+  // size: _,
   options,
   select,
   textarea,
@@ -42,13 +46,6 @@ const InputField = <T extends FieldValues>({
   id,
   ...props
 }: InputFieldProps<T>) => {
-  let InputComponent = 'input';
-  if (textarea) {
-    InputComponent = 'textarea';
-  } else if (select) {
-    InputComponent = 'select';
-  }
-
   return (
     <div className="input-field">
       {label && !checkbox && !radio && <label>{label}</label>}
@@ -60,20 +57,36 @@ const InputField = <T extends FieldValues>({
             {!select && (
               <>
                 {!radio && !checkbox && (
-                  <InputComponent
-                    className={`w-full py-2.5 px-2 border ${errors && errors[name]
-                      ? 'border-red-500'
-                      : 'border-gray-200'
-                      } rounded-md outline-none`}
-                    type={type}
-                    placeholder={placeholder}
-                    {...field}
-                    {...props}
-                  />
+                  <>
+                    {textarea ? (
+                      <textarea
+                        className={`w-full py-2.5 px-2 border ${
+                          errors && errors[name]
+                            ? 'border-red-500'
+                            : 'border-gray-200'
+                        } rounded-md outline-none`}
+                        placeholder={placeholder}
+                        {...field}
+                        // {...props}
+                      />
+                    ) : (
+                      <input
+                        className={`w-full py-2.5 px-2 border ${
+                          errors && errors[name]
+                            ? 'border-red-500'
+                            : 'border-gray-200'
+                        } rounded-md outline-none`}
+                        type={type}
+                        placeholder={placeholder}
+                        {...field}
+                        {...props}
+                      />
+                    )}
+                  </>
                 )}
                 {(checkbox || radio) && label && (
                   <div className="checkbox-wrapper flex items-center gap-2">
-                    <InputComponent
+                    <input
                       className="form-checkbox h-4 w-4 transition-duration-150 ease-in-out"
                       type={type}
                       placeholder={placeholder}
@@ -90,24 +103,24 @@ const InputField = <T extends FieldValues>({
               </>
             )}
             {select && (
-              <InputComponent
-                className={`w-full py-2.5 border ${errors && errors[name] ? 'border-red-500' : 'border-gray-200'
-                  } rounded-md outline-none pl-2`}
-                type={type}
+              <select
+                className={`w-full py-2.5 border ${
+                  errors && errors[name] ? 'border-red-500' : 'border-gray-200'
+                } rounded-md outline-none pl-2`}
                 placeholder={placeholder}
                 {...field}
-                {...props}
+                // {...props}
               >
                 <option value="" selected disabled>
                   {placeholder}
                 </option>
                 {options &&
-                  options.map((option: any, index: number) => (
+                  options.map((option: Option, index: number) => (
                     <option key={index} value={option.value}>
                       {option.label}
                     </option>
                   ))}
-              </InputComponent>
+              </select>
             )}
           </div>
         )}

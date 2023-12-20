@@ -1,5 +1,5 @@
-import React, { FC, useState } from "react";
 import { NextRouter, useRouter } from 'next/router';
+import React, { FC, useState } from "react";
 
 interface AdvertiserData {
     BroadcastChannel: {

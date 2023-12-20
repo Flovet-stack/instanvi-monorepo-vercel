@@ -1,6 +1,7 @@
-import React from "react";
-import { useChannel } from "@/features/channel/api/getChannel";
 import Router, { useRouter } from "next/router";
+import React from "react";
+
+import { useChannel } from "@/features/channel/api/getChannel";
 
 
 export default function Left() {

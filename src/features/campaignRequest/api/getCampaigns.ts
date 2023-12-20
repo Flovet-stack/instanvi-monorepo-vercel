@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query"; // Importez useQueryClientimport { useQuery } from "react-query";
-import toast from "react-hot-toast";
 import { AxiosResponse } from "axios";
+import toast from "react-hot-toast";
+
 import { CampaignsAPI } from "@/libs/instanvi-service";
 
 export const useCampaigns = () => {

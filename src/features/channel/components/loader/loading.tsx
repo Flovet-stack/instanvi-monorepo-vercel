@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+
 import LoaderLeft from './loaderLeft'
 import LoaderRight from './loaderRight'
 

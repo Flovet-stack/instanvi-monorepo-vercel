@@ -1,5 +1,6 @@
 import React, { FC, useRef } from 'react';
 import { useActiveMenu, ActiveMenuProps } from 'react-active-menu';
+
 import Detail from './detail';
 import SOSCampaign from './sosCampaign';
 

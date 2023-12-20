@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
 import { Transition, Dialog } from '@headlessui/react';
+import React, { Fragment } from 'react';
+
 import { Lead, LeadsDetails } from '../../types';
 
 export default function LeadsDetails(props: LeadsDetails) {

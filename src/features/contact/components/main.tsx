@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
+
+import { useUser } from '@/features/channel/api/user';
+
+import Filter2 from "./companyTable";
 import Filter from "./filters";
 import App from "./list";
-import Filter1 from "./table";
-import { useUser } from '@/features/channel/api/user';
-import Filter2 from "./companyTable";
 import ListModal from './subComponents/listModal'
+import Filter1 from "./table";
 
 export const Contacts = () => {
     const [contacts, setContacts] = useState(true);

@@ -1,12 +1,17 @@
-import React from 'react';
-import { Persona } from '../../types';
+import { useMutation } from '@tanstack/react-query';
 import Avatar from 'avataaars';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import toast from 'react-hot-toast';
+
+import { PersonasAPI } from '@/libs/instanvi-service';
+
+import { Persona } from '../../types';
 import DeleteIcon from '../icons/delete';
 import EditIcon from '../icons/edit';
-import { useMutation } from '@tanstack/react-query';
-import { PersonasAPI } from '@/libs/instanvi-service';
-import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
+
+
+
 
 export default function PersonaItem({
   persona,

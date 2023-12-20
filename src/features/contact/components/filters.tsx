@@ -1,5 +1,5 @@
-import React, { useState, useRef, FC } from "react";
 import Header from "next/head";
+import React, { useState, useRef, FC } from "react";
 import { v4 as uuid } from "uuid";
 
 const faqs = [

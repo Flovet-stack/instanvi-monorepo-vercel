@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import Filter from './filter';
 
 interface Lead {

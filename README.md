@@ -78,6 +78,20 @@ src/              # Source code
 
 # Contributing
 
+Do the following checks after implementing your changes
+
+- remove all unused declarations
+- add key props to all jsx iterations
+- remember to use Image instead of img
+- remember some html props change in react e.g class si className.
+- run the following command
+
+```bash
+npx eslint --fix .
+
+npm run build
+```
+
 ## General Guidelines:
 
 - Descriptive and Meaningful:
