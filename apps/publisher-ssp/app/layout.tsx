@@ -1,4 +1,5 @@
 import './global.css';
+import AuthGuard from './guards/authGuard';
 
 export const metadata = {
   title: 'Welcome to publisher-ssp',
@@ -12,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AuthGuard>{children}</AuthGuard>
+      </body>
     </html>
   );
 }

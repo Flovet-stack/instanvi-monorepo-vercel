@@ -11,7 +11,7 @@ import {
   ControllerInput,
 } from '@instanvi-monorepo/ui-components';
 import { SuccessLoginDto } from '@instanvi/client';
-import { loginUser } from 'apps/instanvi-auth/app/api/login.api';
+import { loginUser } from 'apps/instanvi-auth/app/api/auth.api';
 import CryptoStorageHelper from 'apps/instanvi-auth/app/helpers/cryptoStorageHelper';
 import {
   INSTANVI_STORAGE_ACCESS,
@@ -61,21 +61,22 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   };
 
   const onSubmitHandler = async (data: ILoginFormData) => {
-    console.log('🚀 ~ file: login-form.tsx:61 ~ onSubmitHandler ~ data:', data);
     setIsLoading(true);
-    console.log('🚀 ~ file: login-form.tsx:55 ~ onSubmitHandler ~ data:', data);
     loginUser(data)
       .then((response) => {
-        const responseData: SuccessLoginDto = response.data.data;
+        const responseData: SuccessLoginDto = response.data;
         const { user, access } = responseData;
-        console.log(
-          '🚀 ~ file: login-form.tsx:60 ~ loginUser ~ user, access:',
-          user,
-          access
-        );
+
         // save user and access to local storage
+        localStorage.setItem(INSTANVI_STORAGE_USER, JSON.stringify(user));
         CryptoStorageHelper.encryptAndSave(INSTANVI_STORAGE_USER, user);
         CryptoStorageHelper.encryptAndSave(INSTANVI_STORAGE_ACCESS, access);
+
+        //   redirect to respective instanvi app
+        const advertiserApp = process.env.DSP_APP as string;
+        window.location.replace(
+          `${advertiserApp}?access=${access.accessToken}&refresh=${access.refreshToken}&expires=${access.expires_in}`
+        );
 
         setIsLoading(false);
       })
@@ -156,9 +157,9 @@ export const LoginForm: React.FC<LoginFormProps> = ({
                 <CustomButton
                   text="google"
                   theme="border-light"
-                  icon={
-                    <img src="/images/google.svg" className="h-4 w-4" alt="" />
-                  }
+                  // icon={
+                  //   <img src="/images/google.svg" className="h-4 w-4" alt="" />
+                  // }
                   type="button"
                   onClick={() => {
                     SignInWithGoogle();

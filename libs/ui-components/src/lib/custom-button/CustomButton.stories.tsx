@@ -19,6 +19,13 @@ export const Primary: Story = {
   },
 };
 
+export const PrimaryLight: Story = {
+  args: {
+    theme: 'primary-light',
+    text: 'Primary light',
+  },
+};
+
 export const BorderLight: Story = {
   args: {
     theme: 'border-light',

@@ -10,6 +10,10 @@ import {
 import { ForgotPasswordPhoneDto } from '@instanvi/client';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { authRoutes } from 'apps/instanvi-auth/app/routes';
 
 const schema = yup.object().shape({
   phone: yup.string().required(),
@@ -18,6 +22,7 @@ const schema = yup.object().shape({
 const PhoneResetForm = () => {
   const [showTimer, setShowTimer] = useState<boolean>(false);
   const [showSuccess] = useState<boolean>(false);
+  const router = useRouter();
 
   const {
     control,
@@ -40,6 +45,10 @@ const PhoneResetForm = () => {
 
   const goToOtp = () => {
     // push('/auth/otp');
+  };
+
+  const backToHome = () => {
+    router.push(authRoutes.LOGIN);
   };
 
   return (
@@ -90,6 +99,15 @@ const PhoneResetForm = () => {
               //   disabled={showTimer || authState.resetRequestStatus === 'loading'}
             />
           )}
+          <div className="mt-2">
+            <CustomButton
+              text="back to home"
+              theme="primary-light"
+              type="button"
+              fullWidth
+              onClick={() => backToHome()}
+            />
+          </div>
           {(showTimer || showSuccess) && (
             <CustomButton
               text="Next"
@@ -102,6 +120,17 @@ const PhoneResetForm = () => {
               //   disabled={authState.resetRequestStatus === 'loading'}
             />
           )}
+        </div>
+        <div className="mt-8">
+          <span className="text-sm">
+            Reset with email ?{' '}
+            <Link
+              className="color-primary hover:underline"
+              href={authRoutes.EMAIL_RESET}
+            >
+              here
+            </Link>
+          </span>
         </div>
       </form>
     </div>

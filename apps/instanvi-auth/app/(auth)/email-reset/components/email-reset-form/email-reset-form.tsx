@@ -7,6 +7,10 @@ import {
   RequestActionTimer,
 } from '@instanvi-monorepo/ui-components';
 import { ForgotPasswordEmailDto } from '@instanvi/client';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { authRoutes } from 'apps/instanvi-auth/app/routes';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -20,6 +24,7 @@ const schema = yup.object().shape({
 const EmailResetForm: React.FC<EmailFormProps> = () => {
   const [showTimer, setShowTimer] = useState<boolean>(false);
   const [showSuccess] = useState<boolean>(false);
+  const router = useRouter();
 
   const {
     control,
@@ -42,6 +47,10 @@ const EmailResetForm: React.FC<EmailFormProps> = () => {
 
   const goToOtp = () => {
     // push('/auth/otp');
+  };
+
+  const backToHome = () => {
+    router.push(authRoutes.LOGIN);
   };
 
   return (
@@ -94,6 +103,15 @@ const EmailResetForm: React.FC<EmailFormProps> = () => {
               //   disabled={showTimer || authState.resetRequestStatus === 'loading'}
             />
           )}
+          <div className="mt-2">
+            <CustomButton
+              text="back to home"
+              theme="primary-light"
+              type="button"
+              fullWidth
+              onClick={() => backToHome()}
+            />
+          </div>
           {(showTimer || showSuccess) && (
             <CustomButton
               text="Next"
@@ -107,14 +125,17 @@ const EmailResetForm: React.FC<EmailFormProps> = () => {
             />
           )}
         </div>
-        {/* <div className="mt-8">
+        <div className="mt-8">
           <span className="text-sm">
             Reset with Phone number ?{' '}
-            <a className="text-green-700" href="/auth/otp">
+            <Link
+              className="color-primary hover:underline"
+              href={authRoutes.PHONE_RESET}
+            >
               here
-            </a>
+            </Link>
           </span>
-        </div> */}
+        </div>
       </form>
     </div>
   );

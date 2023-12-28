@@ -12,6 +12,22 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/login',
+        permanent: true,
+      },
+    ]
+  },
+  env: {
+    DSP_APP: "http://localhost:4201",
+    SSP_APP: "http://localhost:4202",
+    AUTH_APP: "http://localhost:4200",
+    API_URL: "https://api.instanvi.com/client",
+    CRYPTO_KEY: 'instanvi@123',
+  }
 };
 
 const plugins = [

@@ -1,7 +1,11 @@
 export const authRoutes = {
-  LOGIN: '/auth/login',
-  EMAIL_RESET: '/auth/email-reset',
-  PHONE_RESET: '/auth/phone-reset',
-  OTP: '/auth/otp',
-  RESET_PASSWORD: '/auth/reset-password',
+  LOGIN: '/login',
+  EMAIL_RESET: '/email-reset',
+  PHONE_RESET: '/phone-reset',
+  OTP: '/otp',
+  RESET_PASSWORD: '/reset-password',
+};
+
+export const appRoutes = {
+  HOME: '/',
 };

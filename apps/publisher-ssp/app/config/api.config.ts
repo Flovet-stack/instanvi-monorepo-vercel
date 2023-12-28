@@ -1,7 +1,7 @@
 import { AuthApi } from '@instanvi/client/dist/api';
 import instanviApiConfig from '.';
 import axios, { AxiosInstance } from 'axios';
-import handleHttpErrors from '../handlers/handleHttpErrors';
+// import handleHttpErrors from '../handlers/handleHttpErrors';
 
 const API_URL = process.env.API_URL;
 
@@ -29,7 +29,7 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     // Handle response error
-    handleHttpErrors(error.response);
+    // handleHttpErrors(error.response);
     return Promise.reject(error);
   }
 );

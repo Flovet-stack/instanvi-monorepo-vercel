@@ -10,7 +10,7 @@ export interface CustomButtonProps
   loading?: boolean;
   loadingText?: string;
   loaderPosition?: 'left' | 'right';
-  theme: 'primary' | 'border-light';
+  theme: 'primary' | 'border-light' | 'primary-light';
   fullWidth?: true;
 }
 

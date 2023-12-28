@@ -36,6 +36,18 @@
     }
   }
 
+  /* ------------------------------ primary light theme ----------------------------- */
+  &.primary-light {
+    background-color: #065e0c24;
+    &:hover:not(:disabled) {
+      background-color: #065e0c38;
+    }
+    span,
+    .icon {
+      color: $primary;
+    }
+  }
+
   /* ------------------------------ border-light theme ----------------------------- */
   &.border-light {
     background-color: $white;
