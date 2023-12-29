@@ -1,7 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@font-face {
+  font-family: 'EuclidCircular';
+  src: url('../public/fonts/EuclidCircularBRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
   --primary: #043a08;
@@ -18,13 +23,13 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'EuclidCircular', sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'EuclidCircular', sans-serif;
 }
 
 span,
@@ -32,7 +37,7 @@ p,
 button,
 label,
 div {
-  font-family: 'Inter', sans-serif;
+  font-family: 'EuclidCircular', sans-serif;
 }
 
 h1,
@@ -41,7 +46,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Inter', sans-serif;
+  font-family: 'EuclidCircular', sans-serif;
 }
 
 * {
@@ -113,7 +118,7 @@ h6 {
   cursor: pointer !important;
 }
 text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'EuclidCircular', sans-serif;
 }
 .right-side {
   position: absolute !important;

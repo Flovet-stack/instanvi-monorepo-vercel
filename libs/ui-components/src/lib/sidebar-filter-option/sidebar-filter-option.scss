@@ -1,0 +1,24 @@
+@import '../variables';
+
+.sidebar-filter-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  p {
+    flex-grow: 1;
+    font-size: 1em;
+    color: $text;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+  .number {
+    background-color: $light-bg;
+    color: $light-text;
+    border-radius: calc($border-radius - 4px);
+    padding: 0.25rem 0.5rem;
+  }
+}

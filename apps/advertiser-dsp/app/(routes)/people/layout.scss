@@ -1,0 +1,13 @@
+@import '../../variables';
+
+.people-layout {
+  width: 100%;
+  height: auto;
+  display: flex;
+  > .sidebar {
+    width: 350px;
+    height: calc(100vh - 70px);
+    border-right: 1px solid $border-color;
+    overflow-y: auto;
+  }
+}

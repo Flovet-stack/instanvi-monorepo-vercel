@@ -30,8 +30,8 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
           response.data
         );
         //   redirect to respective instanvi app
-        // const advertiserApp = process.env.DSP_APP as string;
-        const advertiserApp = process.env.SSP_APP as string;
+        const advertiserApp = process.env.DSP_APP as string;
+        // const advertiserApp = process.env.SSP_APP as string;
         window.location.replace(
           `${advertiserApp}?access=${access.accessToken}&refresh=${access.refreshToken}&expires=${access.expires_in}`
         );

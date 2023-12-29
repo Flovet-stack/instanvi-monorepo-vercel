@@ -20,7 +20,8 @@ interface UserNavigationItem {
 }
 
 const user: User = {
-  imageUrl: '',
+  imageUrl:
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs-uMLjDdWuoiiC5K9_1FN6Rm6vEixi_b85ODNXQ51GiqlKL277lTdKoOaPQ&s',
 };
 
 const userNavigation: UserNavigationItem[] = [
@@ -61,7 +62,7 @@ export const ApplicationHeader: FC = () => {
                   <div className="flex flex-shrink-0 items-center">
                     <a href="#">
                       <img
-                        className="h-8 w-auto"
+                        className="h-6 w-auto"
                         src="/images/logo2.svg"
                         alt="Your Company"
                       />

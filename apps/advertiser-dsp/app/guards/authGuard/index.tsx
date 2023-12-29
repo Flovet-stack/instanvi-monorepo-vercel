@@ -22,7 +22,7 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   const refreshParam = searchParams.get('refresh') as string;
   const expiresParam = searchParams.get('expires') as string;
   const router = useRouter();
-  const [showLoader, setShowLoader] = useState<boolean>(true);
+  const [showLoader, setShowLoader] = useState<boolean>(false);
 
   const access: Access = CryptoStorageHelper.decryptAndRetrieve(
     INSTANVI_STORAGE_ACCESS

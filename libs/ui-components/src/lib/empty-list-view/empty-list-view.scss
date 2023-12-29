@@ -1,0 +1,25 @@
+@import '../variables';
+
+.empty-list-view {
+  padding: 1rem;
+  background-color: $light-bg;
+  border-radius: $border-radius;
+  &.center {
+    text-align: center;
+  }
+  i {
+    font-size: 1.5rem;
+    color: $light-text;
+    opacity: 0.5;
+  }
+  h2 {
+    font-size: 1em;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+  p {
+    font-size: 1em;
+    color: $light-text;
+    margin-bottom: 1rem;
+  }
+}

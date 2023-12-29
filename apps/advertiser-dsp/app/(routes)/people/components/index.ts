@@ -1,1 +1,1 @@
-export * from './create-tag-modal';
+export * from './sidebar';

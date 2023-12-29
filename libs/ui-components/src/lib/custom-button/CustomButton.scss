@@ -16,6 +16,9 @@
   span {
     text-transform: capitalize;
   }
+  .icon {
+    font-size: 1rem;
+  }
   &:hover {
     transition-duration: 0.3s;
   }
@@ -41,6 +44,18 @@
     background-color: #065e0c24;
     &:hover:not(:disabled) {
       background-color: #065e0c38;
+    }
+    span,
+    .icon {
+      color: $primary;
+    }
+  }
+
+  /* ------------------------------ white theme ----------------------------- */
+  &.white {
+    background-color: transparent;
+    &:hover:not(:disabled) {
+      background-color: #065e0c27;
     }
     span,
     .icon {
