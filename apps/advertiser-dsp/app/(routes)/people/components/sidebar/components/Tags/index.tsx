@@ -2,6 +2,7 @@ import { PlusIcon } from '@heroicons/react/20/solid';
 import {
   CustomButton,
   EmptyListView,
+  SearchField,
   SidebarFilterOption,
   SidebarSection,
 } from '@instanvi-monorepo/ui-components';
@@ -38,6 +39,7 @@ export const Tags = () => {
       showTopBorder
       darkTopBorder
     >
+      <SearchField />
       <div className="tags-list">
         {tags.map((tag, index) => (
           <SidebarFilterOption name={tag.name} number={tag.value} key={index} />

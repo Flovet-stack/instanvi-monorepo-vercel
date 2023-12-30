@@ -1,6 +1,91 @@
-export const contacts = [
+import { ColumnsType } from 'antd/es/table';
+
+interface DataType {
+  key: React.Key;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  whatsappNumber: string;
+  birthday: string;
+  address: string;
+  tags: string[];
+  subscriptionStatus: string;
+  isArchived: boolean;
+  dateAdded: string;
+  dateUpdated: string;
+  source: 'USSD' | 'Call';
+}
+
+export const columns: ColumnsType<DataType> = [
   {
-    id: 1,
+    title: 'First name',
+    width: 130,
+    dataIndex: 'firstName',
+    key: 'firstName',
+    fixed: 'left',
+  },
+  {
+    title: 'Last name',
+    width: 130,
+    dataIndex: 'lastName',
+    key: 'lastName',
+    fixed: 'left',
+  },
+  {
+    title: 'Email',
+    width: 200,
+    dataIndex: 'email',
+    key: 'email',
+    // fixed: 'left',
+    sorter: true,
+  },
+  {
+    title: 'Phone number',
+    width: 150,
+    dataIndex: 'phoneNumber',
+    key: 'phoneNumber',
+  },
+  {
+    title: 'Whatsapp number',
+    width: 170,
+    dataIndex: 'whatsappNumber',
+    key: 'whatsappNumber',
+  },
+  { title: 'Birthday', width: 130, dataIndex: 'birthday', key: 'birthday' },
+  { title: 'Address', width: 200, dataIndex: 'address', key: 'address' },
+  {
+    title: 'Status',
+    width: 130,
+    dataIndex: 'subscriptionStatus',
+    key: 'subscriptionStatus',
+  },
+  {
+    title: 'Is archived',
+    width: 130,
+    dataIndex: 'isArchived',
+    key: 'isArchived',
+  },
+  { title: 'Date added', width: 170, dataIndex: 'dateAdded', key: 'dateAdded' },
+  {
+    title: 'dateUpdated',
+    width: 170,
+    dataIndex: 'dateUpdated',
+    key: 'dateUpdated',
+  },
+  { title: 'Source', width: 130, dataIndex: 'source', key: 'source' },
+  {
+    title: 'Action',
+    key: 'operation',
+    // fixed: 'right',
+    width: 100,
+    render: () => <a>action</a>,
+  },
+];
+
+export const data: DataType[] = [
+  {
+    key: 1,
     firstName: 'John',
     lastName: 'Doe',
     email: 'johndoe@gmail.com',
@@ -16,7 +101,7 @@ export const contacts = [
     source: 'USSD',
   },
   {
-    id: 2,
+    key: 2,
     firstName: 'Michel',
     lastName: 'Mayers',
     email: 'mcmayers@gmail.com',
@@ -32,7 +117,7 @@ export const contacts = [
     source: 'Call',
   },
   {
-    id: 3,
+    key: 3,
     firstName: 'Davis',
     lastName: 'Barns',
     email: 'db@gmail.com',
@@ -48,7 +133,7 @@ export const contacts = [
     source: 'USSD',
   },
   {
-    id: 4,
+    key: 4,
     firstName: 'John',
     lastName: 'Doe',
     email: 'johndoe@gmail.com',
@@ -64,7 +149,7 @@ export const contacts = [
     source: 'USSD',
   },
   {
-    id: 5,
+    key: 5,
     firstName: 'Jefferson',
     lastName: 'Pierce',
     email: 'jp@gmail.com',
@@ -80,7 +165,7 @@ export const contacts = [
     source: 'USSD',
   },
   {
-    id: 6,
+    key: 6,
     firstName: 'Remington',
     lastName: 'Smith',
     email: 'rsmith@gmail.com',

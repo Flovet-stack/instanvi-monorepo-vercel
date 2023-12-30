@@ -1,0 +1,74 @@
+@import '../variables';
+
+.section-container {
+  &.show-border {
+    padding: 1rem;
+    border: 1px solid $border-color;
+  }
+  &.show-top-border {
+    &.dark-top-border {
+      > .top {
+        border-bottom: 1px solid $black;
+      }
+    }
+    > .top {
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid $border-color;
+    }
+  }
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: $border-radius;
+  background-color: $white;
+  > .top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    h2 {
+      font-size: 1.1em;
+      font-weight: 700;
+      color: $text;
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .view-more {
+      height: fit-content;
+      font-size: 1em;
+      color: $primary;
+      padding: 0;
+      background-color: transparent;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  > .sub {
+    flex-grow: 1;
+    > div {
+      width: 100%;
+    }
+  }
+  h1 {
+    font-weight: 500;
+    color: $text;
+    sub {
+      font-size: 1rem;
+      //   color: $light-text;
+    }
+  }
+}

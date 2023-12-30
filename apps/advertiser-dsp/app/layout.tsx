@@ -1,8 +1,11 @@
 'use client';
 
 import { ApplicationHeader } from '@instanvi-monorepo/ui-components';
-import './global.css';
 import AuthGuard from './guards/authGuard';
+import { StateProvider } from './lib/redux/StateProvider';
+import './global.css';
+import 'antd/es/app/style/index';
+import StyledComponentsRegistry from './lib/AntdRegistry';
 
 // export const metadata = {
 //   title: 'Welcome to advertiser-dsp',
@@ -17,10 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AuthGuard>
-          <ApplicationHeader />
-          {children}
-        </AuthGuard>
+        <StateProvider>
+          <AuthGuard>
+            <ApplicationHeader />
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </AuthGuard>
+        </StateProvider>
       </body>
     </html>
   );

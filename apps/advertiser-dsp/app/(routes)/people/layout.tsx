@@ -13,7 +13,9 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       <div className="sidebar">
         <PeopleSidebar />
       </div>
-      <div className="main">{children}</div>
+      <div className="main">
+        <div className="main-sub">{children}</div>
+      </div>
     </div>
   );
 };

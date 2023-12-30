@@ -2,6 +2,7 @@ import { PlusIcon } from '@heroicons/react/20/solid';
 import {
   CustomButton,
   EmptyListView,
+  SearchField,
   SidebarFilterOption,
   SidebarSection,
 } from '@instanvi-monorepo/ui-components';
@@ -25,6 +26,10 @@ const segments: { name: string; value: number }[] = [
     value: 110,
   },
   {
+    name: 'Teachers',
+    value: 17,
+  },
+  {
     name: 'employees',
     value: 250,
   },
@@ -38,6 +43,7 @@ export const Segments = () => {
       showTopBorder
       darkTopBorder
     >
+      <SearchField />
       <div className="segments-list">
         {segments.map((segment, index) => (
           <SidebarFilterOption

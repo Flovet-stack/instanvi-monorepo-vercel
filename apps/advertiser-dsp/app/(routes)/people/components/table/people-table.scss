@@ -1,0 +1,82 @@
+@import '../../../../variables';
+
+.people-table {
+  /* ------------------------ ant table style override ------------------------ */
+  .ant-table-wrapper .ant-table-thead > tr > th,
+  .ant-table-wrapper .ant-table-thead > tr > td {
+    background-color: $primary-very-light;
+    color: $primary;
+    padding: 1rem 0.5rem !important;
+  }
+
+  .ant-table-wrapper .ant-table-tbody > .ant-table-row > td {
+    padding: 1rem 0.5rem !important;
+  }
+
+  .ant-table-wrapper
+    .ant-table-container
+    table
+    > thead
+    > tr:first-child
+    > :first-child {
+    border-start-start-radius: $border-radius;
+  }
+  .ant-table-wrapper
+    .ant-table-container
+    table
+    > thead
+    > tr:first-child
+    > :last-child {
+    border-start-end-radius: $border-radius;
+  }
+
+  .ant-pagination .ant-pagination-item-active {
+    border-color: $primary;
+  }
+
+  .ant-pagination .ant-pagination-item-active a {
+    color: $primary;
+  }
+
+  .ant-tabs-top > .ant-tabs-nav::before,
+  .ant-tabs-top > div > .ant-tabs-nav::before,
+  .ant-tabs-bottom > div > .ant-tabs-nav::before {
+    border-bottom: 2px solid $primary !important;
+    opacity: 0.3;
+  }
+  .ant-tabs .ant-tabs-tab {
+    color: $text;
+    padding: 0.5rem 2rem;
+    margin: 0 !important;
+    border: 1px solid transparent;
+    border-radius: $border-radius $border-radius 0 0;
+    &:hover {
+      background: $primary-very-light;
+      color: $text;
+    }
+    &.ant-tabs-tab-active {
+      //   border-color: $primary;
+      background: $primary-very-light;
+      .ant-tabs-tab-btn {
+        color: $primary;
+      }
+    }
+  }
+  .ant-tabs .ant-tabs-ink-bar {
+    background: $primary;
+  }
+
+  .ant-table-thead th.ant-table-column-has-sorters:hover {
+    background-color: $primary-very-light !important;
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner:hover {
+    background-color: $primary;
+    border-color: $primary;
+  }
+}

@@ -1,3 +1,5 @@
+export * from './lib/search-field/search-field';
+export * from './lib/section-component/section-component';
 export * from './lib/empty-list-view/empty-list-view';
 export * from './lib/sidebar-filter-option/sidebar-filter-option';
 export * from './lib/sidebar-section/sidebar-section';

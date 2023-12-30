@@ -11,6 +11,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { getLoggedUser } from '../../api/auth.api';
 import { Access } from '@instanvi/client';
 import { appRoutes } from '../../routes';
+import { useAppDispatch } from '../../lib/redux/hooks';
+import { setUserState } from '../../lib/redux/slices/auth/auth.slice';
 
 interface AuthGuardProps {
   children: ReactNode;
@@ -23,6 +25,7 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   const expiresParam = searchParams.get('expires') as string;
   const router = useRouter();
   const [showLoader, setShowLoader] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
   const access: Access = CryptoStorageHelper.decryptAndRetrieve(
     INSTANVI_STORAGE_ACCESS
@@ -33,6 +36,8 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
       const response = await getLoggedUser(access.accessToken);
       CryptoStorageHelper.encryptAndSave(INSTANVI_STORAGE_ACCESS, access);
       CryptoStorageHelper.encryptAndSave(INSTANVI_STORAGE_USER, response.data);
+      // add user to state
+      dispatch(setUserState(response.data));
       setShowLoader(false);
       if (accessParam && refreshParam && expiresParam) {
         router.push(appRoutes.HOME);
