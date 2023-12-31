@@ -1,6 +1,7 @@
 @import '../../../../variables';
 
 .people-sidebar {
+  position: relative;
   > .sub {
     padding: 1rem;
     padding-bottom: 3rem;

@@ -8,14 +8,6 @@ import {
 } from '@instanvi-monorepo/ui-components';
 import React from 'react';
 
-const segmentActions = [
-  <CustomButton
-    key={1}
-    theme="white"
-    icon={<PlusIcon className="h-4 w-4" aria-hidden="true" />}
-  />,
-];
-
 const segments: { name: string; value: number }[] = [
   {
     name: 'adults',
@@ -35,7 +27,20 @@ const segments: { name: string; value: number }[] = [
   },
 ];
 
-export const Segments = () => {
+interface SegmentsProps {
+  onOpenFormWrapper: (formType: string) => void;
+}
+
+export const Segments: React.FC<SegmentsProps> = ({ onOpenFormWrapper }) => {
+  const segmentActions = [
+    <CustomButton
+      key={1}
+      theme="white"
+      icon={<PlusIcon className="h-4 w-4" aria-hidden="true" />}
+      onClick={() => onOpenFormWrapper('segment')}
+    />,
+  ];
+
   return (
     <SidebarSection
       sectionName="Segments"
