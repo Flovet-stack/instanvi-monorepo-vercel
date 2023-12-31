@@ -34,6 +34,7 @@ export const CreateTagForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)}>
+      <h2>Add tag</h2>
       <div className="">
         <ControllerInput
           id="name"
@@ -58,7 +59,12 @@ export const CreateTagForm = () => {
         />
       </div>
       <div className="mt-2 flex justify-end">
-        <CustomButton theme="primary" text="Save tag" />
+        <CustomButton
+          type="submit"
+          theme="primary"
+          text="Save tag"
+          width={150}
+        />
       </div>
     </form>
   );

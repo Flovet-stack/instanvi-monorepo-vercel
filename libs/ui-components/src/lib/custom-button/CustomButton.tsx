@@ -11,6 +11,7 @@ export interface CustomButtonProps
   loadingText?: string;
   loaderPosition?: 'left' | 'right';
   theme: 'primary' | 'border-light' | 'primary-light' | 'white' | 'white-light';
+  width?: number;
   fullWidth?: true;
 }
 
@@ -26,6 +27,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   loadingText,
   loaderPosition,
   theme,
+  width,
   fullWidth,
   ...props
 }) => {
@@ -33,6 +35,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
     <button
       {...props}
       className={`custom-button ${theme} ${fullWidth ? 'w-full' : ''}`}
+      style={{ width }}
     >
       {loading && loaderPosition !== 'right' && <LoadingSpinner />}
       {icon && iconPosition !== 'right' && <div className="icon">{icon}</div>}
