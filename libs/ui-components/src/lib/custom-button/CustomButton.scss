@@ -63,6 +63,18 @@
     }
   }
 
+  /* ------------------------------ white-light theme ----------------------------- */
+  &.white-light {
+    background-color: transparent;
+    &:hover:not(:disabled) {
+      background-color: $light-bg;
+    }
+    span,
+    .icon {
+      color: $primary;
+    }
+  }
+
   /* ------------------------------ border-light theme ----------------------------- */
   &.border-light {
     background-color: $white;

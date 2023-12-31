@@ -7,10 +7,12 @@
     background-color: $primary-very-light;
     color: $primary;
     padding: 1rem 0.5rem !important;
+    font-size: 14px;
   }
 
   .ant-table-wrapper .ant-table-tbody > .ant-table-row > td {
     padding: 1rem 0.5rem !important;
+    font-size: 16px;
   }
 
   .ant-table-wrapper
@@ -78,5 +80,13 @@
   .ant-checkbox-checked .ant-checkbox-inner:hover {
     background-color: $primary;
     border-color: $primary;
+  }
+  .table-options {
+    .custom-button {
+      padding: 0.5rem 1rem;
+    }
+  }
+  .ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+    min-width: 150px !important;
   }
 }

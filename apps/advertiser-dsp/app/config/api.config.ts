@@ -1,4 +1,4 @@
-import { AuthApi, PeoplesApi } from '@instanvi/client/dist/api';
+import { AuthApi, PeopleApi } from '@instanvi/client/dist/api';
 import instanviApiConfig from '.';
 import axios, { AxiosInstance } from 'axios';
 // import handleHttpErrors from '../handlers/handleHttpErrors';
@@ -38,7 +38,7 @@ axiosInstance.interceptors.response.use(
 export const AuthAPI = new AuthApi(instanviApiConfig, API_URL, axiosInstance);
 
 //  People API
-export const PeopleAPI = new PeoplesApi(
+export const PeopleAPI = new PeopleApi(
   instanviApiConfig,
   API_URL,
   axiosInstance

@@ -32,6 +32,7 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   ) as Access;
 
   const verify = async (access: Access) => {
+    console.log('🚀 ~ file: index.tsx:35 ~ verify ~ Access:', access);
     try {
       const response = await getLoggedUser(access.accessToken);
       CryptoStorageHelper.encryptAndSave(INSTANVI_STORAGE_ACCESS, access);

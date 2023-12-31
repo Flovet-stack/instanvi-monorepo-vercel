@@ -27,7 +27,7 @@ export function SearchField({
       style={{ width: `${width}px` }}
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-        <MagnifyingGlassIcon className="h-4 w-4" aria-hidden="true" />
+        <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
       </div>
       <input
         type="search"

@@ -1,0 +1,32 @@
+@import '../variables';
+
+.app-pill {
+  width: fit-content;
+  padding: 0.25rem 0.75rem;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  background-color: $light-bg;
+  color: $light-text;
+  text-wrap: nowrap;
+  font-size: 14px;
+  &.blue {
+    background-color: $light-blue;
+    color: $blue;
+  }
+  &.red {
+    background-color: $light-red;
+    color: $red;
+  }
+  &.primary {
+    background-color: $primary-very-light;
+    color: $primary;
+  }
+  &.brown {
+    background-color: $light-brown;
+    color: $brown;
+  }
+  &.oxblood {
+    background-color: $light-oxblood;
+    color: $oxblood;
+  }
+}
