@@ -1,7 +1,7 @@
 @import '../variables';
 
 .custom-button {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: $border-radius;
   font-size: 14px;
   transition-duration: 0.3s;
@@ -86,6 +86,18 @@
     .icon {
       color: $white;
       color: $text;
+    }
+  }
+
+  /* ------------------------------ red theme ----------------------------- */
+  &.red {
+    background-color: $red;
+    &:hover:not(:disabled) {
+      background-color: #d53226;
+    }
+    span,
+    .icon {
+      color: $white;
     }
   }
 }

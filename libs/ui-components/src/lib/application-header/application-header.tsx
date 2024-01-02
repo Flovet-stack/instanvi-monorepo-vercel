@@ -2,8 +2,16 @@
 
 import React, { FC, Fragment, useState } from 'react';
 import { Menu, Popover, Transition } from '@headlessui/react';
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import {
+  CheckCircleIcon,
+  EyeIcon,
+  EyeSlashIcon,
+  MagnifyingGlassIcon,
+  PlusCircleIcon,
+} from '@heroicons/react/20/solid';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import NavigationMenu from './menu';
 // import Menus from './menu';
 
 function classNames(...classes: string[]): string {
@@ -33,7 +41,7 @@ const userNavigation: UserNavigationItem[] = [
 // interface HeadLayoutProps {}
 
 export const ApplicationHeader: FC = () => {
-  const [show] = useState<unknown>('');
+  const [showBalance, setShowBalance] = useState<boolean>(false);
 
   // useEffect(() => {
   //   if (!localStorage.getItem('amoutHide'))
@@ -60,17 +68,17 @@ export const ApplicationHeader: FC = () => {
               <div className="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
                 <div className="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-3">
                   <div className="flex flex-shrink-0 items-center">
-                    <a href="#">
+                    <Link href="/">
                       <img
                         className="h-6 w-auto"
                         src="/images/logo2.svg"
-                        alt="Your Company"
+                        alt="Instanvi logo"
                       />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-5">
-                  <div className="flex justify-center items-center px-6 py-4 md:mx-auto md:max-w-2xl lg:mx-0 lg:max-w-none xl:px-0">
+                  <div className="flex justify-center items-center px-6 py-3 md:mx-auto md:max-w-2xl lg:mx-0 lg:max-w-none xl:px-0">
                     <div className="w-2/3 ">
                       <label htmlFor="search" className="sr-only">
                         Search
@@ -109,29 +117,45 @@ export const ApplicationHeader: FC = () => {
                   <div className="flex ml-1">
                     <a
                       href="/publisher/wallet/wallet"
-                      className="  inline-flex items-center rounded-l-md bg-gray-200 px-4 py-2 text-sm   "
+                      className="  inline-flex items-center rounded-l-md bg-gray-200 px-2  py-2 text-sm   "
                     >
-                      <i className="ri-add-circle-fill text-lg   mr-1"></i>
+                      <PlusCircleIcon
+                        className="block h-4 w-4 mr-2"
+                        aria-hidden="true"
+                      />
                       Top&nbsp;up
                     </a>
                     <div
                       id="button"
-                      className="  inline-flex items-center  bg-green-500 px-3 py-2 text-lg text-white   "
+                      className="  inline-flex items-center  bg-green-500 px-3 py-2 text-lg text-white"
                     >
-                      <a href="#" className="mr-2">
-                        {show == 'false' ? (
-                          <>XAF&nbsp;685,000 </>
-                        ) : (
-                          <>XAF&nbsp;----,---</>
-                        )}
-                      </a>
+                      <div className="mr-2">
+                        <span>
+                          XAF&nbsp;{showBalance ? '685,000' : '----,---'}
+                        </span>
+                      </div>
+                      {!showBalance ? (
+                        <EyeIcon
+                          className="h-4 w-4 cursor-pointer"
+                          onClick={() => {
+                            setShowBalance(true);
+                          }}
+                        />
+                      ) : (
+                        <EyeSlashIcon
+                          className="h-4 w-4 cursor-pointer"
+                          onClick={() => {
+                            setShowBalance(false);
+                          }}
+                        />
+                      )}
                     </div>
-                    <a
+                    <Link
                       href="#"
                       className="  inline-flex items-center rounded-r-md bg-gray-200 px-4 py-2 text-sm   "
                     >
                       Basic
-                    </a>
+                    </Link>
                   </div>
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-4 flex-shrink-0">
@@ -144,9 +168,9 @@ export const ApplicationHeader: FC = () => {
                           alt=""
                         />
                       </Menu.Button>
-                      <div className="mx-2 flex">
+                      <div className="mx-2 flex items-center">
                         <p className="text-xl mt-2  ">Bickdrim</p>
-                        <i className="ri-checkbox-circle-fill   text-green-700 mt-3 ml-3 text-md"></i>
+                        <CheckCircleIcon className="h-4 w-4  text-green-700  ml-2 mt-2" />
                       </div>
                     </div>
 
@@ -216,7 +240,7 @@ export const ApplicationHeader: FC = () => {
           </>
         )}
       </Popover>
-      {/* <Menus /> */}
+      <NavigationMenu />
     </div>
   );
 };

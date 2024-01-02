@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Table } from 'antd';
-import { columns, data } from './data';
+import { data, peopleColumns } from './data';
 import './people-table.scss';
 import {
   CustomButton,
@@ -31,7 +31,7 @@ export const PeopleTable: React.FC = () => {
         rightActions={rightActions}
         showBorder
       >
-        <Table columns={columns} dataSource={data} scroll={{ x: 1500 }} />
+        <Table columns={peopleColumns} dataSource={data} scroll={{ x: 1500 }} />
       </SectionComponent>
     </div>
   );

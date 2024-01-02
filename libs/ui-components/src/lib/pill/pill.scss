@@ -1,6 +1,7 @@
 @import '../variables';
 
 .app-pill {
+  display: inline-block;
   width: fit-content;
   padding: 0.25rem 0.75rem;
   border-radius: $border-radius;
@@ -9,6 +10,12 @@
   color: $light-text;
   text-wrap: nowrap;
   font-size: 14px;
+  &::first-letter {
+    text-transform: capitalize;
+  }
+  &.light {
+    color: $text;
+  }
   &.blue {
     background-color: $light-blue;
     color: $blue;

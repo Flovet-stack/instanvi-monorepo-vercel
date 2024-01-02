@@ -2,8 +2,9 @@ import { EllipsisHorizontalIcon } from '@heroicons/react/20/solid';
 import { CustomButton, Pill } from '@instanvi-monorepo/ui-components';
 import { Dropdown, MenuProps } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import { ArchiveModal, EditTagsModal, MessageModal } from './components';
 
-interface DataType {
+export interface PeopleDataType {
   key: React.Key;
   firstName: string;
   lastName: string;
@@ -20,7 +21,7 @@ interface DataType {
   source: 'USSD' | 'Call';
 }
 
-export const data: DataType[] = [
+export const data: PeopleDataType[] = [
   {
     key: 1,
     firstName: 'John',
@@ -119,7 +120,7 @@ export const data: DataType[] = [
   },
 ];
 
-export const columns: ColumnsType<DataType> = [
+export const peopleColumns: ColumnsType<PeopleDataType> = [
   {
     title: 'First name',
     width: 130,
@@ -157,6 +158,21 @@ export const columns: ColumnsType<DataType> = [
   { title: 'Birthday', width: 130, dataIndex: 'birthday', key: 'birthday' },
   { title: 'Address', width: 200, dataIndex: 'address', key: 'address' },
   {
+    title: 'Tags',
+    width: 300,
+    dataIndex: 'tags',
+    key: 'tags',
+    render: (_, record) => {
+      return (
+        <div className="tags-con">
+          {record.tags.map((tag, index) => (
+            <Pill key={index} text={tag} type="light" fontSize={14} />
+          ))}
+        </div>
+      );
+    },
+  },
+  {
     title: 'Status',
     width: 150,
     dataIndex: 'subscriptionStatus',
@@ -186,7 +202,12 @@ export const columns: ColumnsType<DataType> = [
       );
     },
   },
-  { title: 'Date added', width: 170, dataIndex: 'dateAdded', key: 'dateAdded' },
+  {
+    title: 'Date added',
+    width: 170,
+    dataIndex: 'dateAdded',
+    key: 'dateAdded',
+  },
   {
     title: 'dateUpdated',
     width: 170,
@@ -199,9 +220,13 @@ export const columns: ColumnsType<DataType> = [
     key: 'operation',
     // fixed: 'right',
     width: 100,
-    render: () => (
+    render: (_, record) => (
       <div className="table-options">
-        <Dropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
+        <Dropdown
+          menu={{ items: tableActions(record) }}
+          placement="bottomRight"
+          trigger={['click']}
+        >
           <CustomButton
             theme="white-light"
             icon={
@@ -214,17 +239,17 @@ export const columns: ColumnsType<DataType> = [
   },
 ];
 
-const items: MenuProps['items'] = [
+const tableActions = (record: PeopleDataType): MenuProps['items'] => [
   {
     key: '1',
-    label: <div style={{ minWidth: '100px' }}>Add tags</div>,
+    label: <EditTagsModal record={record} />,
   },
   {
     key: '2',
-    label: <div style={{ minWidth: '100px' }}>Message</div>,
+    label: <MessageModal record={record} />,
   },
   {
     key: '3',
-    label: <div style={{ minWidth: '100px' }}>Archive</div>,
+    label: <ArchiveModal record={record} />,
   },
 ];

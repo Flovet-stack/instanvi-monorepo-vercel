@@ -3,7 +3,7 @@ import './pill.scss';
 /* eslint-disable-next-line */
 export interface PillProps {
   text: string;
-  type?: 'default' | 'primary' | 'blue' | 'red' | 'brown' | 'oxblood';
+  type?: 'default' | 'light' | 'primary' | 'blue' | 'red' | 'brown' | 'oxblood';
   fontSize?: number;
   borderRadius?: number;
 }
