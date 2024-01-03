@@ -46,7 +46,7 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
     } catch (error) {
       //   redirect to auth app
       const authApp = process.env.AUTH_APP as string;
-      window.location.replace(`${authApp}`);
+      window.location.replace(`${authApp}?clear=true`);
     }
   };
 
@@ -66,7 +66,7 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
       } else {
         //   redirect to auth app
         const authApp = process.env.AUTH_APP as string;
-        window.location.replace(`${authApp}`);
+        window.location.replace(`${authApp}?clear=true`);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

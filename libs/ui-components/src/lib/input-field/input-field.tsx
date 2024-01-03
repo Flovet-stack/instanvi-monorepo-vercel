@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './input-field.module.scss';
+import './input-field.scss';
 import 'tailwindcss/tailwind.css';
 
 import React from 'react';
@@ -10,6 +10,7 @@ import {
   FieldValues,
   Path,
 } from 'react-hook-form';
+import { Select } from 'antd';
 
 export type InputFieldProps<T extends FieldValues> =
   React.InputHTMLAttributes<HTMLInputElement> &
@@ -28,6 +29,7 @@ export type InputFieldProps<T extends FieldValues> =
       errors?: FieldErrors;
       width?: number;
       isInvalid?: boolean;
+      selectMode?: 'multiple' | 'tags';
     };
 
 export const InputField = <T extends FieldValues>({
@@ -48,10 +50,11 @@ export const InputField = <T extends FieldValues>({
   field,
   width,
   isInvalid,
+  selectMode,
   ...props
 }: InputFieldProps<T>) => {
   return (
-    <div style={{ width }} className={styles['input-field']}>
+    <div style={{ width }} className={'input-field'}>
       {label && !checkbox && !radio && <label>{label}</label>}
       {!select && (
         <>
@@ -61,8 +64,8 @@ export const InputField = <T extends FieldValues>({
               <textarea
                 className={
                   (errors && errors[name]?.message) || isInvalid
-                    ? styles['input-error']
-                    : styles['input']
+                    ? 'input-error'
+                    : 'input'
                 }
                 placeholder={placeholder}
                 cols={cols}
@@ -74,8 +77,8 @@ export const InputField = <T extends FieldValues>({
               <input
                 className={
                   (errors && errors[name]?.message) || isInvalid
-                    ? styles['input-error']
-                    : styles['input']
+                    ? 'input-error'
+                    : 'input'
                 }
                 type={type}
                 placeholder={placeholder}
@@ -84,7 +87,7 @@ export const InputField = <T extends FieldValues>({
               />
             ))}
           {(checkbox || radio) && label && (
-            <div className={styles['checkbox-wrapper']}>
+            <div className={'checkbox-wrapper'}>
               <input
                 className="form-checkbox"
                 type={type}
@@ -100,31 +103,17 @@ export const InputField = <T extends FieldValues>({
         </>
       )}
       {select && (
-        <select
-          className={`w-full py-2.5 border  rounded-md outline-none pl-2`}
-          placeholder={placeholder}
+        <Select
+          placeholder="Select a person"
+          mode={selectMode && selectMode}
+          style={{ width: '100%' }}
+          options={options}
           {...field}
           {...props}
-        >
-          <option value="" selected disabled>
-            {placeholder}
-          </option>
-          {options &&
-            options.map(
-              (option: { label: string; value: string }, index: number) => {
-                return (
-                  <option key={index} value={option.value}>
-                    {option.label}
-                  </option>
-                );
-              }
-            )}
-        </select>
+        />
       )}
       {errors && errors[name]?.message && (
-        <p className={styles['field-error']}>
-          {errors[name]?.message as string}
-        </p>
+        <p className={'field-error'}>{errors[name]?.message as string}</p>
       )}
     </div>
   );

@@ -5,7 +5,7 @@ import { useAppSelector } from '../../lib/redux/hooks';
 // import { getAllPeopleThunk } from '../../lib/redux/slices/people/thunk';
 import { getAllPeople } from '../../api/people.api';
 import { RootState } from '../../lib/redux/store';
-import { PeopleTable } from './components';
+import { PeopleSidebar, PeopleTable } from './components';
 
 const PeoplePage = () => {
   // const dispatch = useAppDispatch();
@@ -36,8 +36,17 @@ const PeoplePage = () => {
   }, []);
 
   return (
-    <div className="people-page">
-      <PeopleTable />
+    <div className="people-layout">
+      <div className="sidebar">
+        <PeopleSidebar />
+      </div>
+      <div className="main">
+        <div className="main-sub">
+          <div className="people-page">
+            <PeopleTable />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

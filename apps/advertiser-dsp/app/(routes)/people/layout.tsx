@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { PeopleSidebar } from './components';
 import './layout.scss';
 
 export const metadata = {
@@ -13,16 +12,7 @@ interface RootLayoutProps {
 }
 
 const PeopleLayout = ({ children }: RootLayoutProps) => {
-  return (
-    <div className="people-layout">
-      <div className="sidebar">
-        <PeopleSidebar />
-      </div>
-      <div className="main">
-        <div className="main-sub">{children}</div>
-      </div>
-    </div>
-  );
+  return <div>{children}</div>;
 };
 
 export default PeopleLayout;

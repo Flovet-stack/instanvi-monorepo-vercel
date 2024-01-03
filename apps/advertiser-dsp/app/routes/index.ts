@@ -1,3 +1,5 @@
 export const appRoutes = {
-  HOME: '/',
+  HOME: '/home',
+  PEOPLE: '/people',
+  CREATE_PEOPLE: '/people/create',
 };

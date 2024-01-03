@@ -11,6 +11,14 @@ const nextConfig = {
     // Set this to true if you would like to use SVGR
     // See: https://github.com/gregberge/svgr
     svgr: false,
+  }, async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/home',
+        permanent: true,
+      },
+    ]
   },
   env: {
     DSP_APP: "http://localhost:4201",

@@ -8,7 +8,23 @@
     background-color: #f7f8f9;
     outline: none;
   }
+  select {
+    background-color: #f7f8f9;
+  }
+  .ant-select {
+    height: 45px;
+    .ant-select-selector {
+      border: 1px solid $border-color !important;
+      background-color: #f7f8f9;
+    }
+  }
 }
+
+.ant-select-item-option-selected {
+  background-color: $primary-very-light !important;
+  color: $primary !important;
+}
+
 .checkbox-wrapper {
   display: flex;
   align-items: center;

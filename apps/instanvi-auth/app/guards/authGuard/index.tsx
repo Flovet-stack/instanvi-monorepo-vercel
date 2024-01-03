@@ -9,6 +9,8 @@ import {
 } from '../../constants';
 import { getLoggedUser } from '../../api/auth.api';
 import { Access } from '@instanvi/client';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { authRoutes } from '../../routes';
 
 interface AuthGuardProps {
   children: ReactNode;
@@ -16,6 +18,10 @@ interface AuthGuardProps {
 
 const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   const [showAuth, setShowAuth] = useState<boolean>(false);
+  const router = useRouter();
+  const params = useSearchParams();
+  const clearParam = params.get('clear');
+  console.log('🚀 ~ file: index.tsx:22 ~ clearParam:', clearParam);
 
   const access: Access = CryptoStorageHelper.decryptAndRetrieve(
     INSTANVI_STORAGE_ACCESS
@@ -45,11 +51,18 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    if (access) {
-      verify(access);
-      console.log('getting from local storage');
-    } else {
+    if (clearParam) {
+      localStorage.removeItem(INSTANVI_STORAGE_USER);
+      localStorage.removeItem(INSTANVI_STORAGE_ACCESS);
+      router.push(authRoutes.LOGIN);
       setShowAuth(true);
+    } else {
+      if (access) {
+        verify(access);
+        console.log('getting from local storage');
+      } else {
+        setShowAuth(true);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

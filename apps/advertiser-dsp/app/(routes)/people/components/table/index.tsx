@@ -9,8 +9,16 @@ import {
   SearchField,
   SectionComponent,
 } from '@instanvi-monorepo/ui-components';
+import { useRouter } from 'next/navigation';
+import { appRoutes } from 'apps/advertiser-dsp/app/routes';
 
 export const PeopleTable: React.FC = () => {
+  const router = useRouter();
+
+  const goToCreate = () => {
+    router.push(appRoutes.CREATE_PEOPLE);
+  };
+
   const handleSearch = (search: string) => {
     console.log('🚀 ~ file: index.tsx:16 ~ handleSearch ~ search:', search);
   };
@@ -21,7 +29,12 @@ export const PeopleTable: React.FC = () => {
 
   const rightActions = [
     <CustomButton key={1} theme="primary" text="upload contacts" />,
-    <CustomButton key={2} theme="primary" text="add contacts" />,
+    <CustomButton
+      key={2}
+      theme="primary"
+      text="add contacts"
+      onClick={() => goToCreate()}
+    />,
   ];
 
   return (
