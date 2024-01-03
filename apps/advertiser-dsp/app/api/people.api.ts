@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { PeopleAPI } from '../config/api.config';
+import { PeopleDto } from '@instanvi/client';
 
 export const getAllPeople = (projectUUID: string): Promise<AxiosResponse> => {
   try {
@@ -9,9 +10,12 @@ export const getAllPeople = (projectUUID: string): Promise<AxiosResponse> => {
   }
 };
 
-export const createPerson = (projectUUID: string): Promise<AxiosResponse> => {
+export const createPerson = (
+  data: PeopleDto,
+  projectUUID: string
+): Promise<AxiosResponse> => {
   try {
-    return PeopleAPI.create(projectUUID);
+    return PeopleAPI.create(projectUUID, data);
   } catch (error) {
     return Promise.reject(error);
   }
